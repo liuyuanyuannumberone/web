@@ -1,0 +1,23 @@
+{
+  "id": "1847288",
+  "name": "test",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "14928064",
+      "name": "工作台",
+      "font_class": "gongzuotai",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "14934408",
+      "name": "数据",
+      "font_class": "shuju",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    }
+  ]
+}

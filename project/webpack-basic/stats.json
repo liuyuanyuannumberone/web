@@ -1,0 +1,59 @@
+[HPM] Proxy created: [ '/api', '/auth' ]  ->  https://google.com
+[34mi[39m [90m｢wds｣[39m: Project is running at [1m[34mhttp://localhost:9000/[39m[22m
+[34mi[39m [90m｢wds｣[39m: webpack output is served from [1m[34m/[39m[22m
+[34mi[39m [90m｢wds｣[39m: Content not from webpack is served from [1m[34mD:\dataPapaer\vue\webpack-basic\build\dist[39m[22m
+[34mi[39m [90m｢wdm｣[39m: wait until bundle finished: /
+[1mWebpack Bundle Analyzer[22m is started at [1mhttp://127.0.0.1:8888[22m
+Use [1mCtrl+C[22m to close it
+[34mi[39m [90m｢wdm｣[39m: Hash: [1m2d93a87b5c4335378540[39m[22m
+Version: webpack [1m4.43.0[39m[22m
+Time: [1m1580[39m[22mms
+Built at: 2020-05-31 [1m17:54:24[39m[22m
+                                           [1mAsset[39m[22m       [1mSize[39m[22m         [1mChunks[39m[22m  [1m[39m[22m           [1m[39m[22m[1mChunk Names[39m[22m
+            [1m[32m1fa25810f53161cbcaf5f9d3836d5c26.eot[39m[22m   2.26 KiB               [1m[39m[22m  [1m[32m[emitted][39m[22m  
+           [1m[32m3b4eac00a09560cde35ca10ac58928be.woff[39m[22m   1.38 KiB               [1m[39m[22m  [1m[32m[emitted][39m[22m  
+            [1m[32m3cb39593fd413a25d0e091c0392991d6.ttf[39m[22m    2.1 KiB               [1m[39m[22m  [1m[32m[emitted][39m[22m  
+            [1m[32m8b268b5b29b534457b9f68ab27d9b4c3.svg[39m[22m   3.46 KiB               [1m[39m[22m  [1m[32m[emitted][39m[22m  
+[1m[32mimages/girl_0885799afac5ff3277c337f70526a003.jpg[39m[22m   33.3 KiB               [1m[39m[22m  [1m[32m[emitted][39m[22m  
+                                      [1m[32mindex.html[39m[22m  309 bytes               [1m[39m[22m  [1m[32m[emitted][39m[22m  
+                                        [1m[32mindex.js[39m[22m   46.4 KiB          [1mindex[39m[22m  [1m[32m[emitted][39m[22m  index
+                                      [1m[32mruntime.js[39m[22m   33.4 KiB        [1mruntime[39m[22m  [1m[32m[emitted][39m[22m  runtime
+                                [1m[32mvendors~index.js[39m[22m   3.22 MiB  [1mvendors~index[39m[22m  [1m[32m[emitted][39m[22m  vendors~index
+Entrypoint [1mindex[39m[22m = [1m[32mruntime.js[39m[22m [1m[32mvendors~index.js[39m[22m [1m[32mindex.js[39m[22m
+[0] [1mmulti (webpack)-dev-server/client?http://localhost:9000 (webpack)/hot/dev-server.js ./src/index.js[39m[22m 52 bytes {[1m[33mindex[39m[22m}[1m[32m [built][39m[22m
+    factory:1ms building:0ms dependencies:[1m139ms[39m[22m = [1m140ms[39m[22m
+[[1m./node_modules/@babel/runtime-corejs2/core-js/promise.js[39m[22m] 55 bytes {[1m[33mvendors~index[39m[22m}[1m[32m [built][39m[22m
+    [./src/index.js] [1m[32m266ms[39m[22m -> factory:[1m172ms[39m[22m building:[1m[32m334ms[39m[22m dependencies:[1m[32m298ms[39m[22m = [1m[31m1070ms[39m[22m
+[[1m./node_modules/jquery/dist/jquery.js[39m[22m] 281 KiB {[1m[33mvendors~index[39m[22m}[1m[32m [built][39m[22m
+    [./src/index.js] [1m[32m266ms[39m[22m -> factory:[1m172ms[39m[22m building:[1m[32m334ms[39m[22m dependencies:[1m[32m298ms[39m[22m = [1m[31m1070ms[39m[22m
+[[1m./node_modules/lodash/lodash.js[39m[22m] 528 KiB {[1m[33mvendors~index[39m[22m}[1m[32m [built][39m[22m
+    [./src/index.js] [1m[32m266ms[39m[22m -> factory:[1m172ms[39m[22m building:[1m[32m334ms[39m[22m dependencies:[1m[32m298ms[39m[22m = [1m[31m1070ms[39m[22m
+[./node_modules/webpack-dev-server/client/index.js?http://localhost:9000] [1m(webpack)-dev-server/client?http://localhost:9000[39m[22m 4.29 KiB {[1m[33mvendors~index[39m[22m}[1m[32m [built][39m[22m
+    [0] 1ms -> factory:[1m139ms[39m[22m building:23ms = [1m163ms[39m[22m
+[./node_modules/webpack-dev-server/client/overlay.js] [1m(webpack)-dev-server/client/overlay.js[39m[22m 3.51 KiB {[1m[33mvendors~index[39m[22m}[1m[32m [built][39m[22m
+    [0] 1ms -> [./node_modules/webpack-dev-server/client/index.js?http://localhost:9000] [1m162ms[39m[22m -> factory:[1m[32m228ms[39m[22m building:25ms dependencies:[1m106ms[39m[22m = [1m[33m522ms[39m[22m
+[./node_modules/webpack-dev-server/client/socket.js] [1m(webpack)-dev-server/client/socket.js[39m[22m 1.53 KiB {[1m[33mvendors~index[39m[22m}[1m[32m [built][39m[22m
+    [0] 1ms -> [./node_modules/webpack-dev-server/client/index.js?http://localhost:9000] [1m162ms[39m[22m -> factory:[1m[32m228ms[39m[22m building:25ms dependencies:[1m106ms[39m[22m = [1m[33m522ms[39m[22m
+[./node_modules/webpack-dev-server/client/utils/createSocketUrl.js] [1m(webpack)-dev-server/client/utils/createSocketUrl.js[39m[22m 2.91 KiB {[1m[33mvendors~index[39m[22m}[1m[32m [built][39m[22m
+    [0] 1ms -> [./node_modules/webpack-dev-server/client/index.js?http://localhost:9000] [1m162ms[39m[22m -> factory:[1m[32m228ms[39m[22m building:25ms dependencies:[1m106ms[39m[22m = [1m[33m522ms[39m[22m
+[./node_modules/webpack-dev-server/client/utils/log.js] [1m(webpack)-dev-server/client/utils/log.js[39m[22m 964 bytes {[1m[33mvendors~index[39m[22m}[1m[32m [built][39m[22m
+    [0] 1ms -> [./node_modules/webpack-dev-server/client/index.js?http://localhost:9000] [1m162ms[39m[22m -> factory:[1m[32m228ms[39m[22m building:25ms dependencies:[1m106ms[39m[22m = [1m[33m522ms[39m[22m
+[./node_modules/webpack-dev-server/client/utils/reloadApp.js] [1m(webpack)-dev-server/client/utils/reloadApp.js[39m[22m 1.59 KiB {[1m[33mvendors~index[39m[22m}[1m[32m [built][39m[22m
+    [0] 1ms -> [./node_modules/webpack-dev-server/client/index.js?http://localhost:9000] [1m162ms[39m[22m -> factory:[1m[32m228ms[39m[22m building:25ms dependencies:[1m106ms[39m[22m = [1m[33m522ms[39m[22m
+[./node_modules/webpack-dev-server/client/utils/sendMessage.js] [1m(webpack)-dev-server/client/utils/sendMessage.js[39m[22m 402 bytes {[1m[33mvendors~index[39m[22m}[1m[32m [built][39m[22m
+    [0] 1ms -> [./node_modules/webpack-dev-server/client/index.js?http://localhost:9000] [1m162ms[39m[22m -> factory:[1m[32m228ms[39m[22m building:25ms dependencies:[1m106ms[39m[22m = [1m[33m522ms[39m[22m
+[./node_modules/webpack-dev-server/node_modules/strip-ansi/index.js] [1m(webpack)-dev-server/node_modules/strip-ansi/index.js[39m[22m 161 bytes {[1m[33mvendors~index[39m[22m}[1m[32m [built][39m[22m
+    [0] 1ms -> [./node_modules/webpack-dev-server/client/index.js?http://localhost:9000] [1m162ms[39m[22m -> factory:[1m[32m228ms[39m[22m building:25ms dependencies:[1m106ms[39m[22m = [1m[33m522ms[39m[22m
+[./node_modules/webpack/hot sync ^\.\/log$] [1m(webpack)/hot sync nonrecursive ^\.\/log$[39m[22m 170 bytes {[1m[33mindex[39m[22m}[1m[32m [built][39m[22m
+    [0] 1ms -> [./node_modules/webpack-dev-server/client/index.js?http://localhost:9000] [1m162ms[39m[22m -> factory:[1m[32m228ms[39m[22m building:25ms dependencies:[1m106ms[39m[22m = [1m[33m522ms[39m[22m
+[./node_modules/webpack/hot/dev-server.js] [1m(webpack)/hot/dev-server.js[39m[22m 1.59 KiB {[1m[33mvendors~index[39m[22m}[1m[32m [built][39m[22m
+    [0] 1ms -> factory:[1m139ms[39m[22m building:23ms = [1m163ms[39m[22m
+[[1m./src/index.js[39m[22m] 1.57 KiB {[1m[33mindex[39m[22m}[1m[32m [built][39m[22m
+    factory:[1m107ms[39m[22m building:[1m159ms[39m[22m = [1m[32m266ms[39m[22m
+    + 108 hidden modules
+Child [1mHtmlWebpackCompiler[39m[22m:
+     1 asset
+    Entrypoint [1mHtmlWebpackPlugin_0[39m[22m = [1m[32m__child-HtmlWebpackPlugin_0[39m[22m
+    [[1m./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html[39m[22m] 466 bytes {[1m[33mHtmlWebpackPlugin_0[39m[22m}[1m[32m [built][39m[22m
+        factory:28ms building:28ms = 56ms
+[34mi[39m [90m｢wdm｣[39m: Compiled successfully.
