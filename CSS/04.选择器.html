@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+</head>
+<body>
+<!--
+
+权重：
+
+id选择器  #dv{}                +100
+
+
+类选择器  .dv{}
+属性选择器  input[type=submit] {}        +10
+伪类选择器  :hover{}  link active visited
+[attribute^=value]，a[src^="https"]，选择其 src 属性值以 "https" 开头的每个 <a> 元素。 最低要求：css3
+
+[attribute*=value]，a[src*="abc"]，选择其 src 属性中包含 "abc" 子串的每个 <a> 元素。 最低要求：css3
+
+用[class*=" icon-"], [class^=icon-]经过测试发现，value可以加双引号，可以不加，效果一致。
+
+
+元素选择器  div{}                     +1
+伪元素选择器 ::before{}  ::after{}
+
+
+
+组合选择器
+http://www.ruanyifeng.com/blog/2009/03/css_selectors.html
+
+ E,F    E和F一样
+ EF    一起出现才起作用才生效
+
+
+兄弟：
+E~F E后面同级的所有F
+E+F E后面同级的第一个F
+
+
+子代：
+E F  E所有后代F  <div>p<></p>p<></p><h1>p<></p></h1><div>
+E>F  E所有直接后代F  <div>p<></p>p<></p><div>
+
+
+E:nth-of-type(n) 同级
+p:nth-of-type(2n+1) {
+  color: red;
+}
+
+E:first-child	匹配父元素的第一个子元素
+E:nth-child(n) 匹配父元素的第n个子元素E    E的父元素的第N个子元素E
+
+
+表单
+E:enabled	匹配表单中激活的元素
+E:disabled	匹配表单中禁用的元素
+E:checked	匹配表单中 被选中 的radio（单选框）或checkbox（复选框）元素
+E::selection	匹配用户当前选中的元素
+
+否定选择器  :not(.link){}                     +0
+通用选择器  *{}
+
+
+!important>内联样式（1000）>id 选择器（100）>类选择器（伪类、属性选择器）（10）>元素选择器（伪元素）（1）>组合选择器为0
+
+-->
+
+<div class="dv">
+    <input type="checkbox" id="me"/>
+    <label for="me">我很帅</label>
+</div>
+
+<!--权重有关系-->
+<div id="test1" class="test1">test1</div>
+<div class="test2">test2</div>
+<div id="test3" class="c1 c2 c3 c4 c5 c6 c7 c8 c9 c10 c11">test3</div>
+</body>
+<style>
+    .dv input {
+        display: block;
+    }
+
+    .dv label {
+        background: url(./img/checkbox1.png) left center no-repeat;
+        background-size: 20px 20px;
+        padding-left: 20px;
+    }
+
+    .dv input:checked + label {
+        background-image: url(./img/checkbox2.png);
+    }
+</style>
+<style>
+    #test1 {
+        color: red;
+    }
+
+    #test1.test1 {
+        color: blue;
+    }
+
+    .test2 {
+        color: red;
+    }
+
+    div.test2 {
+        color: blue;
+    }
+
+    #test3 {
+        color: red;
+    }
+
+    .c1.c2.c3.c4.c5.c6.c7.c8.c9.c10.c11 {
+        color: blue;
+    }
+</style>
+</html>

@@ -1,0 +1,25 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1593055366375'); /* IE9 */
+  src: url('iconfont.eot?t=1593055366375#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAQIAAsAAAAACLwAAAO8AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqFHIQnATYCJAMMCwgABCAFhG0HPxt2BxFVnCHIfhS4ezb8/x+YEJfaRCxKD4f8NJ0Pvle9NB0lC5BHzh4gfUFoAwQQDL3/uSFeCeVCmrZVrGud3v8TvX8TXodWSYkQITQOjpkucQ2SBzSnjNThAMtaBxTRTwX8IP/iLyY/jN1EHuR1IAAYrOABkpCUUQAlRIB5BADpaG2uhTKhhVhBIlAq5AVbRWcyDTIohfHCJQBTvd8nb+BHlIAAGQVYmtOU2ICYN+VvaqhaUqOCIsAbzgxA2QVQAB4ARIBUFVpLQIOoByiYJRWrM+UQQSAMFZAkPK4tlsN/eIAAAhA5gFRDwLpIhIPiYW4kq+H5R827OLm8Q/89gGgOUALIoLC11QGnMZWKMXc+uGjOGoOCWfPmrzYuvvXUH2o4ezWfaHz3RXHhfEepqbkLjUpXD2AT5hiRuXM5nzgbmDVLM0khtAtnKGBkd0NUzxqsdeqWjaBLV9zpmDOna+7E2epZteL7DRCW307UPnvXng4oW3K3WPf2bYuSHmfu2BGOxZf5xJt3rzBG+N6rXeK7TrhkYcCMV95NPn3bdtExh93HsexWMS0gxWuNjbnAwvL2luyo6H96R/Ge/vukv1JnYMOTRXSUxYnbnm6aXPSZYbXLqP1zYIfaR5m3Z0B6vTK3k07j2SU2F7vHs0dcRDl5UvgjViROSYomiGoeHrG9F1g4f4SwnUN/FCamyUL+higz0vd23yaZSKaC4YdgiE9X9WpVRsa0t9PIt1etjj7m5IuOjMgYVMYhNXJSGCr1P2bHOCgcFQ6HvX23I+dScLB90LH0lHQ3l3Q7maPcNjVKPS0lSofoPWrb4yLPTXxGR/RMdcsPijirY7PNETEAAGkU3UiH/wz3oeH4w1fV2hH2b0ouAgAemoW+vDTpv6Re1yx3BCUBGvNevXptBUIS2gKgozMlqOS6CaqX5Y3VgNkOSIBTz6+70vD2xgklwwgECpZAKTkgRawHyHABIKcUDYy7025OH5kiUwFw8+SA0PEGgZajQOn4IEXsF2SM/EFOpykwRW2P5JxKNjtCnzGC4AFJWJUCGXjjF55RtrlPcYFHvSOpJACmZqQTJyyRhlihOmkxCxBUFXDkbsM8r6CmKsWQtZi5dnRdFH2RFlbFaCMeQT6GIiDwABKhSknQ2myT+fkzJLVyPqqoaLHeIaIkgwOTxmiAPEnLRhWXMlrpSBbGhDhLIJUCOPJmlMNoBdTFk1IoxDRxh3DNoQvVRFOpNr28uL8tAAx4I00glIhQPvaJlWttdn6OZeSTa49G') format('woff2'),
+  url('iconfont.woff?t=1593055366375') format('woff'),
+  url('iconfont.ttf?t=1593055366375') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1593055366375#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  /*font-size: 16px;*/
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconCharts:before {
+  content: "\eb60";
+}
+
+.iconCalendar:before {
+  content: "\eb5b";
+}
+

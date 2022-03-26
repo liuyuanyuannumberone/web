@@ -1,0 +1,15 @@
+#字体大小
+1.px：稳定精确，但是改变浏览器字体大小，我们的页面布局就会被打破；
+2.em： 解决了px的遗留问题   根据父元素的font-size计算em，层层嵌套;
+        1em=10px 改变 默认 1em=16px;   https://www.w3cplus.com/css/px-to-em
+
+
+4.rem   rem是相对于根元素<html>  font size of the root element
+   html{
+     font-size: 62.5%;
+   }
+
+
+
+
+

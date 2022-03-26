@@ -1,0 +1,124 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/*
+modified by liuyuanyuan
+v1.0|20200625
+*/
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+/* HTML5 媒体文件跟 img 保持一致 */
+audio, canvas, video {
+    display: inline-block;
+}
+
+/* 去掉各Table cell 的边距并让其边重合 */
+/*https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-collapse*/
+table {
+    border-collapse: collapse; /*在分隔模式下，相邻的单元格都拥有独立的边框。在合并模式下，相邻单元格共享边框。*/
+    border-spacing: 0; /*相邻单元格边框之间的距离*/
+}
+
+/* 去除默认边框 */
+fieldset, img {
+    border: 0;
+}
+
+/* 一致的 del 样式 */
+del {
+    text-decoration: line-through;
+}
+
+/* 代码片断 */
+pre, code, pre tt {
+    font-family: Courier, 'Courier New', monospace;
+}
+
+/* 一致化 horizontal rule */
+hr {
+    border: none;
+    border-bottom: 1px solid #cfcfcf;
+    margin: 0;
+    /*margin-bottom: 0.8em;*/
+    /*height: 10px;*/
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+
+i {
+    font-style: normal;
+}
+
+ins, a {
+    text-decoration: none;
+}
+
+html, .font-compatibility {
+    /*兼容所有平台字体*/
+    font-family: Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "冬青黑体",
+    "Heiti SC", "黑体-简",
+    STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimHei, "黑体", "WenQuanYi Micro Hei", "文泉驿微米黑",
+    sans-serif;
+}
+
+/* 如果你的项目仅支持 IE9+ | Chrome | Firefox 等，推荐在 <html> 中添加 .borderbox 这个 class */
+*, html.borderbox *, html.borderbox *:before, html.borderbox *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+
+
+

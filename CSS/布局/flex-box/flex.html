@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>flex</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+</style>
+<style>
+  /*
+    容器定义项目的属性：
+1.  flex-flow、 决定主轴的方向（即项目的排列方向） 如果一条轴线排不下如何换行  默认：row nowrap
+2.  justify-content 项目在主轴上的对齐方式。flex-start/flex-end/center/space-between/space-around
+    align-items  项目在交叉轴上如何对齐。 flex-start | flex-end | center | baseline | stretch;
+    align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用   flex-start | flex-end | center | space-between | space-around | stretch;
+
+
+
+    项目本身属性：
+1.  flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto
+     0 1 auto         默认  不放大，只缩小
+     1 1 auto         auto  可放大 可缩小
+     0 0 auto        none  不放大 不可缩小
+     1 1 auto            1
+
+2.    order
+
+
+  */
+
+
+  .row {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .col {
+    border: 1px solid blue;
+    height: 50px;
+    flex: 1;
+    min-width: 8.33333%; /*(100/12)*/
+  }
+  .col-10 {
+    flex: 0 0 10%;
+  }
+  .col-30 {
+    flex: 0 0 30%;
+  }
+  .col-20 {
+    flex: 0 0 20%;
+  }
+  .col-50 {
+    flex: 0 0 50%;
+  }
+
+
+  .row-left {
+    justify-content: space-around;
+  }
+
+  .row-vertical {
+    height: 300px;
+    border: 1px solid #000;
+    align-items: center;
+  }
+
+  .row-content {
+    height: 300px;
+    border: 1px solid #000;
+    align-content: space-around;
+  }
+
+
+  .coll {
+    border: 1px solid blue;
+    height: 50px;
+    flex: 1;
+  }
+
+  .col-grow {
+    flex-grow: 0;
+  }
+
+
+  .col-self { /*align-items*/
+    align-self: flex-start; /*auto | flex-start | flex-end | center | baseline | stretch;*/
+  }
+
+  .col-25 {
+    flex: 0 0 25%;
+  }
+
+  .border-class {
+    border: 1px solid blue;
+    height: 50px;
+
+  }
+
+</style>
+
+<body>
+<div class="row">
+  <div class="col">1</div>
+  <div class="col">2</div>
+  <div class="col">3</div>
+  <div class="col">4</div>
+  <div class="col">5</div>
+  <div class="col">6</div>
+  <div class="col">7</div>
+  <div class="col">8</div>
+  <div class="col">9</div>
+  <div class="col">10</div>
+</div>
+<div class="row">
+  <div class="col col-50">1</div>
+  <div class="col col-30">2</div>
+  <div class="col">3</div>
+  <div class="col">4</div>
+  <div class="col">5</div>
+  <div class="col">6</div>
+  <div class="col">7</div>
+  <div class="col">8</div>
+  <div class="col">9</div>
+  <div class="col">10</div>
+</div>
+<div class="row row-left">
+  <div class="col col-25">11</div>
+  <div class="col col-25">12</div>
+  <div class="col col-25">13</div>
+</div>
+<div class="row row-vertical">
+  <div class="col">align-items14</div>
+  <div class="col">align-items15</div>
+  <div class="col">align-items16</div>
+  <div class="col">align-items17</div>
+</div>
+<div class="row row-content">
+  <div class="col">align-items18</div>
+  <div class="col">align-items19</div>
+  <div class="col">align-items20</div>
+  <div class="col">align-items21</div>
+  <div class="col">align-items22</div>
+  <div class="col">align-items23</div>
+  <div class="col">align-items24</div>
+  <div class="col">align-items25</div>
+  <div class="col">align-items26</div>
+  <div class="col">align-items27</div>
+  <div class="col col-self">align-items28</div>
+  <div class="col">align-items29</div>
+  <div class="col">align-items30</div>
+  <div class="col">align-items31</div>
+  <div class="col">align-items32</div>
+  <div class="col">align-items33</div>
+  <div class="col">align-items34</div>
+  <div class="col">align-items35</div>
+  <div class="col">align-items36</div>
+  <div class="col">align-items37</div>
+</div>
+<div class="row">
+  <div class="coll col-grow">1</div>
+  <div class="coll">2</div>
+  <div class="coll">3</div>
+</div>
+
+
+<div style="display: flex;justify-content:flex-start;align-items:center;">
+  <div class="border-class col-10" style="width: 30px;height: 30px;">111</div>
+  <div class="border-class col-10" style="width: 30px;height: 30px;">222</div>
+  <div class="border-class col-30" style="width: 100px;height: 30px;">33333</div>
+</div>
+
+</body>
+</html>

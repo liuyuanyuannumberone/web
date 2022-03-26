@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取css的所有样式</title>
+</head>
+<style>
+    .dv {
+        line-height: 2px;
+        font-weight: bold;
+    }
+
+    .dv::before {
+        content: 'Before pseudo element';
+    }
+</style>
+<body>
+<div class="dv" style="color: #000; background-color: #000; font-size:15px">
+    Red hot chili pepper!
+</div>
+<div class="test" id="first">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+</div>
+<div class="test" id="second">second</div>
+<div class="test" id="third">third</div>
+</body>
+<script>
+  var test = document.querySelector('.test span');
+  var testAll = document.querySelectorAll('.test');
+
+  /*获取内联样式*/
+  var dvObj = document.querySelector('.dv');
+  var ftcolor = dvObj.style.color;
+  var bgcolor = dvObj.style.backgroundColor;
+
+  /*className获取外联样式*/
+  var outdv = dvObj.className;
+
+  /*获取计算样式,可以获取全部样式（外联样式/内联样式）*/
+  var style = getComputedStyle(dvObj);
+  var lineHeight = style.lineHeight;
+
+  /*获取伪类元素的样式*/
+  var pseudoElementStyle = getComputedStyle(dvObj, '::before');
+  console.log(pseudoElementStyle.content);
+
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>inline-block</title>
+</head>
+<!--文字和文字有间隙,相当于1个div里边有2个文字 父元素设置0-->
+<style>
+    .container {
+        width: 800px;
+        height: 200px;
+        font-size: 0;
+    }
+
+    .left {
+        font-size: 14px;
+        background: red;
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+    }
+
+    .right {
+        font-size: 14px;
+        background: blue;
+        display: inline-block;
+        width: 600px;
+        height: 200px;
+    }
+
+</style>
+<body>
+<div class="container">
+    <div class="left">
+        做
+    </div>
+    <div class="right">
+        时
+    </div>
+</div>
+</body>
+</html>

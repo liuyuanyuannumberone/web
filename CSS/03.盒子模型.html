@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>  <!--paddng以内容扩大，Margin以边界扩大-->
+<div style="  border: 1px solid #000;
+        color: red;
+        margin-top:10px;
+        margin-bottom:10px;
+        margin-left:10px;
+        margin-right:10px;
+        padding-top:20px;
+        padding-right:20px;
+        padding-bottom:20px;
+        padding-left:20px;background-color: #00b3ee">都是
+</div>
+
+<div style="width:50px;height:60px;border: 1px solid #000">
+    <div style="width: 50%;height: 50%;">2222</div>
+    <!--div的100%是从其上一级div的宽高继承来的，
+    有一点很关键，就是要设置div100%显示，必须设置其上一级div的宽度或高度，否则无效。-->
+    <!--
+    box-sizing: content-box 默认标准盒子模型 content=width/height
+    -->
+</div>
+<div>
+    注册<span style="padding:13px 1px 2px;border-left: 2px solid #000;font-size: 0;margin-left: 1px;">
+</span>登录
+</div>
+<div style="width: 150px;height: 30px;padding: 15px 0;border-bottom: 30px solid;
+border-top: 30px solid;background-color: #00CC00;background-clip:content-box">
+    <!--background-clip  设置元素的背景（背景图片或颜色）是否延伸到边框、内边距盒子、内容盒子下面。-->
+</div>
+
+</body>
+</html>
+
+<!--
+margin:10px 5px 15px 20px;     上 右 下 左
+上外边距是 10px                 上 左右 下
+右外边距是 5px                  上下 左右
+下外边距是 15px                  都是
+左外边距是 20px
+例子 2
+margin:10px 5px 15px;
+上外边距是 10px
+右外边距和左外边距是 5px
+下外边距是 15px
+例子 3
+margin:10px 5px;
+上外边距和下外边距是 10px
+右外边距和左外边距是 5px
+例子 4
+margin:10px;
+所有 4 个外边距都是 10px
+-->

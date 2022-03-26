@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>行高</title>
+</head>
+<body>
+<!--
+https://segmentfault.com/a/1190000003038583
+1.inline/inline-block 不能设置宽高（widht/height）
+2.line-height CSS 属性用于设置多行元素的空间量，如多行文本的间距。
+对于块级元素，line-height指定了元素内部行框盒子（line-boxes）的最小高度,对块级元素本身没有任何作用
+对于非替代纯内联元素，可视高度完全由line-height决定（对，是完全），
+line-height指定了用来计算行框盒子高度的基础高度，行框盒子的高度是由高度最高的那个内联盒子决定的
+3.line-height的大小与font-size息息相关,介意使用数字作为行高， 因为其会随着对应的 font-size 而缩放。
+4.字体的排版（top、middle、baseline、bottom）
+5.注意 vertical-align 只对行内元素、表格单元格元素生效。
+-->
+
+<div>
+    <span style="line-height: 20px;background-color: red">inline box xfg中文</span>
+    <span style="line-height: 8px;background-color: green">inline box</span>
+    <span style="line-height: 30px;background-color: red">inline box</span>
+</div>
+<div style="line-height:20px;font-size:15px;border:1px #ccc solid;">
+    這是將文字行高設定為 20px 的第一行<br>
+    這是將文字行高設定為 20px 的第二行<br>
+    這是將文字行高設定為 20px 的第三行<br>
+</div>
+<div style="line-height:30px;font-size:15px;border:1px #ccc solid;">
+    這是將文字行高設定為 30px 的第一行<br>
+    這是將文字行高設定為 30px 的第二行<br>
+    這是將文字行高設定為 30px 的第三行<br>
+</div>
+
+<div style="border:solid 1px red;">
+        <span style="background:#a5ff5f;color:#fff;font-size:20px;line-height:60px;">
+            居中xfg&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        </span>
+</div>
+
+
+<div style="border-bottom: 1px solid #000">
+    <span style="font-size:12px;">第一段</span>
+    <span style="font-size:18px;">第二段</span>
+    <span style="font-size:24px;">第三段</span>
+</div>
+
+<div style="border-bottom: 1px solid #000;">
+    <span style="font-size:12px;vertical-align: top">第一段</span>
+    <span style="font-size:18px;vertical-align: top">第二段</span>
+    <span style="font-size:24px;vertical-align: top">第三段</span>
+</div>
+
+
+<div style="background:red">
+    <span>文字</span><!--结果，此<div>的高度并不是 0，作祟的就是这里的“幽灵空白节点”，
+如果我们认为在<span>元素的前面还有一个宽度为 0 的空白字符，是不是一切就解释得通呢？-->
+    <!--font-size line-height vertical-align失效或者不是baseline /绝对定位.... -->
+    <img src="img/测试图片.png" style="width: 50%;">
+</div>
+<div><span style="display: inline-block;"></span></div>
+
+
+</body>
+<style>
+    body, html {
+        padding: 0;
+        margin: 0;
+    }
+</style>
+</html>

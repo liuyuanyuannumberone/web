@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>offset</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            overflow: hidden;
+            margin: 50px;
+        }
+
+        #child {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin: 50px;
+            border: 10px solid yellow;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="child"></div>
+</div>
+
+<script>
+    /*magin*/ /*content-box*/
+    var box = document.getElementById('box');
+    console.log(box.offsetLeft);//获取box的坐标50
+    console.log(box.offsetTop);  //50
+    console.log(box.offsetWidth);//300
+    console.log(box.offsetHeight);  //300 获取box的大小
+
+
+    // offsetParent   获取距离当前元素最近的定位父元素，如果没有定位父元素此时是body
+    // 获取子元素的位置和大小
+    var child = document.getElementById('child');
+    console.log(child.offsetParent);//DOM
+    // 获取child的位置     offsetLeft 距离offsetParent的横向偏移
+    console.log(child.offsetLeft);//50
+    console.log(child.offsetTop);
+
+    // 获取child的大小   包括边框和padding
+    console.log(child.offsetWidth);//140
+    console.log(child.offsetHeight);
+</script>
+</body>
+</html>

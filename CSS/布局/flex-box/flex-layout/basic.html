@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex布局 - 基本属性的使用</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 800px;
+            height: 600px;
+            background-color: darkviolet;
+            display: flex;
+            flex-direction: column; /* 决定主轴方向 */
+            justify-content: space-between; /* item在主轴(水平/垂直取决于flex-direction的值)怎么排列 */
+            align-items: flex-end; /* item在交叉(垂直)轴怎么排列 */
+        }
+
+        .item {
+            width: 180px;
+            height: 100px;
+            background-color: yellowgreen;
+            border: solid 2px #f44336;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>        
+    </div>
+</body>
+
+</html>

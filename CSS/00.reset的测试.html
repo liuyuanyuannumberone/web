@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>reset的测试</title>
+    <link rel="stylesheet" href="./common-css/reset.css">
+    <link rel="stylesheet" href="./font/iconfont/iconfont.css">
+</head>
+<body>
+<div id="dv">
+    <i class="iconfont iconCharts"></i>
+    <i class="iconfont iconCalendar"></i>
+    <span>hello，world ,你好,世界</span>
+    <hr>
+</div>
+</body>
+<script>
+    var test = document.getElementById("dv");
+    console.log(getComputedStyle(test, null));
+</script>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex布局 - 圣杯布局</title>
+    <style>
+        html {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: Consolas, 'Courier New', Courier, monospace;
+        }
+
+        html,
+        body {
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .HolyGrail {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        header,
+        footer {
+            height: 10vh;
+            line-height: 10vh;
+            background-color: #5d5d5d;
+            color: #fff;
+        }
+
+        .HolyGrail-body {
+            display: flex;
+            flex: 1;
+        }
+
+        .HolyGrail-content {
+            flex: 1;
+            background-color: #d1d1d1;
+        }
+
+        .HolyGrail-nav,
+        .HolyGrail-ads {
+            /* 两个边栏的宽度设为12em */
+            flex: 0 0 12em;
+        }
+
+        .HolyGrail-nav {
+            /* 导航放到最左边 */
+            /* order: -1; */
+            background-color: #77b4d9;
+        }
+
+        .HolyGrail-ads {
+            background-color: #f4592a;
+        }
+
+        /* 如果是小屏幕，躯干的三栏自动变为垂直叠加 */
+        @media (max-width: 768px) {
+            .HolyGrail-body {
+                flex-direction: column;
+                flex: 1;
+            }
+            .HolyGrail-nav,
+            .HolyGrail-ads,
+            .HolyGrail-content {
+                flex: auto;
+            }
+        }
+    </style>
+</head>
+
+<body class="HolyGrail">
+    <header>header</header>
+    <div class="HolyGrail-body">
+        <nav class="HolyGrail-nav">left</nav>
+        <main class="HolyGrail-content">main</main>
+        <aside class="HolyGrail-ads">right</aside>
+    </div>
+    <footer>footer</footer>
+</body>
+
+</html>
