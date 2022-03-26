@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+  .box {
+    width: 200px;
+    height: 200px;
+    border: 1px solid red;
+    position: relative;
+  }
+  .children-box {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+<body>
+<div class="box">
+  <div class="children-box"></div>
+</div>
+</body>
+</html>

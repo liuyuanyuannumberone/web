@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body></body>
+<script>
+    // . 表示的是:除了\n以外的任意的一个字符;  使得.匹配任意字符
+    console.log(/foo.bar/.test("foo\nbar")); //false
+    console.log(/foo.bar/us.test("foo\nbar")); //true
+
+    //提取
+    const t = '2019-09-02 2020-10-11'.match(/(\d{4})[-](\d{2})[-](\d{2})/);
+    // console.log(t);
+    // console.log(t[1]);
+    // console.log(t[2]);
+    // console.log(t[3]);
+
+    const m = '2029-09-02 2020-10-11'.match(/(?<year>\d{4})[-](?<month>\d{2})[-](?<day>\d{2})/);
+    // console.log(m);
+    // console.log(m.groups.year);//2029
+
+
+</script>
+
+<script>
+
+    //分组中的捕获 ()  /(dot){3}/
+    const value=`"bar" and "baz" and "foo"`;
+    let ite= value.matchAll(/"([^"]*)"/g);
+    for (let item of ite){
+        console.log(item,item[1]);
+    }
+
+
+    //分组中的非捕获 (?:)
+    console.log(/(?:\d{4})-(\d{2})-(\d{2})/.test('2017-10-24'))//true
+
+
+    //先行断言 (?=)  后行断言 (?<=)  分组中的断言
+    console.log('hello world'.match(/hello(?=\sworld)/)); //遇到hello的时候去判断是不是等于world     hello
+    console.log('hello world'.match(/(?<=hello\s)world/)); //遇到world的时候去判断前边是不是等于hello world
+    console.log('hello world'.match(/(?<!test\s)world/)); //遇到world的时候去判断前边是不是等于hello world
+</script>
+</html>

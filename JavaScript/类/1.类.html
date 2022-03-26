@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>类</title>
+</head>
+<body>
+<!--ES5-->
+<script>
+    let Animal = function (type) {
+        this.type = type;
+        this.eat = function () {
+            console.log("eat");
+        }
+    };
+
+    //静态方法是挂在类上的，实例化对象无法访问
+    Animal.walk = function () {
+        console.log('Animal.walk');
+    };
+
+    Animal.prototype.sleep = function () {
+        console.log('Animal.prototype.sleep');
+        Animal.walk();
+    };
+
+    let dog = new Animal('dog');
+
+    //继承
+    let Dog = function () {
+        Animal.call(this,'dog');
+    };
+    Dog.prototype = Animal.prototype;
+    let dogD = new Dog();
+
+
+</script>
+
+<!--ES6-->
+<script>
+    class Student {
+        constructor(type) {
+            this.type = type;
+            this.eat = function () {
+                console.log('eat food');
+            }
+        }
+
+        //原型链上的方法
+        sleep() {
+            Student.walk();
+            console.log(this.age);
+        }
+
+        get age() {
+            return this._age || 0;
+        }
+
+        set age(val) {
+            this._age = val;
+        }
+
+        //静态方法是挂在类上的，和实例对象没有任何关系
+        static walk() {
+            // console.log(this.type);//undefined
+            console.log('static walk');
+        }
+    }
+
+    //继承
+    class GoodStudent extends Student {
+        constructor(type, score) {
+            super(type);
+            this.score = score;
+        }
+
+    }
+</script>
+
+
+</body>
+</html>

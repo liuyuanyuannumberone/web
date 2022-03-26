@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./jquery-3.3.1.js"></script>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="dv" :style="{visibility:[flag?'visible':'hidden']}"></div>
+    <button :disabled="flag?false:true">是否禁用</button>
+    <input type="button" value="按钮控制黄色div显示或者隐藏" id="dv" @click="click($event)">
+
+
+    <div :class="{operateClass:isActive,dangerClass:!isActive}" class="dv1"></div>
+    <input type="button" value="按钮控制绿色div边框" @click="activeDiv()">
+
+
+    <div :class="{wantClass:isWanted,flagClass:isFlag}" class="dv2"></div>
+    <div :class="objClass" class="dv2"></div>
+    <div :class="objectClass" class="dv2"></div>
+
+
+    <div :class="!flag?'wantClass':'flagClass'" class="dv2"></div>
+
+    <div class="dv3" :style="[baseStyle,gradeStyle]"></div>
+
+</div>
+</body>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      flag: false,
+      isActive: false,
+      isWanted: true,
+      isFlag: false,
+      objClass: {
+        wantClass: true,
+        flagClass: false,
+      },
+
+      flag1: true,
+      flag2: null,
+
+      baseStyle: {
+        border: '10px solid red',
+      },
+      gradeStyle: {
+        padding: '10px',
+      }
+    },
+    computed: {
+      objectClass: function () {
+        return {
+          wantClass: this.flag1 && this.flag2,
+          flagClass: !this.flag2,
+        }
+      }
+    },
+    methods: {
+      click(e) {
+        console.log(e.currentTarget.id);
+        this.flag = !this.flag;
+      }
+      ,
+      activeDiv() {
+        this.isActive = !this.isActive;
+      }
+      ,
+    }
+  });
+</script>
+<style>
+    .dv {
+        width: 200px;
+        height: 200px;
+        background-color: yellow;
+    }
+
+    .dv1 {
+        width: 200px;
+        height: 200px;
+        background-color: green;
+    }
+
+    .operateClass {
+        border: 3px solid red;
+    }
+
+    .dangerClass {
+        border: 5px solid blueviolet;
+    }
+
+    .dv2 {
+        width: 400px;
+        height: 200px;
+        background-color: darkgrey;
+        margin-bottom: 12px;
+    }
+
+    .wantClass {
+        background-color: #b54665;
+    }
+
+    .flagClass {
+        background-color: #0275d8;
+    }
+
+    .dv3 {
+        width: 700px;
+        height: 200px;
+        background-color: darkgrey;
+        margin-bottom: 12px;
+    }
+
+
+</style>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>反射</title>
+</head>
+<body>
+</body>
+<script>
+    /*Reflect.apply*/
+    {
+        let a = Math.floor.apply(null, [3.2]); //3
+        let b = Reflect.apply(Math.floor, null, [3.72]); //3
+        let c = Reflect.apply(100 > 2 ? Math.floor : Math.ceil, null, [3.2])//3
+    }
+
+    /* Reflect.construct*/
+
+    {
+        let a=Reflect.construct(Date,[]);
+        // console.log(a instanceof Date); //true
+
+
+    }
+
+    /*
+    *   Object的全部方法 Reflect都有
+    *
+    * */
+
+    {
+        const obj={};
+        Object.defineProperty(obj,"age",{value:12});
+        Reflect.defineProperty(obj,"name",{value:'lyy'});
+        // console.log(obj);//{age:12,name:'lyy'}
+
+
+    }
+    {
+        let obj = {
+            name: 'lyy',
+        };
+        console.log(obj.hasOwnProperty("name")); //true
+        console.log(Reflect.has(obj, "name")); //true
+    }
+
+
+</script>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "pa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1.js",
+  "scripts": {
+    "test": "node 2.js"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="./captcha.js"></script>
+</head>
+<body>
+<canvas width="150" height="50" id="captcha"></canvas>
+</body>
+<script>
+
+
+    /*传值,参数配置值，选择性配置*/
+    let captcha = new Captcha({
+        lineWidth: 1,   //线条宽度
+        lineNum: 0,       //线条数量
+        dotR: 2,          //点的半径
+        dotNum: 0,       //点的数量
+        preGroundColor: [10, 80],    //前景色区间
+        backGroundColor: [100, 200], //背景色区间
+        fontSize: 30,           //字体大小
+        fontFamily: ['微软雅黑'],  //字体类型
+        fontStyle: 'stroke',
+        content: '0123456789',  //验证码内容
+        length: 8    //验证码长度
+    }); // 传值
+    captcha.draw(document.querySelector('#captcha'), r => {
+        console.log(r, '验证码2');
+    });
+
+    function blobtoFile({type} = blob) {
+        return new File([blob], '自定义文件名称', {type})
+    }//调用上面的dataURL
+    // toBlob方法生成测试的
+    // dataURL var blob = dataURLtoBlob('data:image/png;base64,XXXXXXXX');
+    // console.log(blobtoFile(blob))
+
+</script>
+</html>

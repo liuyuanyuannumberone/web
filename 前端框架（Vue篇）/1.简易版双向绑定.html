@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input type="text" id="input_id" >
+<p id="p_id"></p>
+</body>
+<script>
+    let data = {};
+    Object.defineProperty(data, 'name', {
+        get() {
+            return 'lyy';
+        },
+        set(val) {
+            document.getElementById("input_id").value = val;
+            document.getElementById("p_id").innerHTML = val;
+        }
+    })
+    document.addEventListener('keyup', function (e) {
+        data.name = e.target.value;
+    })
+</script>
+</html>

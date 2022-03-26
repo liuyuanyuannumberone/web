@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>console</title>
+</head>
+<body>
+
+</body>
+<script>
+    console.clear();
+    console.log("打印字符串");
+    console.error("我是个错误");
+    console.info("我是个信息");
+    console.warn("我是个警告");
+
+    var stu = [{name: "bob", age: "13", hobby: "playing"}, {name: "lily", age: "73", hobby: "swiming"}];
+    console.table(stu);   //多个对象的集合；
+
+    console.group('start');
+    console.log(1);
+    console.log(2);
+    console.log(3);
+    console.groupEnd("end");
+</script>
+</html>

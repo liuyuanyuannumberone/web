@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+1.js为何需要异步？
+浏览器中存在大量网络请求，如果只支持单线程，会造成网络阻塞，
+存在异步后浏览器可以加载已经存在的资源，加快页面渲染时间。
+2.异步的实现原理？
+var fs = require('fs')
+fs.readFile('data1.json', (err, data) => {
+    console.log(data.toString())
+})  将回调函数传递给异步函数，等待异步函数执行完毕后，再执行回调函数。
+3.js中哪些涉及异步操作？
+    网络请求（ajax）  IO操作（文件读取）  定时器
+4.有回调函数>jquery的同步写法（虽然JS执行是异步的，但是写起来像分布。deferred对象解决的,他有then方法）
+  ->promise||Promise.all||Promise.resolve(将thenable对象转化为promise对象)
+ promise 有3种状态 pending fulfilled  reject     只能从pending 转化为 fulfilled或者reject
+                                                 fulfilled和reject不能互相转化
+then 是串行异步  还有finally
+all 是并行异步
+race 是备用线路,如果有一个线路失败，可以调用另外一个请求获取数据
+
+
+
+ cosnt jsPromise = Promise.resolve($.ajax('/whatever.json'))
+   jsPromise.then(data => {
+    // ...
+  })
+
+
+
+  Promise.all([result1, result2]).then(datas => {
+       console.log(datas[0])
+       console.log(datas[1])
+   })
+
+
+
+5.promise和callback的关系
+ promise只是让代码更具有可读性，避免出现回调地狱的现象，
+ 他没有改变js异步执行的本质，更没有改变js中存在callback的现象。
+
+6.async-await
+
+const readFileAsync = async function () {
+    const f1 = await readFilePromise('data1.json')
+    const f2 = await readFilePromise('data2.json')
+    const f3 = await readFilePromise('data3.json')
+    const f4 = await readFilePromise('data4.json')
+}
+
+-->
+
+
+
+
+<!--基础promise的使用-->
+<script>
+    const wait = function () {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log(1111);
+                resolve()  // callback 中去执行 resolve 或者 reject
+            }, 2000)
+        })
+    };
+    wait();
+</script>
+
+<script>
+    const p1 = Promise.resolve(1);
+    const p2 = Promise.resolve(2);
+    const p3 = Promise.resolve(3);
+
+    Promise.all([p1, p2, p3]).then(data => {
+        console.log(data);
+    })
+
+</script>
+
+<script>
+    const p1000 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(1000);
+        }, 1000)
+    })
+    const p2000 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(2000);
+        }, 2000)
+    })
+    const p3000 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(3000);
+        }, 3000)
+    })
+
+    Promise.race([p1000, p2000, p3000]).then(data => {
+        console.log(data);
+    })
+
+</script>
+
+<script>
+    /* async-await  */
+    async function first() {
+        let p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('1')
+            }, 1000)
+        });
+        let result = await p;
+        console.log(result);
+        console.log(2);
+        return 3;
+    }
+
+    first().then(val => {
+        console.log(val);
+    })
+</script>
+
+<script>
+    /*
+    * 异步操作集合的遍历  for-await-of
+    *
+    * */
+
+    function p(time) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(time)
+            }, time)
+        })
+    }
+
+    let arr = [p(2000), p(1000), p(3000)];
+
+    async function test() {
+        for await (let  item of arr) {
+            console.log(Date.now(),item)
+        }
+    }
+
+    test();
+
+
+</script>
+
+
+
+</body>
+</html>
