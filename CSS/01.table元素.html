@@ -1,36 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>表格元素</title>
-    <link rel="stylesheet" href="common/reset.css">
 </head>
 <style>
     table {
-        border: 10px solid #4befa2;
-        /*   最外层 */
-        border: 0 solid transparent;
+        width: 1500px;
+        height: 500px;
+        border-collapse: collapse;
+        text-align: center;  
     }
-
-    td,
-    th {
-        border: 1px solid rgb(216, 19, 19);
-        border-top: 0 ;
-        border-right: 0 ;
-        padding: 0.5rem;
+    th,
+    td {
+        padding: .5rem;
+        border: 4px solid red;
     }
 </style>
 
 <body>
-    <!--
-table  
+<!-- 
+table  width="1500"
 thead  tbody  tfoot
-tr  th(居中的粗体文本) | td(左对齐的普通文本)
--->
-    <table border="0" cellpadding="0" cellspacing="5" width="1500">
+tr  th(居中的粗体文本) | td(左对齐的普通文本) align="center" colspan、rowspan 接受大于等于 2 的正整数。
+  -->
+    <table  border="0" cellpadding="0" cellspacing="0" >
         <thead>
             <tr>
-                <td colspan="4" align="center" bgcolor="pink">会员信息</td>
+                <td colspan="5">会员信息</td>
             </tr>
         </thead>
         <tbody>
@@ -52,14 +48,15 @@ tr  th(居中的粗体文本) | td(左对齐的普通文本)
             </tr>
             <tr>
                 <th rowspan="2">合计</th>
-                <td colspan="1">￥123</td>
-                <td colspan="2">￥124</td>
+                <td colspan="2">123</td>
+                <td colspan="2">456</td>
             </tr>
             <tr>
-                <td colspan="3">$123.34</td>
+                <td colspan="4">789</td>
             </tr>
             <tr>
-                <td colspan="4" align="center">测试</td>
+                <td colspan="2">测试1</td>
+                <td colspan="2">测试2</td>
             </tr>
         </tbody>
     </table>

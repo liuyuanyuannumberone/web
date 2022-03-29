@@ -8,10 +8,7 @@
 二、Flex 布局优点和缺陷。
 缺点：浏览器兼容性比较差，只能兼容到ie9及以上；
 三、盒子模型
-1. 标准盒子模型W3C：content+padding+border+margin  
-   box-sizing : content-box   宽高指的是content的宽高
-2.低版本IE盒子模型：content+padding+border+margin 
-   box-sizing : border-box 宽高指的是content+padding+border的宽高
+
    
    window.getComputedStyle(dom).width/height;//兼容性好
    
