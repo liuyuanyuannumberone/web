@@ -8,3 +8,4 @@
 8.git merge otherBranch  合并到当前分支  发生合并冲突时候 git merge --abort  取消合并
 9.git pull 拉取远程仓库  git push origin 分支名  推送新分支到远程仓库  
 10.git checkout -b 新分支 origin/gitlab旧分支    新建分支并切换，复制远程分支
+11.git remote -v 查看远程仓库地址
