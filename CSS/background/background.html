@@ -6,69 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- https://chinese.freecodecamp.org/news/learn-css-background-properties/ -->
+    
 </head>
+ <!-- 
+1.  background-origin   每一个背景图片的参考位置【设置图像的原点，规定背景图的定位区域（padding-box默认值，border-box、 content-box、 inherit）】
+2.  background-position 每一个背景图片设置初始位置
+	 0% 0% 【默认值】 
+     25% 75%;【(container width - image width) * (position x%) = (x offset value)(container height - image height) * (position y%) = (y offset value)]
+     50px 100px  
+     top/bttom  left/right   center  
+     bottom 50px right 100px;|bottom 10px right;top right 10px
+       
+3.  确定背景图片、颜色、大小、裁剪区域
+    background-image
+    background-clip 设置背景图片和背景颜色是否延伸到边框、内边距盒子、内容盒子 border-box【默认值】 padding-box content-box 
+                                                                         text( -webkit-background-clip: text;) inherit
+    background-size:
+     contain 缩放背景图片以完全装入背景区，可能背景区部分空白【调整窗口的大小,图像不会拉伸,等比例缩放】
+     cover  缩放背景图片以完全覆盖背景区，可能背景图片部分看不见【调整窗口大小，图像拉伸到整个屏幕】
+     100px 200px 【auto auto默认值, 图像会保持其原来的大小】 
+    background-color
+         
+ 4. 确定背景排版（重复绘制 是否跟着页面其余部分滚动）
+    background-repeat :no-repeat repeat【默认值】 repeat-x repeat-y   space  调整窗口大小时  我们有空的空间  round  调整窗口大小    图像拉伸
+    background-attachment：
+      fixed  背景相对于视口固定              -》背景不同
+      scroll【默认值】 背景相对于元素本身固定 -》背景和元素同步滚动
+      local  背景相对于元素的内容固定 
+     -->
 <style>
+     *{
+         padding: 0;
+         margin: 0;
+         box-sizing: border-box;
+     }
     .container{
-        width: 500px;
-        height: 500px;
+        width: 1000px;
+        height: 1000px;
         padding: 10px;
-        border: 5px dashed red;
-        background-color: antiquewhite;
-        background-image: url('cute-girl.jpg');
+        border: 10px dashed red;
+        background-origin: padding-box; 
+        background-position: 0% 0%;   
+        background-image: url('kitty-idea.png');
+        background-size : auto; 
+        background-color: #eee;
         background-repeat :no-repeat;  
-          /*no-repeat repeat repeat-x repeat-y 
-             space  调整窗口大小时  我们有空的空间 
-             round  调整窗口大小    图像拉伸
-           */
-
-        background-size : 400px 400px;  
-         /* contain 调整窗口的大小  图像不会拉伸,等比例缩放
-            cover   调整窗口大小    图像拉伸到整个屏幕
-           设置图像宽度和高度 
-            auto        图像会保持其原来的大小
-             */
-
-
-        background-position:50px 100px;   
-         /*  bottom right; |  25% 15%;| 50px 100px */ 
-
-
-        /* background-origin: border-box;  */
-         /* CSS 盒子模型中设置图像的原点
-         border-box
-         padding-box
-         content-box
-         inherit
-         */
-
-         background-clip:border-box;
-         /*
-         border-box
-         padding-box
-         content-box
-         inherit 
-          */
-
-          background-attachment: fixed;  /*我们在滚动时控制内容和图像的行为*/
-          /* 
-          scroll 图像会随着页面的滚动而滚动
-          fixed
-          local
-          */
+        background-clip:content-box;
+        background-attachment: scroll;      
     }
 </style>
 <body>
-    <!-- 
-    background的各个属性
-    background-clip
-    background-color
-    background-image
-    background-origin
-    background-position
-    background-repeat
-    background-size
-    background-attachment
-     -->
     <div class="container">
 
     </div>
