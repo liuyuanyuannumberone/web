@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <title>inline-block</title>
 </head>
+<style>
+    div{
+        margin: 100px 0;
+    }
+</style>
 <body>
 <!-- 
-    white-space 
+    white-space
     	              换行符	空格和制表符	文字换行	行尾空格
      normal	          合并	        合并	     换行	      删除
      nowrap           合并	        合并	     不换行       删除
@@ -16,10 +21,17 @@
      break-spaces	  保留	        保留	      换行	      换行
  -->
    
- <div style="height: 200px;width: 200px;border: 1px solid red;white-space: nowrap;">
-    But ere she from the church-door stepped She smiled and told us why: <br>'It was a wicked woman's curse,' Quoth she, 'and what care I?' She smiled, and smiled, and passed it off Ere from the door she stept—
+ <div style="height: 200px;width: 200px;border: 1px solid red;white-space: normal;">
+    But ere she from the church-door        stepped She smiled and told us why:         'It was a wicked woman's curse,' Quoth she, 'and what care I?' She smiled, and smiled, and passed it off Ere from the door she stept—
  </div>
 
+ <div style="height: 200px;width: 200px;border: 1px solid red;white-space: nowrap;">  
+   But ere she from the church-door        stepped She smiled and told us why:         'It was a wicked woman's curse,' Quoth she, 'and what care I?' She smiled, and smiled, and passed it off Ere from the door she stept—   
+</div>
+
+<div style="height: 200px;width: 200px;border: 1px solid red;white-space: pre;">  
+    But ere she from the church-door        stepped She smiled and told us why:         'It was a wicked woman's curse,' Quoth she, 'and what care I?' She smiled, and smiled, and passed it off Ere from the door she stept—   
+ </div>
 
 
 
