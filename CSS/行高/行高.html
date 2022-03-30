@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>行高</title>
+</head>
+<style>
+    div{
+        margin: 10px 0;
+    }
+</style>
+<!-- 
+  1.内容区域（content area）取决于font-familly和font-size  （ascender+descender）*fontSize / 1000个单位 
+  2.元素高度是由line-height决定的 line-height=内容区域+2*半行距。    如果line-height<font-size,行距会折叠，文本会上移。
+  3.行高的属性：数值  line-height=数值*fontSize  他会根据当前元素的font-size 重新计算行高；
+               百分比和数值：继承元素不会根据当前的font-size重新计算行高，而是直接继承父级的行高。     
+  4.现象：空白距离（文字基线到div底边的距离) 
+      原因：img默认对齐方式是基线对齐，而block元素就像有一个隐匿文本节点，它存在行高
+      解决办法：img:display: block;|vertical-align:bottom ; div:line-height:0
+  5.line-height 的实际应用：图片垂直居中(text-align vertical-align)
+                          多行文本水平垂直居中(text-align  display和vertical-align)
+ -->
+
+<body>
+    <!-- 行高20px=1.4286*14px -->
+    <div style="line-height: 1.4286;font-size: 14px;">
+        <span>测试字体</span>
+    </div>
+    <div style="border: 1px solid red;"><span style="font-size: 40px;">测试字体52.8px</span></div>
+    <div style="border:1px solid red;font-size: 20px;line-height:40px;"><img src="test.png" alt="">
+        <span style="display: inline-block;background-color: aquamarine;">xyz</span>
+    </div>
+    <!--line-height 的实际应用：1.图片垂直居中 -->
+    <div style="border:1px solid red;line-height: 300px;text-align: center;"><img src="test.png" alt=""
+            style="vertical-align: middle;"><span>xyz</span>
+    </div>
+    <!-- line-height 的实际应用:2.多行文本水平垂直居中 -->
+    <div style="border:1px solid red;font-size: 12px;line-height: 30px; text-align: center;">
+        <div style="display:inline-block;vertical-align: middle;">
+            对于块级元素，它指定元素行盒（line boxes）的最小高度<br>
+            2021年3月15日 — line-height CSS 属性用于设置多行元素的空间量<br>
+            间量，如多行文本的间距。
+            对于块级元素，它指定元素行盒（line boxes）的最小高度2021年3月15日 — line-height CSS 属性用于设置多行元素的空间量，如多行文本的间距。
+        </div>
+    </div>
+</body>
+
+</html>
