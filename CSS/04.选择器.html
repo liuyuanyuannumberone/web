@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>选择器</title>
+   <meta charset="UTF-8">
+   <title>选择器</title>
 </head>
 <style>
-    p:nth-child(2){
-       color: red;
-    }
-  </style>
+   p:nth-child(2) {
+      color: red;
+   }
+
+   .parent>.child {
+      color: blue;
+   }
+</style>
+
 <body>
-<!--
+   <!--
 
 权重：
 !important     
@@ -24,13 +30,21 @@ id 选择器 100
  E F   E所有后代F          儿子和孙子
  E>F   E所有直接后代F       儿子       
  E~F   E后面同级的所有F     同辈          E+F   E后面同级的第一个F   第一个同辈
- E:nth-of-type(n)  其父元素的第n个E元素
- E:nth-child(n)    其父元素的第n个元素，并且这个元素是E元素   E:first-child	   其父元素的第1个元素，并且是E元素
+ E:nth-of-type(n+1)  其父元素的第n个E元素
+ E:nth-child(n+3)    其父元素的第n个元素，并且这个元素是E元素   E:first-child	   其父元素的第1个元素，并且是E元素
 -->
- <div>
-    <h1>123</h1>
-    <p>2</p>
-    <p>3</p>
- </div>
+   <div>
+      <h1>123</h1>
+      <p>2</p>
+      <p>3</p>
+   </div>
+
+   <div class="parent">
+      <div class="child">1</div>
+      <div class="child">2</div>
+      <div class="child">3</div>
+      <div class="child">4</div>
+   </div>
 </body>
+
 </html>

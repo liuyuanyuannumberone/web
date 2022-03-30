@@ -33,17 +33,33 @@
     But ere she from the church-door        stepped She smiled and told us why:         'It was a wicked woman's curse,' Quoth she, 'and what care I?' She smiled, and smiled, and passed it off Ere from the door she stept—   
  </div>
 
+<!-- 
+ white-space：如何处理元素内的空白字符（Space(空格)键、Enter(回车)键、Tab(制表符)键）
+ letter-space: 控制所有字符的间距（英文字母、汉字以及空格等） 可以为负值
+ word-space: 单词之间的间距
 
+ -->
+ <div style="height: 200px;width: 500px;border: 1px solid red;">  
+    As much mud in the str我是 中国人
+ </div>
+ <div style="height: 200px;width: 500px;border: 1px solid red;letter-spacing: .5rem;">  
+    As much mud in the str我是 中国人
+ </div>
+ <div style="height: 200px;width: 500px;border: 1px solid red;word-spacing: .5rem;">  
+    As much mud in the str我是中国人
+ </div>
 
-    <!--
-        现象：两个inline-block 中间会有缝隙，这就是“换行符/空格间隙问题”。
-        原因：
-
+<!--
+        现象：两个inline-block 中间会有缝隙。这就是“换行符/空格间隙问题”。
+        原因：行内元素布局时，元素之间的空白、制表符、换行符等都会被浏览器使用wihite-space的默认方式进行处理为空白符，所以会产生缝隙。
+        解决办法：
+             1.将所有子元素写在同一行 
+             2.父元素设置font-size=0,子元素单独设置font-size;
+             3.float: left; 
      -->
     <div style="background: wheat;margin-top: 200px;">
         <div style="display: inline-block;height: 50px;background-color:#eee;">123</div>
         <div style="display: inline-block;height: 50px;background-color: #eee;">456</div>
-        
     </div>
 </body>
 </html>
