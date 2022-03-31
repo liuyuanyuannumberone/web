@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>获取css的所有样式</title>
+</head>
+<style>
+    .dvclass {
+        line-height: 2px;
+        font-weight: bold;
+    }
+
+    .dvclass::before {
+        content: 'Before pseudo element';
+    }
+</style>
+
+<body>
+    <div id="dv" class="dvclass" style="color: #000; background-color: #000; font-size:15px">
+        Red hot chili pepper!
+    </div>
+</body>
+<script>
+    var dvObj = document.querySelector('.dvclass');
+    console.log(dvObj.style.color)
+    console.log(dvObj.className)
+    console.log(getComputedStyle(dvObj, '::before').content);
+    console.dir(getComputedStyle(dvObj))
+</script>
+</html>

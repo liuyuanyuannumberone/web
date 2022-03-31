@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>position</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    .box{
+       width: 500px;
+       height: 300px;
+       background-color: red;
+       position: relative;
+       margin-left: 10px; 
+    }
+    .inner{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        width: 100px;
+        height: 100px;
+        background-color: antiquewhite;
+    }
+</style>
+
+<body>
+    <!--
+position: 一个元素在文档中的定位方式。
+static   标准流模式 top|bottom|left|right）无效
+relative 标准流模式 left|right|top|bottom 有效（参照对象是元素自己原来的位置）
+absolute 脱离标准流 left|right|top|bottom 有效（参照对象最近一级拥有定位（不为static）的祖先元素|body）
+fixed    脱离标准流 left|right|top|bottom 有效 （参照对象是视口，当画布滚动时，元素的位置是固定不动的）
+-->
+
+<!--绝对定位的应用 根据上面公式，margin + 绝对定位元素实际占用宽高 = 定位参照对象的宽高，盒子自然就水平垂直居中-->
+<div class="box">
+    <div class="inner"></div>
+  </div>
+<!-- 
+    定位元素的层叠现象
+ --> 
+</body>
+
+</html>
