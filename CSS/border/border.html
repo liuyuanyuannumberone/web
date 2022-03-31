@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>边框</title>
+</head>
+
+<body>
+    <div class="c1">
+
+    </div>
+    <div class="c2">
+
+    </div>
+    <div class="c3">
+
+    </div>
+
+</body>
+<style>
+    .c1 {
+        width: 400px;
+        height: 200px;
+        border: 5px dashed red;
+    }
+
+    .c2 {
+        width: 400px;
+        height: 200px;
+        border-bottom: 30px solid red;
+        border-top: 30px solid red;
+        border-left: 30px solid blue;
+        border-right: 30px solid blue;
+    }
+
+    /* 
+       https://segmentfault.com/a/1190000010969367
+    border-image CSS属性允许在元素的边框上绘制图像
+    border-image-source 【null 默认值】  边框图片来源
+    border-image-slice 【100%默认值】 图片分割为9个区域 
+          四个边:每一个都用一次来形成最终边界图像的角点
+          四个角:在最终的边框图像中重复，缩放或修改它们以匹配元素的尺寸
+          中心区域:默认情况下会被丢弃
+    border-image-width  【1默认值】 图像的宽度
+    border-image-outset  【0默认值】边框图像可超出边框盒的大小
+    border-image-repeat  【stretch默认值 round会凑整填充（进行了适度的拉伸)  repeat不进行拉伸，不凑整】
+    */
+    .c3 {
+        width: 400px;
+        height: 200px;
+        margin: 10px;
+        border: 30px solid bisque;
+        border-image-source: url("border.png");
+        border-image-slice: 30 30 30 30;
+        border-image-repeat: round;
+        border-image-width:30px;
+        border-image-outset:10px;
+    }
+</style>
+
+</html>
