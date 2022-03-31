@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,43 @@
     <title>Document</title>
 </head>
 <style>
-    *{
+    * {
         margin: 0;
         padding: 0;
     }
+
+    .container {
+        width: 600px;
+        height: 600px;
+        background-color: #eee;
+    }
+   ul{
+     margin-left: 10px;
+     list-style: none;
+   }
+   ul>li{
+       margin-top: 5px;
+       margin-bottom: 5px;
+   }
+   ul>li>.icon:first-child {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        background-image: url('雪碧图.png');
+        background-repeat: no-repeat;
+        vertical-align: middle;
+    }
 </style>
+
 <body>
     <!-- 
-       大量的网站为了减少http请求数，会将大量的图片合成一张雪碧图来使用
-       
+       大量的网站为了减少http请求数，会将大量的图片合成一张雪碧图来使用。background-position.  
      -->
+    <ul class="container">
+         <li><span class="icon" style="background-position: 0 0;"></span>写信</li>
+         <li><span class="icon" style="background-position: 0 -32px;"></span>收信</li>
+         <li><span class="icon" style="background-position: -0 -65px;"></span>通讯录</li>
+    </ul>
 </body>
+
 </html>
