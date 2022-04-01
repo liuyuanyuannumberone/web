@@ -1,37 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <!--
-一、 BFC块状格式化上下文 产生条件： 
-     1.float 为 left | right
-     2.overflow 为 hidden | auto | scorll
-     3.display 为 table-cell | table-caption | inline-block | flex | inline-flex
-     4.position 为 absolute | fixed
-
-二、 BFC的主要特征:
-   1.BFC就是页面上的一个独立的容器，容器内的子元素不会影响到外面的元素，外面的元素也不会影响到容器内的子元素。
-   2.盒子垂直方向的距离由margin决定，属于同一个BFC的相邻盒子的上下margin会发生折叠；
-     分别触发两个元素的BFC，就可以解决垂直边距折叠的问题。
-   3.BFC可以包含浮动,通常用来解决浮动父元素高度坍塌的问题。
-四、应用 
+对一个元素设置CSS，首先需要知道这个元素是block还是inline类型。而BFC就是用来格式化块级盒子，同样管理inline类型的盒子还有IFC，以及其他的FC
+FC：指页面中的一个渲染区域，并且拥有一套渲染规则，他决定了其子元素如何定位，以及与其他元素的相互关系和作用。
+BFC：块级格式化上下文，它是指一个独立的块级渲染区域，该区域拥有一套渲染规则来约束块级盒子的布局，且与区域外部无关。
+1.创建BFC条件：
+     1.根元素 
+     2.float 为 left | right
+     3.overflow 为 hidden | auto | scorll
+     4.display 为 table-cell | table-caption | inline-block | flex | inline-flex
+     5.position 为 absolute | fixed
+2.BFC的主要特征:
+    1.每个元素的左外边距与包含块的左边界相接触（从左向右），即使浮动元素也是如此。
+    （这说明BFC中子元素不会超出他的包含块，而position为absolute的元素可以超出他的包含块边界），
+      BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面元素，反之亦然
+    2.生成BFC元素的子元素会一个接一个的放置(比如平常div一行一行块级放置的样式)。
+    3.两个相邻子元素之间的垂直距离取决于元素的margin特性，属于同一个BFC的相邻盒子的上下margin会发生折叠；
+    4.计算BFC的高度时，浮动子元素也参与计算（所以不会导致父元素坍塌）；
+    5.BFC的区域不会与float的元素区域重叠;（多栏布局）
+3.应用
     -->
-     <div class="test1" style="width: 200px;background-color: black;border: 1px solid red;">
-         <p>条目一</p>
-         <p>条目二</p>
-         <p>条目三</p>
-     </div>
+    <!-- 3.1 防止margin重叠，只要将两个元素别放在一个BFC中即可 -->
+    <div class="first" style=" margin:20px;background:lightgreen;width:100px; height:100px;"></div>
+    <ul style="margin:10px;background:lightblue;display: inline-block;">
+        <li style="margin:25px;display:inline-block;">1</li>
+        <li style="margin:25px;">2</li>
+        <li style="margin:25px;">3</li>
+    </ul>
+    <!-- 3.2 防止父元素坍塌 父元素设置overflow:hidden或浮动父元素。根本原因在于创建BFC的元素，子浮动元素也会参与其高度计算-->
+    <div style=" border: 2px solid lightgreen;overflow: hidden;">
+        <ul style="margin:10px;background:lightblue;width:100px;height:200px;float: left;">
+            <li style="margin:25px;">1</li>
+            <li style="margin:25px;">2</li>
+            <li style="margin:25px;">3</li>
+        </ul>
+    </div>
+
+    <!--3.3 多栏布局的一种方式-->
+
+    <!-- float 脱离文本流-1 -->
+    <div class="container"
+        style="margin-top: 10px;margin-bottom: 50px;overflow: hidden;border: 1px dashed yellowgreen;">
+        <div class="left" style="background:pink;float: left; width:180px;height: 200px;"></div>
+        <div class="center" style="background:lightyellow;border: 1px solid red;height: 200px;width:180px;"></div>
+    </div>
+    <!-- float 脱离文本流-2 -->
+    <div class="aside" style="width: 100px;height: 150px;float: left;background: #f66;"></div>
+    <div class="text" style="width: 500px;">
+        <!-- overflow: hidden;  -->
+        <div class="main" style="height: 500px;background-color: #fcc;"></div>
+    </div>
+    <!-- float 脱离文本流-3 -->
+    <div class="container" style="margin-top: 10px;margin-bottom: 50px;overflow: hidden;">
+        <div class="left" style="background:pink;float: left; width:180px;height: 200px;"></div>
+        <div class="right" style="background:lightblue;width:180px;float:right;height: 200px;"></div>
+        <div class="center" style="background:lightyellow;border: 1px solid red;height: 200px;width: 180px;"></div>
+    </div>
+
+    <div class="container"
+        style="margin-top: 10px;margin-bottom: 50px;overflow: hidden;border: 1px dashed yellowgreen;">
+        <div class="left" style="background:pink;float: left; width:180px;height: 200px;"></div>
+        <div class="center" style="background:lightyellow;border: 1px solid red;height: 200px;overflow: hidden;"></div>
+        <div class="right" style="background:lightblue;width:180px;float:right;height: 200px;"></div>
+    </div>
+
+     <!--左右两栏宽度固定，中间栏可以根据浏览器宽度自适应 -->
+    <div class="container" style="margin-top: 10px;margin-bottom: 50px;overflow: hidden;">
+        <div class="left" style="background:pink;float: left; width:180px;height: 200px;"></div>
+        <div class="right" style="background:lightblue;width:180px;float:right;height: 200px;"></div>
+        <div class="center" style="background:lightyellow;border: 1px solid red;height: 200px;overflow: hidden;"></div>
+    </div>
 </body>
-<style>
-   .test1>p{
-       background-color: white;
-       margin: 10px 0;
-       text-align: center;
-   }
-</style>
 </html>

@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
     <!--外边距重叠（两个或多个毗邻 普通流 垂直方向） 外边距叠加存在两种情况：父子外边距叠加和兄弟外边距叠加
         两个或多个盒子是指元素之间的相互影响，单个元素不会存在外边距叠加的情况
@@ -17,8 +16,8 @@
     <!-- parent2和child1叠加,导致parent1与parent2 外边距为40px -->
     <!-- child1和child2叠加,导致child1与child2 下边距为40px -->
     <!-- parent2和child3叠加,导致parent2与child3 下边距为30px -->
-    <div class="parent1" style="height: 20px;background: yellow;margin-bottom: 20px;"></div>
-    <div class="parent2" style="margin: 20px 0 30px;">
+    <div class="parent1" style="height:20px;background: yellow;margin-bottom: 20px;"></div>
+    <div class="parent2" style="margin:20px 0 30px;">
         <div class="child1" style=" background: red;height: 20px;margin: 40px 0 30px;"></div>
         <div class="child2" style=" background: red;height: 20px;margin: 40px 0 30px;"></div>
         <div class="child3" style=" background: red;height: 20px;margin: 40px 0 30px;"></div>
@@ -32,7 +31,7 @@
         <div class="demo" style="height: 30px;background: rgb(135, 135, 68);"></div>
     </div>
    
-    
+
 
 </body>
 
