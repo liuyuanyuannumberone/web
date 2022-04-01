@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        border: 1px solid red;
+        background-color: aquamarine;
+    }
+
+    .content {
+        width: 100px;
+        height: 100px;
+        border: 1px solid yellow;
+        background-color: aliceblue;
+        float: right;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        /*加入:before以解决现代浏览器上边距折叠的问题*/
+        display: table;
+        content: " ";
+    }
+
+    .clearfix:after {
+        clear: both;
+    }
+
+    .clearfix {
+        *zoom: 1;
+        /* 引入了zoom以支持IE6/7 */
+    }
+</style>
+
+<body>
+    <!-- 
+一、    float:浮动元素会脱离文档流并向左/向右浮动，直到碰到父元素或者另一个浮动元素。
+          可以设置宽高,允许文本和内联元素环绕它。
+
+二、      浮动带来的问题：浮动会导致父元素高度坍塌;不要在浮动元素上清除浮动
+          解决办法:清除浮动主要有两种方式
+                  clear清除浮动:clearfix
+                  BFC清除浮动:块状格式化上下文
+                  BFC的主要特征:
+   1.BFC就是页面上的一个独立的容器，容器内的子元素不会影响到外面的元素，外面的元素也不会影响到容器内的子元素。
+   2.盒子垂直方向的距离由margin决定，属于同一个BFC的相邻盒子的上下margin会发生折叠；
+     分别触发两个元素的BFC，就可以解决垂直边距折叠的问题
+   3.BFC可以包含浮动,通常用来解决浮动父元素高度坍塌的问题。
+     我们可以给父元素添加以下属性来触发BFC：
+     1.float 为 left | right
+     2.overflow 为 hidden | auto | scorll
+     3.display 为 table-cell | table-caption | inline-block | flex | inline-flex
+     4.position 为 absolute | fixed
+三、适用场景
+    1.文字环绕    
+     -->
+    <!-- 解决父元素高度坍塌1 -->
+    <div class="box clearfix">
+        <div class="content ">
+            我是浮动元素
+        </div>
+        <div class="content ">
+            我是浮动元素
+        </div>
+        <div class="content ">
+            我是浮动元素
+        </div>
+    </div>
+    <!-- 解决父元素高度坍塌2 -->
+    <div class="box" style="overflow: hidden;">
+        <div class="content ">
+            我是浮动元素
+        </div>
+        <div class="content ">
+            我是浮动元素
+        </div>
+        <div class="content ">
+            我是浮动元素
+        </div>
+    </div>
+    <!-- 文字环绕-->
+  
+
+</body>
+
+</html>
