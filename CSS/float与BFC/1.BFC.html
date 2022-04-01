@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+一、 BFC块状格式化上下文 产生条件： 
+     1.float 为 left | right
+     2.overflow 为 hidden | auto | scorll
+     3.display 为 table-cell | table-caption | inline-block | flex | inline-flex
+     4.position 为 absolute | fixed
+
+二、 BFC的主要特征:
+   1.BFC就是页面上的一个独立的容器，容器内的子元素不会影响到外面的元素，外面的元素也不会影响到容器内的子元素。
+   2.盒子垂直方向的距离由margin决定，属于同一个BFC的相邻盒子的上下margin会发生折叠；
+     分别触发两个元素的BFC，就可以解决垂直边距折叠的问题。
+   3.BFC可以包含浮动,通常用来解决浮动父元素高度坍塌的问题。
+四、应用 
+    -->
+     <div class="test1" style="width: 200px;background-color: black;border: 1px solid red;">
+         <p>条目一</p>
+         <p>条目二</p>
+         <p>条目三</p>
+     </div>
+</body>
+<style>
+   .test1>p{
+       background-color: white;
+       margin: 10px 0;
+       text-align: center;
+   }
+</style>
+</html>
