@@ -29,7 +29,7 @@
     }
 
     .clearfix:after {
-        clear: both;
+        clear: both; 
     }
 
     .clearfix {
@@ -41,7 +41,13 @@
 <body>
     <!-- 
 一、    float:浮动元素会脱离文档流并向左/向右浮动，直到碰到父元素或者另一个浮动元素。
-          可以设置宽高,允许文本和内联元素环绕它。
+          不管一个元素是行内元素还是块级元素，如果被设置了浮动，那浮动元素会生成一个块级框,根据内容大小自适应,
+          并且也可以人为设置宽高；
+          当多个元素指定为float且同时为left/right时，元素是紧挨着排列，行内宽度不够时会自动换行排列;
+          允许文本和内联元素环绕它;
+          clear属性的作用是清除浮动: none | left | right | both 
+                                  这个规则只能影响使用清除的元素本身，不能影响其他元素
+
 
 二、      浮动带来的问题：浮动会导致父元素高度坍塌;不要在浮动元素上清除浮动
           解决办法:清除浮动主要有两种方式
@@ -57,8 +63,10 @@
      2.overflow 为 hidden | auto | scorll
      3.display 为 table-cell | table-caption | inline-block | flex | inline-flex
      4.position 为 absolute | fixed
+     
 三、适用场景
     1.文字环绕    
+
      -->
     <!-- 解决父元素高度坍塌1 -->
     <div class="box clearfix">
@@ -85,8 +93,27 @@
         </div>
     </div>
     <!-- 文字环绕-->
-  
-
+    <div style="width: 800px;height: 400px;border: 1px solid red;">
+        <img src="img/test.png" alt="我是图片" style="float: left;">
+        <p>Harry Potter is a series of fantasy novels written by British author J. K. Rowling.
+            The novels chronicle the life of a young wizard, Harry Potter, and his friends Hermione Granger
+            The novels chronicle the life of a young wizard, Harry Potter, and his friends Hermione Granger
+            The novels chronicle the life of a young wizard, Harry Potter, and his friends Hermione Granger
+            The novels chronicle the life of a young wizard, Harry Potter, and his friends Hermione Granger
+            and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry。</p>
+    </div>
+    <!--根据内容大小自适应-->
+    <div style="border: 1px solid red;margin: 5px;">
+        <img src="img/test.png" alt="我是图片">
+    </div>
+    <div style="border: 10px solid yellow;margin: 5px;float: left;" class="div1">
+        <img src="img/test.png" alt="我是图片">
+    </div>
+    <!-- clear 清除浮动  -->
+    <div class="div2" style="border: 1px solid rgb(66, 48, 48);margin: 5px;margin-top:100px;clear: left;">
+        <img src="img/test.png" alt="我是图片">这个规则只能影响使用清除的元素本身，不能影响其他元素
+       只要在div2的CSS样式中使用clear:left;来指定div2元素左边不允许出现浮动元素,这样div2就被迫下移一行。
+    </div>
 </body>
 
 </html>
