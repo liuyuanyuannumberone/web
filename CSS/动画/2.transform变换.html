@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        width: 500px;
+        height: 400;
+        border: 1px solid red;
+    }
+
+    .content {
+        width: 400px;
+        height: 200px;
+    }
+
+    .img1 {
+        transform: rotate(0.5turn); 
+    }
+    .img2{
+        transform: translate(120px, 50%);
+    }
+</style>
+
+<body>
+    <!--
+    transform: 允许旋转，缩放，倾斜或平移元素【默认值none】
+    这种变换可以由矩阵表示，并且可以使用每个点上的矩阵乘法来确定所得到的图像
+        matrix(1.0, 2.0, 3.0, 4.0, 5.0, 6.0)
+        translate(12px, 50%) translateX(2em)  translateY(3in)
+        scale(2, 0.5) scaleX(2) scaleY(0.5)
+        rotate(0.5turn) 
+        skew(30deg, 20deg)...
+   
+    -->
+
+    <div class="container">
+        <img src="test.png" alt="" class=" content img1">
+    </div>
+    <div class="container">
+        <img src="test.png" alt="" class=" content img2">
+    </div>
+</body>
+
+</html>

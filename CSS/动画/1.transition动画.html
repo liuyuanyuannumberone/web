@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 100px;
+            height: 100px;
+            background: red;
+            transition: transform .8s  linear;
+        }
+        .container:hover {
+            transform: translate(120px, 0);
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- 控制动画速度的方法
+     transition:<property> <duration> <timing-function> <delay>;
+     哪些属性发生动画：   【默认值all】 例如opacity,color属性
+     持续多久(duration)：【默认值0s】
+     动画过渡时的速率函数：【默认值ease】
+     ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier(x1, y1, x2, y2) | step-start | step-end | 
+     何时开始(delay）:    【默认值0s】
+-->
+    <div class="container"></div>
+</body>
+
+</html>

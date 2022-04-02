@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=/, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        width: 200px;
+        height: 200px;
+        background-color: #eee;
+        margin-bottom: 10px;
+    }
+
+    .child {
+        background-color: blue;
+        width: 50px;
+        height: 50px;
+    }
+
+    .tr1 {
+        transform: translate(100px,150px);
+    }
+    .tr2{
+        transform: translate(100px, 300%);  /* 元素本身宽(高)*百分比=偏移量*/
+    }
+    .tr3{
+        transform: translate(200%,300%);
+    }
+    /* 单轴平移 */
+    .tr4{
+        transform: translate(100%);   /*  translate(100%, 0) */
+    }
+    
+</style>
+
+<body>
+    <!-- 
+       taransfrom的属性   translate():translate() 这个 CSS 函数在水平和/或垂直方向上重新定位元素
+
+     -->
+     <div class="container">
+        <div class="child"></div>
+    </div>
+    <div class="container">
+        <div class="child tr1"></div>
+    </div>
+
+    <div class="container">
+        <div class="child tr2"></div>
+    </div>
+    <div class="container">
+        <div class="child tr3"></div>
+    </div>
+    <div class="container">
+        <div class="child tr4"></div>
+    </div>
+</body>
+
+</html>
