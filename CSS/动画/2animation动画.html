@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        width: 50px;
+        height: 50px;
+        background: #f40;
+        border-radius: 50%;
+        margin: 10px;
+    }
+
+    .an1 {
+        position: relative;
+        animation: mymove1 2s infinite alternate;
+    }
+
+    @keyframes mymove1 {
+        0% {
+            left: 0px;
+        }
+
+        50% {
+            left: 150;
+        }
+
+        100% {
+            left: 300px;
+        }
+    }
+
+
+    .an2 {
+        animation: mymove2 1s 1s infinite;
+    }
+
+
+    @keyframes mymove2 {
+        0% {
+            width: 50px;
+            height: 50px;
+        }
+
+        50% {
+            width: 100px;
+            height: 100px;
+        }
+
+        100% {
+            width: 50px;
+            height: 50px;
+        }
+    }
+</style>
+
+<body>
+    <!-- 
+  animation:  animation: name duration timing-function delay iteration-count direction play-state;
+  @keyframes	定义一个动画,@keyframes定义的动画名称用来被animation-name所使用。
+                主要是做关键帧动画的，每个@keyframes后面都要跟一个名字，事例中使用了mymove作为帧动画的名字，
+                然后可以在样式内对关键帧添加样式，然后根据关键帧 @keyframes就能自动形成流畅的动画了。
+  animation-name:【默认none】检索或设置对象所应用的动画名称 ,必须与规则@keyframes配合使用，因为动画名称由@keyframes定义
+  animation-duration：指定一个动画周期的时长【默认0】
+  animation-timing-function：【默认ease】
+  animation-delay：动画应用在元素上到动画开始的这段时间的长度【默认0】
+  animation-iteration-count：定义动画循环次数可以是1次 无限循环【默认1】 infinite 无限运动
+  animation-direction：指示动画在循环中是否反向运动  【默认normal】 reverse 反向播放 alternate 可以反向
+  animation-fill-mode：动画在执行之前和之后如何将样式应用于其目标【默认none】
+  animation-play-state 检索或设置对象动画的状态,控制动画的播放和暂停。 【默认running】 paused 
+
+     -->
+    <button onclick="pause()">暂停</button>
+    <button onclick="run()">恢复</button>
+
+    <div class="container an1"></div>
+    <div class="container an2"></div>
+</body>
+<script>
+    function pause() {
+        document.querySelector('.an1').style.animationPlayState = "paused"
+    }
+    function run() {
+        document.querySelector('.an1').style.animationPlayState = "running"
+    }
+</script>
+
+</html>
