@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        background-color: bisque;
+        display: flex;
+    }
+
+    .item {
+        border: 1px solid black;
+        background-color: aquamarine;
+        height: 100px;
+        flex-basis: 100px;
+    }
+</style>
+
+<body>
+    <!-- 1.妙用margin  不一样的两端对齐-->
+    <div class="container">
+        <div class="item" style="margin-right: auto;">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>
+
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item" style="margin-left: auto;">6</div>
+    </div>
+
+
+    <!-- 不一样的space-between -->
+    <div class="container">
+        <div class="item" style="margin-right: auto;">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item" style="margin-left: auto;">6</div>
+    </div>
+
+    <!-- 不一样的space-around -->
+    <div class="container">
+        <div class="item" style="margin-left: auto;">1</div>
+        <div class="item" style="margin-right: auto;">2</div>
+        <div class="item">3</div>
+        <div class="item" style="margin-left: auto;">4</div>
+        <div class="item" style="margin-right: auto;">5</div>
+    </div>
+    <div class="container" style="height: 500px;background-color: blueviolet;margin-top: 10px;">
+        <div class="item" >1</div>
+        <div class="item" >2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item" style="margin-left:auto;align-self:flex-end">5</div>
+    </div>
+</body>
+
+</html>

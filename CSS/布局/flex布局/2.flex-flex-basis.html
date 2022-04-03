@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .item {
+        padding: 50px;
+        border: 50px solid deepskyblue;
+        outline: 5px dashed #fff;
+    }
+</style>
+
+<body>
+    <!-- 
+     一个flex子项的最终尺寸是基础尺寸、弹性增长或收缩、最大最小尺寸限制共同作用的结果
+
+        基础尺寸由CSS flex-basis属性，width等属性以及box-sizing盒模型共同决定；
+        弹性增长指的是flex-grow属性，弹性收缩指的是flex-shrink属性；
+        最大最小尺寸限制指的是min-width/max-width等CSS属性，以及min-content最小内容尺寸
+        最终尺寸计算的优先级是：最大最小尺寸限制 > 弹性增长或收缩 > 基础尺寸
+     -->
+   <!-- 
+       width只是flex-basis为auto时候间接生效，其余时候使用优先级更高的flex-basis属性值；
+       flex-basis使用得当可以实现类似min-width/max-width的效果
+-->
+    <div style="display: flex;height: 500px;">
+        <div class="item" style="width: 100px;">width: 100px;</div>
+        <div class="item" style="flex-basis: 100px;">flex-basis: 100px;</div>
+        <div class="item" style="flex-basis: 100px;box-sizing: border-box;">flex-basis: 100px;box-sizing: border-box;</div>
+        <div class="item" style="width: 100px;box-sizing: border-box;">width: 100px;box-sizing: border-box;</div>
+    </div>
+
+</body>
+
+</html>
