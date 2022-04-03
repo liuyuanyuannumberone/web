@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex布局 - 圣杯布局</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        header,
+        footer {
+            height: 10vh;
+            line-height: 10vh;
+            background-color: #5d5d5d;
+            color: #fff;
+        }
+
+        .container-body {
+            height: 80vh;
+            display: flex;
+        }
+
+        .container-content {
+            flex: 1;
+            background-color: #d1d1d1;
+        }
+
+        .container-nav,
+        .container-ads {
+            flex: 0 0 10rem;
+        }
+
+        .container-nav {
+            background-color: #77b4d9;
+        }
+
+        .container-ads {
+            background-color: #f4592a;
+        }
+    </style>
+</head>
+
+<body class="container">
+    <header>header</header>
+    <div class="container-body">
+        <nav class="container-nav">left</nav>
+        <main class="container-content">main</main>
+        <aside class="container-ads">right</aside>
+    </div>
+    <footer>footer</footer>
+</body>
+
+</html>
