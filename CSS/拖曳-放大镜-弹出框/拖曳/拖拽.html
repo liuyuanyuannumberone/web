@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head》 lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../../lib/common.js"></script>
+    </head>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <body>
+        <div id="box" style="width: 400px;height: 300px;position: absolute;border: 2px solid red;cursor: move;"></div>
+    </body>
+    <script>
+        var box = document.getElementById('box');
+        box.onmousedown = function (e) {
+            e = e || window.event;
+            // 鼠标在盒子中的位置(x,y)
+            var x = getPage(e).pageX - box.offsetLeft;
+            var y = getPage(e).pageY - box.offsetTop;
+            document.onmousemove = function (e) {
+                e = e || window.event;
+                var boxX = getPage(e).pageX - x;
+                var boxY = getPage(e).pageY - y;
+                console.log('x=' + x, 'y=' + y);
+                box.style.left = boxX + 'px';
+                box.style.top = boxY + 'px';
+            }
+        };
+        // 当鼠标弹起的时候，移除鼠标移动事件
+        document.onmouseup = function () {
+            document.onmousemove = null;
+        };
+    </script>
+</html>
