@@ -8,7 +8,7 @@
         * {
             margin: 0;
             padding: 0;
-            /* box-sizing: border-box; */
+            box-sizing: border-box;
         }
 
         #box {
@@ -45,7 +45,8 @@
 </body>
 <script>
     // offsetParent 获取距离当前元素最近的定位父元素(父元素定位不能是static)，如果没有定位父元素此时是body
-    // offsetLeft/offsetTop 来获取当前元素到其定位父级（offsetParent）的距离
+    // offsetLeft/offsetTop 来获取当前元素到其定位父级（offsetParent）的距离 
+    // 包括元素的边框、内边距和滚动条。
     let box = document.getElementById('box');
     let child = document.getElementById('child');
     console.log(child.offsetParent, box.offsetLeft, box.offsetTop, box.offsetWidth, box.offsetHeight);//50 50 322  322
