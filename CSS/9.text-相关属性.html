@@ -12,10 +12,10 @@
             max-width: 800px;
             font-size: 18px;
             line-height: 2em;
-            /* text-shadow: 5px 10px 2px red; */
+            text-shadow: 5px 10px 2px red;
             /* text-decoration: underline wavy red 5px;  */
             /* text-decoration: overline dotted blueviolet 5px; */
-            text-decoration: underline overline dashed red 2px ;
+            text-decoration: underline overline dashed red 2px;
         }
 
         .container p {
@@ -26,16 +26,32 @@
 
 <body>
     <!-- 
-        text-shadow:文字添加阴影  offset-x | offset-y | blur-radius | color 
-        text-decoration:设置文本的修饰线（下划线|上划线|贯穿线|闪烁） 文本修饰属性会延伸到子元素。
+        1.text-shadow:文字添加阴影  offset-x | offset-y | blur-radius | color 
+        2.text-decoration:设置文本的修饰线（下划线|上划线|贯穿线|闪烁） 文本修饰属性会延伸到子元素。
                           这意味着如果祖先元素指定了文本修饰属性，子元素则不能将其删除。
      text-decoration-line：文本修饰的位置  underline|overline|line-through|blink 
      text-decoration-style：文本修饰的样式 solid|double|dotted|dashed|wavy
+     text-decoration-color：文本修饰的颜色 
      text-decoration-thickness：文本修饰的粗细 auto|from-font|<length>|<percentage>
               from-font：如果字体文件中包含了首选的厚度值，则使用字体文件的厚度值。
                    如果字体文件中没有包含首选的厚度值，则效果和设置为 auto 一样，由浏览器选择合适的厚度值。
-     text-decoration-color：文本修饰的颜色 
+        3.text-overflow:当文本溢出其包含元素时以何种方式显示 ,只适用于块级元素；
+                    clip【默认值】将溢出的文本裁剪掉
+                    ellipsis     将溢出的文本用省略号(...)来表示
+                    <string> ]{1,2} 设置一个字符串用来表示溢出的文本
+            规定了文本溢出后的显示样式，但是不会强制文本溢出，解决办法：
+            
+            单行文本溢出：
+             width:100px;white-space:nowrap;
+             overflow:hidden;text-overflow:ellipsis;
+            多行文本溢出显示...：
+               display: -webkit-box;
+              -webkit-line-clamp: 3; //就是控制行数的，是3就是显示3行，3行结束点点点
+              -webkit-box-orient: vertical; 
+              overflow:hidden;
      -->
+
+     <!--text-shadow|text-decoration -->
     <div class="container">
         <p>
             Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy...
@@ -45,6 +61,19 @@
             到南京时，有朋友约去游逛，勾留了一日；第二日上午便须渡江到浦口，下午上车北去。父亲因为事忙，本已说定不送我，叫旅馆里一个熟识的茶房陪我同去。他再三嘱咐茶房，甚是仔细。但他终于不放心，怕茶房不妥帖；颇踌躇了一会。其实我那年已二十岁，北京已来往过两三次，是没有甚么要紧的了。他踌躇了一会，终于决定还是自己送我去。我两三回劝他不必去；他只说，“不要紧，他们去不好！”
         </p>
     </div>
+
+
+    <!-- text-overflow  单行文本溢出-->
+    <div style=" width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    padding: 2px;border: 1px solid red;">
+    测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+    </div>
+     <!-- 多行文本溢出 -->
+    <div style=" width:200px;overflow:hidden;display: -webkit-box;
+    -webkit-line-clamp: 3;-webkit-box-orient: vertical;padding: 2px;border: 1px solid red;">
+    测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+    </div>
+
 </body>
 
 </html>

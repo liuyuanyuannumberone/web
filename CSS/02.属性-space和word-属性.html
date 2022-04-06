@@ -20,7 +20,6 @@
      pre-line         保留	        合并	      换行	      删除
      break-spaces	  保留	        保留	      换行	      换行
  -->
-   
  <div style="height: 200px;width: 200px;border: 1px solid red;white-space: normal;">
     But ere she from the church-door        stepped She smiled and told us why:         'It was a wicked woman's curse,' Quoth she, 'and what care I?' She smiled, and smiled, and passed it off Ere from the door she stept—
  </div>
@@ -36,9 +35,16 @@
 <!-- 
  white-space：如何处理元素内的空白字符（Space(空格)键、Enter(回车)键、Tab(制表符)键）
  letter-space: 控制所有字符的间距（英文字母、汉字以及空格等） 可以为负值
- word-space: 单词之间的间距
-
+ word-space: 单词之间的间距 
+ word-break: 控制单词如何被拆分换行的 
+            normal 
+            break-all 所有单词碰到边界一律拆分换行
+            keep-all 所有“单词”一律不拆分换行
+ word-wrap|overflow-wrap  控制单词如何被拆分换行的,对word-break的补充
+           normal 
+           break-word 只有当一个单词一整行都显示不下时，才会拆分换行该单词
  -->
+ <!--  letter-space|word-space -->
  <div style="height: 200px;width: 500px;border: 1px solid red;">  
     As much mud in the str我是 中国人
  </div>
@@ -48,6 +54,8 @@
  <div style="height: 200px;width: 500px;border: 1px solid red;word-spacing: .5rem;">  
     As much mud in the str我是中国人
  </div>
+ <!--word-break-->
+
 
 <!--
         现象：两个inline-block 中间会有缝隙。这就是“换行符/空格间隙问题”。

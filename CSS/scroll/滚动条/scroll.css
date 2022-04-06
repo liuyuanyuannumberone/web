@@ -1,0 +1,59 @@
+.box {
+  float: left;
+  width: 200px;
+  height: 250px;
+  margin: 0 40px 40px 0;
+  border: 1px solid red;
+}
+
+.box1,
+.box2,
+.box3{
+  overflow-y: scroll;
+}
+
+/*滚动条宽度*/
+.box2::-webkit-scrollbar {
+  width: 20px;
+  background-color: red;/*滚动轨迹上下顶部底部的颜色*/
+}  
+
+/*滚动轨迹颜色，以及滚动轨迹的弧度*/
+.box2::-webkit-scrollbar-track {
+  border-radius:10px;
+  background-color: #eee;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  -ms-border-radius:10px;
+  -o-border-radius:10px;
+}
+
+/* 滚动条 */
+.box2::-webkit-scrollbar-thumb {
+  border-radius:10px;
+  /* background: #3DB6A4;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  -ms-border-radius:10px;
+  -o-border-radius:10px; */
+  background: #3DB6A4;
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%,
+  transparent 25%,
+  transparent 50%,
+  rgba(255, 255, 255, .2) 50%,
+  rgba(255, 255, 255, .2) 75%,
+  transparent 75%,
+  transparent);
+}
+
+.box2::-webkit-scrollbar-button:start {
+  background: url(imgs/up.png) no-repeat;
+  background-size: 15px 15px;
+  background-position: 40% 10%;
+}
+
+.box2::-webkit-scrollbar-button:end {
+  background: url(imgs/down.png) no-repeat;
+  background-size: 15px 15px;
+  background-position: 40% 10%;
+}

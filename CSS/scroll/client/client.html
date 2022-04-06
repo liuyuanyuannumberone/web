@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
         }
+
         #box {
             width: 100px;
             height: 100px;
@@ -17,18 +20,13 @@
         }
     </style>
 </head>
-<body>
-<div id="box"></div>
-<script>
-  var box = document.getElementById('box');
-  // clientLeft  是border-left的宽度
-  // clientTop    border-top 的宽度
-  console.log(box.clientLeft);//30
-  console.log(box.clientTop);
 
-  // 获取大小   但是不包括边框
-  console.log(box.clientWidth);//120
-  console.log(box.clientHeight);
-</script>
+<body>
+    <div id="box"></div>
 </body>
+<script>
+    let box = document.getElementById('box');
+    console.log(box.clientLeft, box.clientTop, box.clientWidth, box.clientHeight);//30
+</script>
+
 </html>

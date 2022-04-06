@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+         overflow: 当一个元素的内容太大而无法适应块级格式化上下文时候该做什么。只适用于块级元素
+              【visible默认值】 内容不会被修剪，会呈现在元素框之外
+               inherit  规定从父元素继承overflow属性的值
+               hidden  内容会被修剪，并且其余内容不可见
+               scroll  内容会被修剪，浏览器会显示滚动条以便查看其余内容，无论内容是否超出，均会显示滚动条
+               auto    浏览器自己决定是否显示滚动条，如果内容没有超出则不会显示滚动条。
+           
+
+          无论什么浏览器，默认滚动条均来自<html>标签，而不是<body>标签，body标签默认有.5em的margin值 大约8px            
+          IE7-浏览器默认  html{overflow-y: scroll;}
+          IE8+浏览器默认：html{overflow: auto;}
+          如果要去掉页面默认滚动条，只需要 html{overflow: hidden;}
+          chrome浏览器滚动条宽度为17px
+     -->
+     <!-- visible -->
+        <div style="width: 200px;height: 300px;overflow: visible;border: 10px solid red;display: inline-block;">
+            <p>overflow:visible</p>
+            <p>这个属性定义溢出元素内容区的内容会如何处理。如果值为 scroll，不论是否需要， 用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。
+                这个属性定义溢出元素内容区的内容会如何处理。如果值为 scroll，不论是否需要， 用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。
+            </p>
+        </div>
+
+         <!-- hidden -->
+         <div style="width: 200px;height: 300px;overflow: hidden;border: 10px solid red;display: inline-block;">
+            <p>overflow:hidden</p>
+            <p>这个属性定义溢出元素内容区的内容会如何处理。如果值为 scroll，不论是否需要， 用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。
+                这个属性定义溢出元素内容区的内容会如何处理。如果值为 scroll，不论是否需要， 用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。
+            </p>
+        </div>
+
+      <!-- scroll -->
+         <div style="width: 200px;height: 300px;overflow: scroll;border: 10px solid red;display: inline-block;">
+            <p>overflow:scroll</p>
+            <p>这个属性定义溢出元素内容区的内容会如何处理。如果值为 scroll，不论是否需要， 用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。
+                这个属性定义溢出元素内容区的内容会如何处理。如果值为 scroll，不论是否需要， 用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。
+            </p>
+        </div>
+        <!-- auto -->
+        <div style="width: 200px;height: 300px;overflow: auto;border: 10px solid red;display: inline-block;">
+            <p>overflow:auto</p>
+            <p>这个属性定义溢出元素内容区的内容会如何处理。如果值为 scroll，不论是否需要， 用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。
+                这个属性定义溢出元素内容区的内容会如何处理。如果值为 scroll，不论是否需要， 用户代理都会提供一种滚动机制。因此，有可能即使元素框中可以放下所有内容也会出现滚动条。
+            </p>
+        </div>
+</body>
+</html>
