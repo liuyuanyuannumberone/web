@@ -25,7 +25,7 @@
         #child {
             width: 200px;
             height: 200px;
-            background-color: #eee;
+            background-color: yellowgreen;
             margin: 20px;
             padding: 10px;
             overflow: auto;
@@ -48,23 +48,24 @@
 </body>
 <script>
     // offsetParent 距该元素最近的position不为static的祖先元素，如果没有定位父元素此时是body;
-    // offsetLeft|offsetTop 边框到offsetParent的距离;offsetHeight|offsetWidth = border + padding + content;(不包含滚动条)
+    // offsetLeft|offsetTop 边框到offsetParent的距离;offsetHeight|offsetWidth = content+padding+border;
     let box = document.getElementById('box');
     let child = document.getElementById('child');
     console.log(child.offsetParent, box.offsetLeft, box.offsetTop, box.offsetWidth, box.offsetHeight);
     console.log(child.offsetLeft, child.offsetTop, child.offsetWidth, child.offsetHeight);
 
 
-    
+    //content+padding 
     console.log("================client==================");
+    console.log(box.clientWidth, box.clientHeight);
     console.log(child.clientWidth, child.clientHeight);
     console.log("================client==================");
 
 
-    // scrollHeight|scrollWidth：返回元素尺寸，包括元素看不见的部分（需要滚动才能看见的）和padding,但不包括margin和border 
-    //scrollTop|scrollLeft：如果元素不能被滚动，则为0。
+    // scrollHeight|scrollWidth：返回元素尺寸，包括元素看不见的部分（需要滚动）和padding
+    //scrollTop|scrollLeft：网页滚动条垂直方向滚去的距离|返回网页滚动条水平方向滚去的距离；
     child.onscroll = function () {
-        console.log("滚动出去的距离",child.scrollLeft,child.scrollTop);
+        console.log("滚动出去的距离", child.scrollLeft, child.scrollTop);
     };
     console.log(child.scrollWidth, child.scrollHeight);  
 </script>
