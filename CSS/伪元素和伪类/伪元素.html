@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪元素的使用</title>
+</head>
+<style>
+    .test1::before,
+    .test1::after {
+        /* content: '123'; */
+        content: attr(data-before-text);
+        ;
+        display: block;
+        width: 100%;
+        height: 50px;
+        background-color: #ff0000;
+    }
+
+    .test2::before {
+        content: open-quote;
+        font-style: normal;
+        color: #585563;
+    }
+
+    .test2::after {
+        content: close-quote " —— " attr(data-author);
+        font-style: normal;
+        color: #585563;
+    }
+
+    .test3::before,
+    .test3::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: .2rem;
+        background-color: #ff0000;
+    }
+
+    .test4::first-letter {
+        font-size: 3em;
+        font-weight: bold;
+    }
+
+    .test4::first-line {
+        background-color: bisque;
+        background-clip: content-box;
+    }
+
+    .test5::selection {
+        color: #ff0000;
+
+    }
+
+    .test6::placeholder {
+        background-color: #ff0000;
+        font-size: 20px;
+    }
+</style>
+
+<body>
+    <!-- 
+        伪元素是能够创建新的虚拟元素
+        常用的 CSS 伪元素：
+    ::after
+    ::before
+    ::first-letter
+    ::first-line
+    ::marker
+    ::selection
+     -->
+
+    <!-- 
+        属性：
+        content:必须要设置content;默认【display-inline】;用户无法使用鼠标复制conten的内容；
+      -->
+
+    <p class="test1" data-before-text="你大爷">测试伪元素</p>
+    <p class="test2" data-author="卡耐基">机遇固然重要，但不能坐等机遇，不然机遇会白白地从身边溜走。</p>
+    <p class="test3">画横线</p>
+    
+    <div style="width: 300px;height: 200px;" class="test4">
+        结果::first-letter和::first-line 第一个文字、字母 第一行
+        ::first-letter和::first-line 第一个文字、字母 第一行
+        ::first-letter和::first-line 第一个文字、字母 第一行
+        ::first-letter和::first-line 第一个文字、字母 第一行
+    </div>
+    <p class="test5">我是否别选中了</p>
+    <input type="text" placeholder="这里是占位符" class="test6"><br>
+    
+
+
+</body>
+
+</html>

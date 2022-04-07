@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪类</title>
+</head>
+<style>
+    .test1 a {
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .test1 .link:link {
+        background-color: rgb(71, 130, 240);
+    }
+
+    .test1 .visited:visited {
+        color: rgb(128, 126, 126);
+        background-color: rgb(203, 218, 151);
+    }
+
+    .test1 .hover:hover {
+        background-color: rgb(221, 51, 142);
+    }
+
+    .test1 .active:active {
+        font-size: 2em;
+    }
+
+    .test1 .focus:focus {
+        background-color: rgb(247, 142, 4);
+    }
+
+    .test2:not(.p1) {
+        font-size: 20px;
+    }
+
+    .test2 p:first-child {
+        font-size: 10px;
+    }
+
+    .test2 p:last-child {
+       background-color: aqua;
+    }
+
+    .test2 p:nth-child(2n) {
+        background-color: yellow;
+    }
+
+    .test3 .checkbox:checked {
+        width: 25px;
+        height: 25px;
+    }
+    .test3 .disable:disabled {
+        background: rgb(168, 163, 163);
+        color: blue;
+    }
+    .test3 .enable:enabled {
+        background: blanchedalmond;
+    }
+    .test3 .empty:empty {
+        height: 1em;
+        margin: 10px 0;
+        background-color: rgb(231, 26, 231);
+    } 
+</style>
+
+<body>
+    <div class="test1">
+        <a href="#" class="link">正常链接</a>
+        <a href="#" class="visited">点击过后</a>
+        <a href="#" class="hover">悬停时</a>
+        <a href="#" class="active">被激活状态</a>
+        <a href="#" class="focus">获得焦点时</a>
+    </div>
+
+    <div class="test2">
+        <p class="p1">这是一个段落</p>
+        <p>这是一个段落</p>
+        <p>这是一个段落</p>
+        <p>这是一个段落</p>
+        <p>这是一个段落</p>
+        <p>这是一个段落</p>
+        <p>这是一个段落</p>
+        <p>这是一个段落</p>
+        <p>这是一个段落</p>
+        <p>这是一个段落</p>
+        <p>这是一个段落</p>
+    </div>
+
+    <div class="test3">
+        <input type="checkbox" class="checkbox" />
+        <input type="text" value="禁用了" disabled class="disable" />
+        <input type="text" value="启用的" class="enable" />
+        <div class="empty"></div>
+    </div>
+
+</body>
+
+</html>
