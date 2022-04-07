@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>offset</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #box {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: #eee;
+            overflow: auto;
+            margin: 50px;
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        #child {
+            width: 200px;
+            height: 200px;
+            background-color: #eee;
+            margin: 20px;
+            padding: 10px;
+            overflow: auto;
+            border: 1px solid blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="child">
+            测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测
+            测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测
+            测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测
+            测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测
+            测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测
+            测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测测试测试测
+        </div>
+    </div>
+</body>
+<script>
+    // offsetParent 距该元素最近的position不为static的祖先元素，如果没有定位父元素此时是body;
+    // offsetLeft|offsetTop 边框到offsetParent的距离;offsetHeight|offsetWidth = border + padding + content;(不包含滚动条)
+    let box = document.getElementById('box');
+    let child = document.getElementById('child');
+    console.log(child.offsetParent, box.offsetLeft, box.offsetTop, box.offsetWidth, box.offsetHeight);
+    console.log(child.offsetLeft, child.offsetTop, child.offsetWidth, child.offsetHeight);
+
+
+    
+    console.log("================client==================");
+    console.log(child.clientWidth, child.clientHeight);
+    console.log("================client==================");
+
+
+    // scrollHeight|scrollWidth：返回元素尺寸，包括元素看不见的部分（需要滚动才能看见的）和padding,但不包括margin和border 
+    //scrollTop|scrollLeft：如果元素不能被滚动，则为0。
+    child.onscroll = function () {
+        console.log("滚动出去的距离",child.scrollLeft,child.scrollTop);
+    };
+    console.log(child.scrollWidth, child.scrollHeight);  
+</script>
+
+</html>
