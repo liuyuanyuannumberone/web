@@ -69,6 +69,7 @@ BFC：块级格式化上下文，它是指一个独立的块级渲染区域，�
     <div class="container"
         style="margin-top: 10px;margin-bottom: 50px;overflow: hidden;border: 1px dashed yellowgreen;">
         <div class="left" style="background:pink;float: left; width:180px;height: 200px;"></div>
+        <!--overflow: hidden;去掉重叠  -->
         <div class="center" style="background:lightyellow;border: 1px solid red;height: 200px;overflow: hidden;"></div>
         <div class="right" style="background:lightblue;width:180px;float:right;height: 200px;"></div>
     </div>
@@ -77,6 +78,7 @@ BFC：块级格式化上下文，它是指一个独立的块级渲染区域，�
     <div class="container" style="margin-top: 10px;margin-bottom: 50px;overflow: hidden;">
         <div class="left" style="background:pink;float: left; width:180px;height: 200px;"></div>
         <div class="right" style="background:lightblue;width:180px;float:right;height: 200px;"></div>
+        <!--overflow: hidden;去掉重叠  -->
         <div class="center" style="background:lightyellow;border: 1px solid red;height: 200px;overflow: hidden;"></div>
     </div>
 </body>

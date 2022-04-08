@@ -1,0 +1,41 @@
+// Using values from the original design
+
+$m: 20px;
+$Aw: 4;
+$Ah: 3;
+// Calculate c
+$constant: ($m * $Aw) / ($Ah * 3);
+
+.thumbnails {
+    width: 50%;
+    margin: 0 auto;
+    padding: $m;
+    border: 2px solid red;
+    overflow: hidden; // crude clearfix
+
+    // First image becomes big one on left
+    > *:first-child {
+        display: block;
+        float: left;
+        margin-right: $m;
+
+        // Magic formula!
+        width: calc((2 / 3 * (100% - #{$m})) + #{$constant});
+    }
+
+    // 2nd & 3rd images become smaller ones
+    // on right
+    > *:nth-child(n + 2) {
+        display: block;
+        float: right;
+
+        // Magic formula!
+        width: calc((1 / 3 * (100% - #{$m})) - #{$constant});
+    }
+
+    // 3rd image also has top margin
+    > *:nth-child(3) {
+        margin-top: $m;
+        clear:left
+    }
+}
