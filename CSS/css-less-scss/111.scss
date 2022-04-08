@@ -1,0 +1,21 @@
+$width: 400px;
+$bgColor: red;
+$contentColor: yellow;
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    background-color: $bgColor;
+    width: $width;
+    height: 200px;
+
+    .content {
+       background-color: $contentColor;
+       width: 100px;
+       height: 200px;  
+    }
+    
+}

@@ -1,0 +1,6 @@
+@import url(d:\dataPapaer\project\web\web\project\webpack-basic\src\common\font\iconfont.css);
+body .sc {
+  height: 100px;
+  width: 100px;
+  transform: translate(100px, 100px);
+}
