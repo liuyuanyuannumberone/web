@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <script src="js/echarts.min.js"></script>
+</head>
+<style>
+    .box,
+    .main {
+        width: 400px;
+        height: 400px;
+        display: inline-block;
+
+    }
+
+    .box {
+        background-color: pink;
+    }
+
+    .main {
+        background-color: #ffe28d;
+    }
+
+    .line {
+        width: 800px;
+        height: 400px;
+        /*background-color: lemonchiffon;*/
+    }
+</style>
+<body>
+<div class="box"></div>
+<div class="main"></div>
+<div class="line"></div>
+</body>
+<script>
+    let myChart = echarts.init(document.querySelector(".box"));
+    let option = {
+        title: {
+            text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        legend: {
+            data: ['销量']
+        },
+        xAxis: {
+            data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    };
+    myChart.setOption(option);
+
+    let myPize = echarts.init(document.querySelector(".main"));
+    let opt = {
+        title: {
+            text: '我的饼图',
+            subtext: '副标题',
+            left: 'center',
+            textStyle: {
+                color: 'red'
+            }
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+        },
+        series: [
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '60%'],
+                data: [
+                    {value: 335, name: '直接访问'},
+                    {value: 310, name: '邮件营销'},
+                    {value: 234, name: '联盟广告'},
+                    {value: 135, name: '视频广告'},
+                    {value: 1548, name: '搜索引擎'}
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    myPize.setOption(opt);
+
+
+    let linechat = echarts.init(document.querySelector(".line"));
+    let op1 = {
+        color: ["pink", '#000', "red", "yellow", "green"],//调色盘颜色列表
+        backgroundColor: 'lemonchiffon',//背景色，默认无背景
+        title: {
+            text: '主标题',
+            subtext: '副标题',
+            left: 'left',
+            textStyle: {
+                color: 'green'
+            }
+        }, //标题和副标题
+        tooltip: {
+            trigger: 'axis',
+        },////提示框
+        legend: {
+            data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+        }, //图例
+        toolbox: {
+            show: true,
+            orient: 'horizontal',
+            showTitle: true,//是否在鼠标 hover 的时候显示每个工具 icon 的标题。
+            feature: {
+                restore: {},
+                saveAsImage: {},
+            }
+        },//工具栏
+        grid: {
+            left: '10%',  //grid距离盒子的距离
+            right: '4%',
+            bottom: '3%',
+            containLabel: true, //grid区域是否包含坐标轴的刻度标签,设置true,可以防止刻度标签溢出
+        },//直角坐标系内绘图网格
+        xAxis: {
+            type: 'category',//类目轴，适用于离散的类目数据
+            boundaryGap: false,
+            data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        },//直角坐标系 grid 中的 x 轴
+        yAxis: {
+            type: 'value'
+        },//直角坐标系 grid 中的 y 轴
+
+        /*  series: [{
+              type: 'line',//什么类型的图表
+              data: [
+                  {name: '邮件营销', stack: '总量', data: [120, 132, 101, 134, 90, 230, 210]},
+                  {name: '联盟广告', stack: '总量', data: [220, 182, 191, 234, 290, 330, 310]},
+                  {name: '视频广告', stack: '总量', data: [150, 232, 201, 154, 190, 330, 410]},
+                  {name: '直接访问', stack: '总量', data: [320, 332, 301, 334, 390, 330, 320]},
+                  {name: '搜索引擎', stack: '总量', data: [820, 932, 901, 934, 1290, 1330, 1320]},
+              ]
+          }],*/
+
+        //系列列表
+        series: [
+            {
+                name: '邮件营销',//系列名称，用于tooltip的显示，legend 的图例筛选
+                type: 'line',//什么类型的图表
+                // stack: '总量',//数据堆叠，同个类目轴上系列配置相同的stack值后，
+                // 后一个系列的值会在前一个系列的值上相加。
+                //设置成一样会发生数据堆叠或者直接去掉
+                data: [120, 132, 101, 134, 90, 230, 210]//系列中的数据内容数组
+            },
+            {
+                name: '联盟广告',
+                type: 'line',
+                // stack: '总量',
+                data: [220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name: '视频广告',
+                type: 'line',
+                // stack: '总量',
+                data: [150, 232, 201, 154, 190, 330, 410]
+            },
+            {
+                name: '直接访问',
+                type: 'line',
+                // stack: '总量',
+                data: [320, 332, 301, 334, 390, 330, 320]
+            },
+            {
+                name: '搜索引擎',
+                type: 'line',
+                // stack: '总量',
+                data: [820, 932, 901, 934, 1290, 1330, 1320]
+            }
+        ]
+    };
+    linechat.setOption(op1);
+
+</script>
+</html>

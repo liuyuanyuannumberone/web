@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>d3</title>
+  <script src="js/d3.v5.js"></script>
+  <!--  <script src="https://d3js.org/d3.v5.js"></script>-->
+</head>
+<body>
+<!--
+js图形库 基于canvas html svg
+-->
+<p>Vue</p>
+<p>React</p>
+<p>Agular</p>
+<button id="datum">datum</button>
+<button id="data">data</button>
+</body>
+<script>
+    const body = d3.select('body');
+    const p = body.selectAll('p');
+    function doDatum() {
+        p.datum('Framework');
+        p.text(function(d, i) {  //Framework-2
+            return `${d}-${i}`;
+        });
+    }
+    function doData() {
+        p.data(['Vue', 'React', 'Agular'])
+            .text(function(d, i) {
+                return `${d}-${i}`;
+            })
+    }
+    document.getElementById('datum').addEventListener('click', function(e) {
+        doDatum();
+    });
+    document.getElementById('data').addEventListener('click', function(e) {
+        doData();
+    });
+</script>
+</html>

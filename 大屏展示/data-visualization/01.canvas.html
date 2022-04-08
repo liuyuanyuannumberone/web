@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>canvas</title>
+</head>
+<body>
+<!--不是DOM元素，不占据高度-->
+<canvas width="800" height="800" id="canvas"></canvas>
+<script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+
+    ctx.fillStyle = "red";//填充色
+    ctx.fillRect(0, 0, 100, 50); //绘制矩形 坐标+大小
+
+
+    ctx.beginPath();
+    ctx.lineWidth = 1; // 线条宽度
+    ctx.strokeStyle = 'green'; // 线条填充色
+    ctx.moveTo(100, 100); // 起点坐标
+    ctx.lineTo(250, 75); // 中间点坐标
+    ctx.stroke(); // 绘制线段
+
+    ctx.beginPath();
+    ctx.moveTo(250, 75);
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = 'purple'; // 线条填充色
+    ctx.lineTo(300, 100); // 终点坐标
+    ctx.stroke(); // 绘制线段
+
+
+    ctx.beginPath();
+    ctx.lineWidth = 10; // 线条宽度
+    ctx.strokeStyle = 'red'; // 线条填充色
+    ctx.moveTo(600, 600); // 起点坐标
+    ctx.lineTo(300, 300); // 中间点坐标
+    ctx.stroke(); // 绘制线段
+
+
+    ctx.beginPath();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'green';
+    ctx.fillStyle = 'yellow';
+    ctx.arc(400, 400, 50, 0, 2 * Math.PI); // 绘制圆形
+    ctx.stroke();
+    ctx.fill();
+
+</script>
+</body>
+</html>

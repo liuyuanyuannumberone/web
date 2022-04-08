@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+<head>
+    <meta charset="utf-8">
+    <script src=../../echart-demo/js/map/echarts.min.js></script>
+    <script src="../../echart-demo/js/map/china.js"></script>
+</head>
+<body style="height:100%;">
+<div id="main" style="width:100%;height:100%;"></div>
+<script>
+    var mydata = [
+        {name: '北京', value: [116.405285, 39.904989, Math.round(Math.random()*1)]},
+        {name: '天津', value: [117.190182, 39.125596, Math.round(Math.random()*1)]},
+        {name: '上海', value: [121.472644, 31.231706, Math.round(Math.random()*1)]},
+        {name: '重庆', value: [106.504962, 29.533155, Math.round(Math.random()*1)]},
+        {name: '河北', value: [114.502461, 38.045474, Math.round(Math.random()*1)]},
+        {name: '河南', value: [113.665412, 34.757975, Math.round(Math.random()*1)]},
+        {name: '云南', value: [102.712251, 25.040609, Math.round(Math.random()*1)]},
+        {name: '辽宁', value: [123.429096, 41.796767, Math.round(Math.random()*1)]},
+        {name: '黑龙江', value: [126.642464, 45.756967, Math.round(Math.random()*1)]},
+        {name: '湖南', value: [112.982279, 28.19409, Math.round(Math.random()*1)]},
+        {name: '安徽', value: [117.283042, 31.86119, Math.round(Math.random()*1)]},
+        {name: '山东', value: [117.000923, 36.675807, Math.round(Math.random()*1)]},
+        {name: '新疆', value: [87.617733, 43.792818, Math.round(Math.random()*1)]},
+        {name: '江苏', value: [118.767413, 32.041544, Math.round(Math.random()*1)]},
+        {name: '浙江', value: [120.153576, 30.287459, Math.round(Math.random()*1)]},
+        {name: '江西', value: [115.892151, 28.676493, Math.round(Math.random()*1)]},
+        {name: '湖北', value: [114.298572, 30.584355, Math.round(Math.random()*1)]},
+        {name: '广西', value: [108.320004, 22.82402, Math.round(Math.random()*1)]},
+        {name: '甘肃', value: [103.823557, 36.058039, Math.round(Math.random()*1)]},
+        {name: '山西', value: [112.549248, 37.857014, Math.round(Math.random()*1)]},
+        {name: '内蒙古', value: [111.670801, 40.818311, Math.round(Math.random()*1)]},
+        {name: '陕西', value: [108.948024, 34.263161, Math.round(Math.random()*1)]},
+        {name: '吉林', value: [125.3245, 43.886841, Math.round(Math.random()*1)]},
+        {name: '福建', value: [119.306239, 26.075302, Math.round(Math.random()*1)]},
+        {name: '贵州', value: [106.713478, 26.578343, Math.round(Math.random()*1)]},
+        {name: '广东', value: [113.280637, 23.125178, Math.round(Math.random()*1)]},
+        {name: '青海', value: [101.778916, 36.623178, Math.round(Math.random()*1)]},
+        {name: '西藏', value: [91.132212, 29.660361, Math.round(Math.random()*1)]},
+        {name: '四川', value: [104.065735, 30.659462, Math.round(Math.random()*1)]},
+        {name: '宁夏', value: [106.278179, 38.46637, Math.round(Math.random()*1)]},
+        {name: '海南', value: [110.33119, 20.031971, Math.round(Math.random()*1)]},
+        {name: '台湾', value: [121.509062, 25.044332, Math.round(Math.random()*1)]},
+        {name: '香港', value: [114.173355, 22.320048, Math.round(Math.random()*1)]},
+        {name: '澳门', value: [113.54909, 22.198951, Math.round(Math.random()*1)]}
+    ];
+
+    var option = {
+        backgroundColor: '#FFFFFF',
+        title: {
+            text: '目标动向预测',
+            subtext: '',
+            x: 'center',
+            textStyle: {
+                color: 'black'
+            }
+        },
+        tooltip: {
+            enterable: true,// 允许提示框被点击
+            triggerOn: "click",
+            formatter: function (params) {
+                let value = params.data.value;
+                let a = '<br> <a href="" style="color: #8344ED; text-decoration: none;">查看详情</a>';
+                return params.name + ': ' + value[2] + a;
+            }
+        },
+     /*   visualMap: {
+            min: 0,
+            max: 1000,
+            left: 26,
+            bottom: 40,
+            showLabel: !0,
+            text: ["高", "低"],
+            pieces: [{
+                gt: 100,
+                label: "> 100 次",
+                color: "#ff5428"
+                // color: "#bd430a"
+            }, {
+                gte: 10,
+                lte: 100,
+                label: "10 - 100 次",
+                color: "#e08150"
+                // color: "#ff5428"
+
+            }, {
+                gte: 1,
+                lt: 10,
+                label: "1 - 9 次",
+                color: "#f2ddd2"
+            }, {
+                gt: 0,
+                lt: 1,
+                label: "0次",
+                color: "#fff"
+            }],
+            show: !0
+        },*/
+        series: [{
+            name: '信息展示',
+            map: 'china',
+            type: "map",
+            roam: true,//缩放
+            showLegendSymbol: true,
+            label: {
+                normal: {
+                    // show: true,
+                    fontSize: 10,
+                    position: 'right',  //显示地图省份名字
+                },
+                emphasis: {
+                    show: true,
+                    color:'#fff'   //鼠标选中字体颜色
+                },
+            },
+            itemStyle: {
+                normal: {
+                    areaColor: '#fad8bf',//背景颜色
+                },
+                emphasis: {//鼠标移入高亮显颜色
+                    areaColor: '#8344ed'
+                }
+            },
+            data: mydata,
+        }]
+    };
+    var chart = echarts.init(document.getElementById('main'));
+    chart.setOption(option);
+</script>
+</body>
+</html>

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="../echart-demo/js/map/echarts.min.js"></script>
+  <script src="../echart-demo/js/map/china.js"></script>
+</head>
+<style>
+  /*#chart_box {*/
+  /*  width: 95%;*/
+  /*  height: 300px;*/
+  /*  margin: 0 auto;*/
+  /*}*/
+</style>
+<body>
+<div style="background-color: yellowgreen;height: 100px;"></div>
+<div id="chart_box" style="position:relative;overflow:hidden">
+  <div id="main" style="width: 100%;height:calc(100vh - 100px);"></div>
+</div>
+</body>
+
+<script>
+    /*https://www.cnblogs.com/yaomengli/p/8963575.html*/
+    let planePath = 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z';
+    let city = [
+        '北京市',
+        '天津市',
+        '石家庄市',
+        '唐山市',
+        '秦皇岛市',
+        '邯郸市',
+        '邢台市',
+        '保定市',
+        '张家口市',
+        '承德市',
+        '沧州市',
+        '廊坊市',
+        '衡水市',
+        '省直辖县',
+        '太原市',
+        '大同市',
+        '阳泉市',
+        '长治市',
+        '晋城市',
+        '朔州市',
+        '晋中市',
+        '运城市',
+        '忻州市',
+        '临汾市',
+        '吕梁市',
+        '呼和浩特市',
+        '包头市',
+        '乌海市',
+        '赤峰市',
+        '通辽市',
+        '鄂尔多斯市',
+        '呼伦贝尔市',
+        '巴彦淖尔市',
+        '乌兰察布市',
+        '兴安盟',
+        '锡林郭勒盟',
+        '阿拉善盟',
+        '沈阳市',
+        '大连市',
+        '鞍山市',
+        '抚顺市',
+        '本溪市',
+        '丹东市',
+        '锦州市',
+        '营口市',
+        '阜新市',
+        '辽阳市',
+        '盘锦市',
+        '铁岭市',
+        '朝阳市',
+        '葫芦岛市',
+        '长春市',
+        '吉林市',
+        '四平市',
+        '辽源市',
+        '通化市',
+        '白山市',
+        '松原市',
+        '白城市',
+        '延边朝鲜族自治州',
+        '哈尔滨市',
+        '齐齐哈尔市',
+        '鸡西市',
+        '鹤岗市',
+        '双鸭山市',
+        '大庆市',
+        '伊春市',
+        '佳木斯市',
+        '七台河市',
+        '牡丹江市',
+        '黑河市',
+        '绥化市',
+        '大兴安岭地区',
+        '上海市',
+        '南京市',
+        '无锡市',
+        '徐州市',
+        '常州市',
+        '苏州市',
+        '南通市',
+        '连云港市',
+        '淮安市',
+        '盐城市',
+        '扬州市',
+        '镇江市',
+        '泰州市',
+        '宿迁市',
+        '杭州市',
+        '宁波市',
+        '温州市',
+        '嘉兴市',
+        '湖州市',
+        '绍兴市',
+        '金华市',
+        '衢州市',
+        '舟山市',
+        '台州市',
+        '丽水市',
+        '合肥市',
+        '芜湖市',
+        '蚌埠市',
+        '淮南市',
+        '马鞍山市',
+        '淮北市',
+        '铜陵市',
+        '安庆市',
+        '黄山市',
+        '滁州市',
+        '阜阳市',
+        '宿州市',
+        '六安市',
+        '亳州市',
+        '池州市',
+        '宣城市',
+        '福州市',
+        '厦门市',
+        '莆田市',
+        '三明市',
+        '泉州市',
+        '漳州市',
+        '南平市',
+        '龙岩市',
+        '宁德市',
+        '南昌市',
+        '景德镇市',
+        '萍乡市',
+        '九江市',
+        '新余市',
+        '鹰潭市',
+        '赣州市',
+        '吉安市',
+        '宜春市',
+        '抚州市',
+        '上饶市',
+        '济南市',
+        '青岛市',
+        '淄博市',
+        '枣庄市',
+        '东营市',
+        '烟台市',
+        '潍坊市',
+        '济宁市',
+        '泰安市',
+        '威海市',
+        '日照市',
+        '莱芜市',
+        '临沂市',
+        '德州市',
+        '聊城市',
+        '滨州市',
+        '菏泽市',
+        '郑州市',
+        '开封市',
+        '洛阳市',
+        '平顶山市',
+        '安阳市',
+        '鹤壁市',
+        '新乡市',
+        '焦作市',
+        '濮阳市',
+        '许昌市',
+        '漯河市',
+        '三门峡市',
+        '南阳市',
+        '商丘市',
+        '信阳市',
+        '周口市',
+        '驻马店市',
+        '省直辖县',
+        '武汉市',
+        '黄石市',
+        '十堰市',
+        '宜昌市',
+        '襄阳市',
+        '鄂州市',
+        '荆门市',
+        '孝感市',
+        '荆州市',
+        '黄冈市',
+        '咸宁市',
+        '随州市',
+        '恩施土家族苗族自治州',
+        '省直辖县',
+        '长沙市',
+        '株洲市',
+        '湘潭市',
+        '衡阳市',
+        '邵阳市',
+        '岳阳市',
+        '常德市',
+        '张家界市',
+        '益阳市',
+        '郴州市',
+        '永州市',
+        '怀化市',
+        '娄底市',
+        '湘西土家族苗族自治州',
+        '广州市',
+        '韶关市',
+        '深圳市',
+        '珠海市',
+        '汕头市',
+        '佛山市',
+        '江门市',
+        '湛江市',
+        '茂名市',
+        '肇庆市',
+        '惠州市',
+        '梅州市',
+        '汕尾市',
+        '河源市',
+        '阳江市',
+        '清远市',
+        '东莞市',
+        '中山市',
+        '潮州市',
+        '揭阳市',
+        '云浮市',
+        '南宁市',
+        '柳州市',
+        '桂林市',
+        '梧州市',
+        '北海市',
+        '防城港市',
+        '钦州市',
+        '贵港市',
+        '玉林市',
+        '百色市',
+        '贺州市',
+        '河池市',
+        '来宾市',
+        '崇左市',
+        '海口市',
+        '三亚市',
+        '三沙市',
+        '儋州市',
+        '省直辖县',
+        '重庆市',
+        '成都市',
+        '自贡市',
+        '攀枝花市',
+        '泸州市',
+        '德阳市',
+        '绵阳市',
+        '广元市',
+        '遂宁市',
+        '内江市',
+        '乐山市',
+        '南充市',
+        '眉山市',
+        '宜宾市',
+        '广安市',
+        '达州市',
+        '雅安市',
+        '巴中市',
+        '资阳市',
+        '阿坝藏族羌族自治州',
+        '甘孜藏族自治州',
+        '凉山彝族自治州',
+        '贵阳市',
+        '六盘水市',
+        '遵义市',
+        '安顺市',
+        '毕节市',
+        '铜仁市',
+        '黔西南布依族苗族自治州',
+        '黔东南苗族侗族自治州',
+        '黔南布依族苗族自治州',
+        '昆明市',
+        '曲靖市',
+        '玉溪市',
+        '保山市',
+        '昭通市',
+        '丽江市',
+        '普洱市',
+        '临沧市',
+        '楚雄彝族自治州',
+        '红河哈尼族彝族自治州',
+        '文山壮族苗族自治州',
+        '西双版纳傣族自治州',
+        '大理白族自治州',
+        '德宏傣族景颇族自治州',
+        '怒江傈僳族自治州',
+        '迪庆藏族自治州',
+        '拉萨市',
+        '日喀则市',
+        '昌都市',
+        '林芝市',
+        '山南市',
+        '那曲市',
+        '阿里地区',
+        '西安市',
+        '铜川市',
+        '宝鸡市',
+        '咸阳市',
+        '渭南市',
+        '延安市',
+        '汉中市',
+        '榆林市',
+        '安康市',
+        '商洛市',
+        '兰州市',
+        '嘉峪关市',
+        '金昌市',
+        '白银市',
+        '天水市',
+        '武威市',
+        '张掖市',
+        '平凉市',
+        '酒泉市',
+        '庆阳市',
+        '定西市',
+        '陇南市',
+        '临夏回族自治州',
+        '甘南藏族自治州',
+        '西宁市',
+        '海东市',
+        '海北藏族自治州',
+        '黄南藏族自治州',
+        '海南藏族自治州',
+        '果洛藏族自治州',
+        '玉树藏族自治州',
+        '海西蒙古族藏族自治州',
+        '银川市',
+        '石嘴山市',
+        '吴忠市',
+        '固原市',
+        '中卫市',
+        '乌鲁木齐市',
+        '克拉玛依市',
+        '吐鲁番市',
+        '哈密市',
+        '昌吉回族自治州',
+        '博尔塔拉蒙古自治州',
+        '巴音郭楞蒙古自治州',
+        '阿克苏地区',
+        '克孜勒苏柯尔克孜自治州',
+        '喀什地区',
+        '和田地区',
+        '伊犁哈萨克自治州',
+        '塔城地区',
+        '阿勒泰地区',
+        '自治区直辖县级行政区划',
+        '台北市',
+        '高雄市',
+        '台南市',
+        '台中市',
+        '金门县',
+        '南投县',
+        '基隆市',
+        '新竹市',
+        '嘉义市',
+        '新北市',
+        '宜兰县',
+        '新竹县',
+        '桃园县',
+        '苗栗县',
+        '彰化县',
+        '嘉义县',
+        '云林县',
+        '屏东县',
+        '台东县',
+        '花莲县',
+        '澎湖县',
+        '连江县',
+        '香港岛',
+        '九龙',
+        '新界',
+        '澳门半岛',
+        '离岛']; //category 0 value:100
+    let randomCity = [];
+    let dataRel = [];
+    let dataLink = [];
+    let num = 10;
+    let size = [parseInt(1200 / num), parseInt(1000 / num), parseInt(800 / num)];
+    let setIndex = [];
+
+    function formatDate(date) {
+        if (!(date instanceof Date)) {
+            console.error('date不是日期对象');
+            return;
+        }
+        let year = date.getFullYear(),
+            month = date.getMonth() + 1,
+            day = date.getDate(),
+            hour = date.getHours(),
+            minute = date.getMinutes(),
+            second = date.getSeconds();
+        month = month < 10 ? '0' + month : month;
+        day = day < 10 ? '0' + day : day;
+        hour = hour < 10 ? '0' + hour : hour;
+        minute = minute < 10 ? '0' + minute : minute;
+        second = second < 10 ? '0' + second : second;
+        return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+    }
+
+    for (let i = 0; i < num * 3; i += 3) {
+        let index = Math.floor(Math.random() * (city.length));
+        while (setIndex.findIndex(item => item === index) !== -1) {
+            index = Math.floor(Math.random() * (city.length));
+        }
+        setIndex.push(index);
+        randomCity.push(city[index]);
+        dataRel.push({
+                name: (city[index]),
+                id: i,
+                number: i,
+                draggable: true,
+                category: 0,
+                value: size[0],
+                parentId: i,
+                level: 1,
+                type: 0,
+                startTime: formatDate(new Date()),
+                endStartTime: formatDate(new Date()),
+            },
+            {
+                name: "住宿",
+                id: i + 1,
+                number: i + 1,
+                category: 1,
+                value: size[1],
+                parentId: i,
+                level: 2,
+                type: 1,
+                // draggable: true,
+            }, {
+                name: "金融",
+                id: i + 2,
+                number: i + 2,
+                category: 2,
+                value: size[1],
+                parentId: i,
+                level: 2,
+                type: 2,
+                // draggable: true,
+            },
+        );
+    }
+    for (let i = 0; i < randomCity.length; i++) {
+        let index = dataRel.findIndex(item => (item.level === 1 && item.name === randomCity[i]));
+        dataLink.push({
+                source: dataRel[index].number,
+                target: dataRel[index + 1].number,
+                value: '',
+            },
+            {
+                source: dataRel[index].number,
+                target: dataRel[index + 2].number,
+                value: '',
+            },
+        );
+
+        if (i !== randomCity.length - 1) dataLink.push({
+            source: dataRel[index].number,
+            target: dataRel[index + 3].number,
+            value: '',
+        })
+    }
+    for (let i = 0; i < randomCity.length * 2; i++) {
+        dataRel.push({
+            name: '住宿行为',
+            id: dataRel.length,
+            number: dataRel.length,
+            category: 3,
+            value: size[2],
+            type: 3,
+            level: 3,
+            startTime: formatDate(new Date()),
+        }, {
+            name: '金融行为',
+            id: dataRel.length + 1,
+            number: dataRel.length + 1,
+            category: 4,
+            value: size[2],
+            level: 3,
+            type: 4,
+            startTime: formatDate(new Date()),
+        })
+    }
+    let typeOne = dataRel.filter(item => item.type === 1);
+    let typeTwo = dataRel.filter(item => item.type === 2);
+    let typeThree = dataRel.filter(item => item.type === 3);
+    let typeFour = dataRel.filter(item => item.type === 4);
+    for (let i = 0; i < typeOne.length; i++) {
+        dataLink.push({
+                source: typeOne[i].number,
+                target: typeThree[i * 2].number,
+                value: '',
+            },
+            {
+                source: typeOne[i].number,
+                target: typeThree[i * 2 + 1].number,
+                value: '',
+            }, {
+                source: typeTwo[i].number,
+                target: typeFour[i * 2].number,
+                value: '',
+            },
+            {
+                source: typeTwo[i].number,
+                target: typeFour[i * 2 + 1].number,
+                value: '',
+            },
+        );
+    }
+    let categories = [
+        {
+            name: '位置',
+            itemStyle: { // 可配置颜色
+                normal: {
+                    color: "#8344ed",
+                }
+            }
+        }, {
+            name: '住宿',
+            itemStyle: {
+                normal: {
+                    color: "#c23531",
+                }
+            }
+
+        }, {
+            name: '金融',
+            itemStyle: {
+                normal: {
+                    color: "#3fa7dc",
+                }
+            }
+        }, {
+            name: '住宿详情',
+            itemStyle: {
+                normal: {
+                    color: "#ff891a",
+                }
+            }
+        },
+        {
+            name: '金融详情',
+            itemStyle: {
+                normal: {
+                    color: "#06e8d7",
+                }
+            }
+        }
+    ];
+    let toolbox = {//工具栏组件
+        show: true,
+        orient: "vertica",
+        // center: "center",
+        x: "right",
+        y: "bottom",
+        feature: {
+            // saveAsImage: {show: true},//保存图片
+            restore: {show: true},//还原
+
+        }
+    };
+    let option = {
+        backgroundColor: "#fff",
+        title: {
+            text: '09229291919191',
+            left: 'center',
+            subtext: '2010-04-09至2020-09-02',
+        },
+        itemStyle: {
+            normal: {
+                color: '#000',
+            },
+            // shadowBlur: 4,
+        },
+        tooltip: { //悬浮显示
+            enterable: true,//鼠标是否可进入提示框浮层中
+            formatter: function (node) { // 区分连线和节点，节点上额外显示其他数字
+                // console.log(node.data);
+                let nodeData = node.data;
+                if (nodeData.level === 1) {
+                    //位置
+                    return `
+                       到达时间：${nodeData.startTime}<br>
+                       出发时间：${nodeData.startTime}<br>
+                       交通工具：飞机<br>
+                       应用平台：携程<br>
+                       `
+                } else if (nodeData.level === 2 && nodeData.type === 1) {
+                    //住宿
+                    return `
+                       住宿：2晚<br>
+                       `
+                } else if (nodeData.level === 2 && nodeData.type === 2) {
+                    //金融
+                    return `
+                       交易次数：3次<br>
+                       `
+                } else if (nodeData.level === 3 && nodeData.type === 3) {
+                    //住宿行为
+                    return `
+                       入住时间：${nodeData.startTime}<br>
+                       酒店名：全季酒店<br>
+                       酒店地址：南京市鼓楼区24号<br>
+                       订购平台：美团<br>
+                       座位号：003<br>
+                       人数：10<br>
+                       姓名：王五<br>
+                       `
+                } else if (nodeData.level === 3 && nodeData.type === 4) {
+                    //金融行为
+                    return `
+                       银行名：招商银行<br>
+                       卡号：9662 4566 3445 6788<br>
+                       对方银行：南京银行<br>
+                       对方姓名:李四<br>
+                       对方卡号：9887 4563 3211 5611<br>
+                       金额：￥100.00<br>
+                       发生时间：${nodeData.startTime}<br>
+                       `
+                }
+            },
+        },
+        animationDurationUpdate: 1500,
+        animationEasingUpdate: 'quinticInOut',
+        legend: {
+            show: true,
+            icon: 'circle',
+            orient: "vertica",
+            x: "right",
+            y: "top",
+            // borderWidth: 4,
+            data: ["住宿", "金融"],
+        },
+        toolbox: toolbox,
+        series: [
+            {
+                type: 'graph',
+                layout: 'force',
+                // effect: {
+                //     show: true,
+                //     period: 6,
+                //     trailLength: 0,
+                //     symbol: planePath,
+                //     symbolSize: 15
+                // },
+                symbolSize: function (size) {
+                    return size;
+                },
+                edgeSymbol: ['circle', 'arrow'],
+                edgeSymbolSize: [4, 10],
+                edgeLabel: {
+                    normal: {
+                        show: true,
+                        textStyle: {
+                            fontSize: 10
+                        },
+                        formatter: "{c}"
+                    }
+                },
+                force: {
+                    repulsion: 1500,
+                    edgeLength: [50, 100],
+                    gravity: 0.1,//节点受到的向中心的引力因子。该值越大节点越往中心点靠拢
+                    // 值最大的边长度会趋向于 10，值最小的边长度会趋向于 50
+                    layoutAnimation: true, //布局动画
+                },
+                focusNodeAdjacency: true,///是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接
+                roam: true,
+                categories: categories,
+                label: {
+                    normal: {
+                        show: true,
+                        textStyle: {
+                            fontSize: 12
+                        },
+                    },
+                },
+
+                lineStyle: { //关系边的公用线条样式。
+                    normal: {
+                        opacity: 0.9,
+                        width: 1,
+                        // curveness: 0.3,
+                        // type: 'solid', //线的类型 'solid'（实线）'dashed'（虚线）'dotted'（点线）
+                        // color : 'rgba(255,0,255,0.4)',
+                        color: '#53B5EA',
+                        type: 'dashed',
+                    }
+                },
+                data: dataRel,
+                links: dataLink,
+            }
+        ],
+
+    };
+    let chart = echarts.init(document.getElementById('main'));
+    chart.setOption(option);
+    chart.on('legendselectchanged', function (obj) {
+        const {selected} = obj;
+        selected["金融详情"] = selected["金融"];
+        selected["住宿详情"] = selected["住宿"];
+        option.legend.selected = selected;
+        chart.setOption(option);
+    });
+
+    // function chartssize(container, charts) {
+    //     function getStyle(el, name) {
+    //         if (window.getComputedStyle) {
+    //             return window.getComputedStyle(el, null);
+    //         } else {
+    //             return el.currentStyle;
+    //         }
+    //     }
+    //     var wi = getStyle(container, 'width').width;
+    //     var hi = getStyle(container, 'height').height;
+    //     console.log(wi);
+    //     console.log(hi);
+    //     charts.style.width = wi;
+    //     charts.style.height = hi;
+    // }
+    // window.onresize = function () {
+    //     chartssize(document.getElementById('chart_box'), document.getElementById('main'))
+    // }
+
+</script>
+</html>
