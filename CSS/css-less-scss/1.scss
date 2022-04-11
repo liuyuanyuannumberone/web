@@ -1,8 +1,41 @@
-$width:500px;
-$height:200px;
-$bgColor:red;
-.container{
+@import 'basic';
+//全局变量就是定义在元素外面的变量
+$width: 500px; //普通变量
+$bgColor: #eee;
+$basic-border: 5px solid black;
+.container {
     width: $width;
-    height: $height;
+    height: 500px;
+    border: $basic-border;
+    @include rounded-corners;
     background-color: $bgColor;
+    .content {
+        $width: 200px; //局部变量定义在元素内部的变量
+        width: $width;
+        height: $width;
+        background-color: $small-bgColor;
+        //&代表.container .content（从{}开始到&）!!!!!!!!
+        //用法1.scss解嵌套规则采用的是后代选择器；&可以被父元素直接替换
+        &:hover {
+            color: red;
+            font-size: 20px;
+        }
+        //用法2.父选择器之前添加选择器： body.ie  .container .content .view a
+        .view a {
+            body.ie & {
+                color: #f98e8e;
+            }
+        }
+    }
+    //群组选择器
+    .role,
+    .manger {
+        .role1,
+        .role2 {
+            color: purple;
+        }
+        .role1 ~ .role2 {
+            font-size: 20px;
+        }
+    }
 }
