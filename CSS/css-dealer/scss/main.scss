@@ -26,7 +26,7 @@ $basic-border: 5px solid $bgColor;
             body.ie & {
                 color: #f98e8e;
             }
-        //用法3 必须作为选择器的第一个字符，其后可以跟随后缀生成复合的选择器
+            //用法3 必须作为选择器的第一个字符，其后可以跟随后缀生成复合的选择器
             // .container .content .view a-test
             // &-test{
             //     color: #f98e8e;
