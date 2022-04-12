@@ -1,0 +1,23 @@
+$theme: (
+    default: (
+        background-color: red,
+        color: blue,
+    ),
+    light: (
+        background-color: green,
+        color: white,
+    ),
+    dark: (
+        background-color: blue,
+        color: red,
+    ),
+);
+
+@mixin themeify($bgColor,$color) {
+    @each $theme-name, $theme-map in $theme {
+        html[data-theme='#{$theme-name}'] & {
+            #{$bgColor}: map-get($theme-map, $bgColor);
+            #{$color}: map-get($theme-map, $color);
+        }
+    }
+}

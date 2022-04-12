@@ -1,0 +1,27 @@
+.container {
+    .other {
+        //插值语句
+        margin: 10px;
+        width: 200px;
+        height: 200px;
+        background-color: aliceblue;
+        border: 5px solid black;
+        span:first-child {
+            font-size: 12px+ 8px;
+        }
+        span:nth-of-type(n + 2) {
+            font-size: 30px;
+        }
+        //插值语句 可以避免 Sass 运行运算表达式，直接编译 CSS。
+        $className: dv;
+        $fontSize: font-size;
+        $font-size: 30px;
+        $line-height: 1;
+        .#{$className} {
+            height: 100px;
+            width: 100px;
+            border: 2px dashed red;
+            #{$fontSize}: #{$font-size}/#{$line-height};
+        }
+    }
+}

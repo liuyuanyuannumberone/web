@@ -1,0 +1,17 @@
+.controlTheme {
+  width: 500px;
+  height: 400px;
+  font-size: 18px;
+}
+html[data-theme='default'] .controlTheme {
+  background-color: red;
+  color: blue;
+}
+html[data-theme='light'] .controlTheme {
+  background-color: green;
+  color: white;
+}
+html[data-theme='dark'] .controlTheme {
+  background-color: blue;
+  color: red;
+}

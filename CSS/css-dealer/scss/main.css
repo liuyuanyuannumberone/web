@@ -4,6 +4,37 @@
   padding: 0;
 }
 
+.container .ulname {
+  border: 4px solid purple;
+  margin: 0 10px;
+  border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  font-size: 20px;
+  list-style: none;
+}
+.container .ulname li + li {
+  color: blue;
+}
+
+.container .extend1, .container .extend2 {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  background-color: white;
+}
+.container .extend1 span, .container .extend2 span {
+  color: #f98e8e;
+}
+.container .extend1 h2, .container .extend2 h2 {
+  color: blue;
+}
+.container .extend2 {
+  background-color: beige;
+}
+
 /*
 支持 6 种主要的数据类型：
 
@@ -15,25 +46,6 @@
 数组 (list)，用空格或逗号作分隔符，1.5em 1em 0 2em, Helvetica, Arial, sans-serif
 maps, 相当于 JavaScript 的 object，(key1: value1, key2: value2)
 */
-.container .other {
-  margin: 10px;
-  width: 200px;
-  height: 200px;
-  background-color: aliceblue;
-  border: 5px solid black;
-}
-.container .other span:first-child {
-  font-size: 20px;
-}
-.container .other span:nth-of-type(n + 2) {
-  font-size: 30px;
-}
-.container .other .dv {
-  height: 100px;
-  width: 100px;
-  border: 2px dashed red;
-  font-size: 30px/1;
-}
 .container .control {
   margin-top: 10px;
   width: 100px;
@@ -69,6 +81,53 @@ maps, 相当于 JavaScript 的 object，(key1: value1, key2: value2)
   font-size: 30px;
   color: red;
 }
+.container .mapClass {
+  width: 200px;
+  height: 100px;
+  border: 1px solod black;
+}
+.container .mapClass .icon1:before {
+  display: inline-block;
+  content: 'before';
+  background-color: red;
+}
+.container .mapClass .icon2:before {
+  display: inline-block;
+  content: 'before';
+  background-color: green;
+}
+.container .mapClass .icon3:before {
+  display: inline-block;
+  content: 'before';
+  background-color: purple;
+}
+.container .fun {
+  width: 100px;
+  height: 100px;
+  background-color: antiquewhite;
+  border: 1px solid red;
+  margin: 10px;
+}
+
+.container .other {
+  margin: 10px;
+  width: 200px;
+  height: 200px;
+  background-color: aliceblue;
+  border: 5px solid black;
+}
+.container .other span:first-child {
+  font-size: 20px;
+}
+.container .other span:nth-of-type(n + 2) {
+  font-size: 30px;
+}
+.container .other .dv {
+  height: 100px;
+  width: 100px;
+  border: 2px dashed red;
+  font-size: 30px/1;
+}
 
 .container {
   height: 1500px;
@@ -97,33 +156,4 @@ body.ie .container .content .view a {
 .container .role .role1 ~ .role2,
 .container .manger .role1 ~ .role2 {
   font-size: 20px;
-}
-.container .ulname {
-  border: 4px solid purple;
-  margin: 0 10px;
-  border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  font-size: 20px;
-  list-style: none;
-}
-.container .ulname li + li {
-  color: red;
-}
-.container .extend1, .container .extend2 {
-  margin-top: 10px;
-  margin-left: 10px;
-  width: 100px;
-  height: 100px;
-  border: 1px solid black;
-  background-color: white;
-}
-.container .extend1 span, .container .extend2 span {
-  color: #f98e8e;
-}
-.container .extend1 h2, .container .extend2 h2 {
-  color: blue;
-}
-.container .extend2 {
-  background-color: beige;
 }

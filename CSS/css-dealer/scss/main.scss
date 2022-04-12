@@ -1,7 +1,10 @@
-@import 'basic'; //导入scss
-@import 'other';
+@import 'mixin'; //导入scss
+@import 'extend';
+@import 'directive';
+@import 'insert';
 
 $width: 800px; //全局变量
+$bgColor: green !default; //默认变量
 $bgColor: #eee; //覆盖default
 $basic-border: 5px solid $bgColor;
 .container {
@@ -14,7 +17,7 @@ $basic-border: 5px solid $bgColor;
     .content {
         height: 200px;
         background-color: rgb(24, 241, 169);
-        $width: 200px; //局部变量
+        $width: 200px; //局部变量 可以使用!global将局部变量提升为全局变量
         width: $width;
         //用法1.scss解嵌套规则采用的是后代选择器；&可以被父元素直接替换
         &:hover {
@@ -44,35 +47,5 @@ $basic-border: 5px solid $bgColor;
         .role1 ~ .role2 {
             font-size: 20px;
         }
-    }
-
-    //混合器
-    .ulname {
-        border: 4px solid purple;
-        margin: 0 10px;
-        @include rounded-corners;
-        // @include ulName(20px,red)
-        // @include ulName($fontSize: 20px, $color: green);
-        @include ulName;
-    }
-
-    .extend1 {
-        margin-top: 10px;
-        margin-left: 10px;
-        width: 100px;
-        height: 100px;
-        border: 1px solid black;
-        background-color: white;
-        span {
-            color: #f98e8e;
-        }
-        h2 {
-            color: blue;
-        }
-    }
-    //继承 一个选择器可以继承为另一个选择器定义的所有样式
-    .extend2 {
-        @extend .extend1;
-        background-color: beige;
     }
 }

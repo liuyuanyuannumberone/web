@@ -11,30 +11,6 @@ maps, 相当于 JavaScript 的 object，(key1: value1, key2: value2)
 */
 
 .container {
-    .other {
-        margin: 10px;
-        width: 200px;
-        height: 200px;
-        background-color: aliceblue;
-        border: 5px solid black;
-        span:first-child {
-            font-size: 12px+ 8px;
-        }
-        span:nth-of-type(n + 2) {
-            font-size: 30px;
-        }
-        //插值语句 可以避免 Sass 运行运算表达式，直接编译 CSS。
-        $className: dv;
-        $fontSize: font-size;
-        $font-size: 30px;
-        $line-height: 1;
-        .#{$className} {
-            height: 100px;
-            width: 100px;
-            border: 2px dashed red;
-            #{$fontSize}: #{$font-size}/#{$line-height};
-        }
-    }
     // 控制指令 if for(through [start,end];to [start,end) 而且start,end必须是N+;)
     //each  while
     .control {
@@ -75,10 +51,58 @@ maps, 相当于 JavaScript 的 object，(key1: value1, key2: value2)
         }
 
         .eachClass {
+            //第一种  遍历数组
+            // @each $animal in puma, sea-slug, egret, salamander {
+            //     .#{$animal}-icon {
+            //       background-image: url('/images/#{$animal}.png');
+            //     }
+            //   }
+
+            // 第二种 遍历多维数组
+            // @each $animal, $color, $cursor in (puma, black, default), (sea-slug, blue, pointer),
+            //     (egret, white, move)
+            // {
+            //     .#{$animal}-icon {
+            //         background-image: url('/images/#{$animal}.png');
+            //         border: 2px solid $color;
+            //         cursor: $cursor;
+            //     }
+            // }
             @each $name in span, div {
                 font-size: 30px;
                 color: red;
             }
         }
+    }
+
+    //第三种遍历map
+    .mapClass {
+        width: 200px;
+        height: 100px;
+        border: 1px solod black;
+        $icons: (
+            icon1: red,
+            icon2: green,
+            icon3: purple,
+        );
+        @each $name, $color in $icons {
+            .#{$name}:before {
+                display: inline-block;
+                content: 'before';
+                background-color: #{$color};
+            }
+        }
+    }
+
+    //function
+    @function funWidth($width) {
+        @return $width;
+    }
+    .fun {
+        width: funWidth(100px);
+        height: 100px;
+        background-color: antiquewhite;
+        border: 1px solid red;
+        margin: 10px;
     }
 }

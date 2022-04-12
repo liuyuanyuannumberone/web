@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="default">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一键换肤</title>
+    <link rel="stylesheet" href="conver.css">
+</head>
+
+<body>
+    <div class="buttonGroup">
+        <button id="default">默认</button>
+        <button id="dark">深色主题</button>
+        <button id="light">浅色主题</button>
+    </div>
+    <div class="controlTheme">
+          测试
+    </div>
+</body>
+<script>
+    document.getElementById("default").addEventListener("click", function () {
+        window.document.documentElement.setAttribute("data-theme", "default")
+    });
+    document.getElementById("dark").addEventListener("click", function () {
+        window.document.documentElement.setAttribute("data-theme", "dark")
+    });
+    document.getElementById("light").addEventListener("click", function () {
+        window.document.documentElement.setAttribute("data-theme", "light")
+    });
+</script>
+
+
+</html>

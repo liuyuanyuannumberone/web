@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-$bgColor: green !default; //默认变量
+
 //混合器
 @mixin rounded-corners {
     -moz-border-radius: 2px;
@@ -17,5 +17,16 @@ $bgColor: green !default; //默认变量
     list-style: none;
     li + li {
         color: $color;
+    }
+}
+.container {
+    //混合器
+    .ulname {
+        border: 4px solid purple;
+        margin: 0 10px;
+        @include rounded-corners;
+        // @include ulName(20px,red)
+        // @include ulName($fontSize: 20px, $color: green);
+        @include ulName($color: blue); 
     }
 }
