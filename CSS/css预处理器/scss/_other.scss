@@ -1,0 +1,84 @@
+/*
+支持 6 种主要的数据类型：
+
+数字，1, 2, 13, 10px
+字符串，有引号字符串与无引号字符串，"foo", 'bar', baz
+颜色，blue, #04a3f9, rgba(255,0,0,0.5)
+布尔型，true, false
+空值，null
+数组 (list)，用空格或逗号作分隔符，1.5em 1em 0 2em, Helvetica, Arial, sans-serif
+maps, 相当于 JavaScript 的 object，(key1: value1, key2: value2)
+*/
+
+.container {
+    .other {
+        margin: 10px;
+        width: 200px;
+        height: 200px;
+        background-color: aliceblue;
+        border: 5px solid black;
+        span:first-child {
+            font-size: 12px+ 8px;
+        }
+        span:nth-of-type(n + 2) {
+            font-size: 30px;
+        }
+        //插值语句 可以避免 Sass 运行运算表达式，直接编译 CSS。
+        $className: dv;
+        $fontSize: font-size;
+        $font-size: 30px;
+        $line-height: 1;
+        .#{$className} {
+            height: 100px;
+            width: 100px;
+            border: 2px dashed red;
+            #{$fontSize}: #{$font-size}/#{$line-height};
+        }
+    }
+    // 控制指令 if for(through [start,end];to [start,end) 而且start,end必须是N+;)
+    //each  while
+    .control {
+        margin-top: 10px;
+        width: 100px;
+        background-color: aliceblue;
+        $type: 1;
+        .ifClass {
+            margin-bottom: 10px;
+            height: 100px;
+            border: 1px solid red;
+            > span {
+                @if $type==1 {
+                    color: red;
+                } @else if $type==2 {
+                    color: black;
+                }
+            }
+        }
+
+        .forClass {
+            height: 100px;
+            border: 1px solid red;
+            ul {
+                list-style: none;
+                @for $i from 1 through 3 {
+                    @if $i<3 {
+                        li:nth-child(#{$i}) {
+                            color: red;
+                        }
+                    } @else if $i==3 {
+                        li:nth-child(3) {
+                            font-size: 30px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .eachClass {
+            @each $name in span, div {
+                font-size: 30px;
+                color: red;
+            }
+        }
+    }
+}
