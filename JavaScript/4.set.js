@@ -1,9 +1,4 @@
-/*
-*
-* 它的成员不重复
-*
-* */
-
+//它的成员不重复
 let s = new Set();
 s.add('hello').add('world').add('hello');//自动过滤重复数据
 s.has('hello'); //有返回值true  没有返回false;
