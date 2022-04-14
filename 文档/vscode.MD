@@ -3,6 +3,17 @@ tooken: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
 Gist ID:b89be7758fb7b5d2a3363a1309d4787c
 Alt + Shift + U 完成配置上传，使用组合键 Alt + Shift + D即可下载配置
 
+使用自己的配置：
+1.当我们换另外一台电脑时，可以先在 VSCode 中安装 settings-sync 插件;
+2.安装完插件后，在插件里使用 GitHub 账号登录;
+3.登录之后，插件的界面上，会自动出现之前的同步记录。
+
+使用其他人的配置：
+如果我们想使用别人的配置，首先需要对方提供给你 gist。具体步骤如下：
+（1）安装插件 settings-sync。
+（2）使用快捷键 ctrl + Shift + P，在弹出的命令框中输入 sync，选择「下载配置」
+（3）在弹出的界面中，选择「Download Public Gist」，然后输入别人分享给你的 gist。注意，这一步不需要登录 GitHub 账号
+
 
 ctrl+k ctrl+s 快捷键查询
 ctrl+shift+p 显示命令面板

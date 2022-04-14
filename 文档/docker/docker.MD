@@ -1,7 +1,5 @@
 
-
 #                    docker的使用（02912019201920129102）
-
 ### 一、docker的安装和使用
 
 https://docs.docker.com/engine/install/centos/   参考官网安装

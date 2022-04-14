@@ -1,6 +1,7 @@
 /.idea/
 .vscode/
 /dist/
-*.git
+*.git/
+.history/
 node_modules/
 /.a_build_scss_less/
