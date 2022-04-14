@@ -20,7 +20,7 @@ let {
 [obj.size, obj.imgName] = [1000, '新名字'];
 // console.log(obj);
 
-//console.log(Object.entries(obj));
+// console.log(Object.entries(obj));
 for (let [k, v] of Object.entries(obj)) {
     console.log(`${k}:${v}`);
 }
