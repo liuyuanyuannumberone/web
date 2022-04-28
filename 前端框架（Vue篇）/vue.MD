@@ -1,18 +1,4 @@
-1.  npm view/info  模块(versions)     // 查看服务器模块所有版本   
-    npm list/ls    模块（--depth=0）  //查看本项目所有安装包
-    
-    npm i vue@next    //最新稳定版
-    npm i jquery@4.10.1  -D  //devDependencies 开发阶段的依赖  npm uninstall 模块 -D 同时删除package.json的记录
-    npm i jquery -S  //dependencies    生产阶段的依赖  npm uninstall 模块 -S 同时删除package.json的记录
 
-    npm update jquery  //在package.json里修改好指定版本号
-
-     ^：   >= "^3.1.3":3.x.x      大版本号相同
-     ~：   >= "~3.1.3":3.1.x      大小版本相同
-    无符号：固定版本号
-
-    package-lock.json? 
-    同一份package.json在不同的时间和环境下安装会产生不同的结果,因为你无法固定子依赖项的版本
   
     
 1.面试1：https://juejin.cn/post/6844903918753808398#comment
