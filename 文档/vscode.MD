@@ -19,7 +19,14 @@ ctrl+k ctrl+s 快捷键查询
 ctrl+shift+p 显示命令面板
 strl+',' 设置
 ctrl+shift+c 显示电脑终端
-ctrl+~ 显示vscode隐藏终端
+ctrl+j 显示隐藏终端
+
+在当前文件打开集成终端的方法：
+1.安装Code Runner插件;
+2.配置 Code Runner settings.json 添加以下两行配置:
+  "code-runner.runInTerminal": true,//// 使用 code runner 作为终端
+  "code-runner.fileDirectoryAsCwd": true,// // 每次默认打开终端的 path 在当前打开的文件目录下
+3.配置快捷键 ctrl+k ctrl+s 搜索openinterminal  设置快捷键 ctrl+~ 新建终端；
 
 
 alt+shift+down 复制一行
