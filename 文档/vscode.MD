@@ -22,8 +22,7 @@ ctrl+k ctrl+s 快捷键查询
 ctrl+shift+p 显示命令面板
 strl+',' 设置
 ctrl+shift+c 显示电脑终端
-ctrl+j 显示隐藏终端
-code . 新建窗口打开一个项目
+code . 新建窗口打开一个项目  和新建窗口不一样
 
 在当前文件打开集成终端的方法：
 1.安装Code Runner插件;
@@ -40,10 +39,14 @@ alt+shfit+光标 列选择
 shift+ctrl+e切换文件列表和右侧焦点,
 ctrl+K R 显示文件资源管理器（英文状态下使用）
 
+
 ctrl+shift+k 删除当前行  
 ctrl+G 定位到某行
-ctrl+p 项目查找文件  
-ctrl+F 当前文件查找 | ctrl+H 当前文件替换 | ctrl+shift+f 项目内查找|替换 关键词 
+ctrl+p 项目内查找文件名
+ctrl+shift+f 项目内查找/替换关键词
+ctrl+F/H 本文件内查找/替换关键词 
+
+
 ctrl+L 选中一行| 单机鼠标行号也可以选中一行
 fn+左右方向键 移动到行末/行首
 ctrl+enter 下方新增一行
