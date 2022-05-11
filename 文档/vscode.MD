@@ -3,10 +3,13 @@ tooken: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
 Gist ID:b89be7758fb7b5d2a3363a1309d4787c
 Alt + Shift + U 完成配置上传，使用组合键 Alt + Shift + D即可下载配置
 
+
 使用自己的配置：
 1.当我们换另外一台电脑时，可以先在 VSCode 中安装 settings-sync 插件;
 2.安装完插件后，在插件里使用 GitHub 账号登录;
 3.登录之后，插件的界面上，会自动出现之前的同步记录。
+4.setting.json git的配置会出现问题，要根据实际电脑git的安装路径来修改配置文件。
+
 
 使用其他人的配置：
 如果我们想使用别人的配置，首先需要对方提供给你 gist。具体步骤如下：
@@ -20,6 +23,7 @@ ctrl+shift+p 显示命令面板
 strl+',' 设置
 ctrl+shift+c 显示电脑终端
 ctrl+j 显示隐藏终端
+code . 新建窗口打开一个项目
 
 在当前文件打开集成终端的方法：
 1.安装Code Runner插件;
