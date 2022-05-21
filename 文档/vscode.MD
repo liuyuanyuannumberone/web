@@ -43,7 +43,7 @@ ctrl+K R 显示文件资源管理器（英文状态下使用）
 ctrl+shift+k 删除当前行  
 ctrl+G 定位到某行
 ctrl+p 项目内查找文件名
-ctrl+shift+f 项目内查找/替换关键词
+ctrl+shift+f 项目内查找/替换关键词   很牛逼
 ctrl+F/H 本文件内查找/替换关键词 
 
 
