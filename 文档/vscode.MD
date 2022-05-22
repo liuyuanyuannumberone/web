@@ -32,22 +32,19 @@ code . 新建窗口打开一个项目  和新建窗口不一样
 3.配置快捷键 ctrl+k ctrl+s 搜索openinterminal  设置快捷键 ctrl+~ 新建终端；
 
 
-alt+shift+down 复制一行
+alt+shift+down 复制一行    ctrl+shift+k 删除当前行       ctrl+G 定位到某行 ctrl+enter 下方新增一行
+alt+光标 添加多处光标       alt+shfit+光标 列选择         ctrl+L 选中一行| 单机鼠标行号也可以选中一行
 alt+shift+f 格式化代码
-alt+光标 添加多处光标 
-alt+shfit+光标 列选择
-shift+ctrl+e切换文件列表和右侧焦点,
+
+shift+ctrl+e切换文件列表和右侧焦点   fn+左右方向键 移动到行末/行首
 ctrl+K R 显示文件资源管理器（英文状态下使用）
 
 
-ctrl+shift+k 删除当前行  
-ctrl+G 定位到某行
 ctrl+p 项目内查找文件名
 ctrl+shift+f 项目内查找/替换关键词   很牛逼
 ctrl+F/H 本文件内查找/替换关键词 
 
 
-ctrl+L 选中一行| 单机鼠标行号也可以选中一行
-fn+左右方向键 移动到行末/行首
-ctrl+enter 下方新增一行
+
+
 ctrl+~ 显示隐藏终端
