@@ -21,7 +21,6 @@
      "lint:fix": "npx eslint src/*  --fix",
      },
 
-
 二、eslint的使用规则
 1.rules：
   "off"   或 0   - 关闭规则

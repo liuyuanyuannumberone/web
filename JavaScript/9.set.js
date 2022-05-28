@@ -19,3 +19,5 @@ for (let item of s) {
 
 let arr = [1, 2, 3, 4, 5,5,6, 7, 8, 9];
 console.log(new Set(arr));
+
+let arr1=[{age:1,sex:0},{age:1,sex:0},{age:2,sex:3}];

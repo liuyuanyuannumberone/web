@@ -5,3 +5,4 @@
 node_modules/
 /.a_build_scss_less/
 /dist/
+/test/

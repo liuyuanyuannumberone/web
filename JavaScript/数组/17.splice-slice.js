@@ -48,3 +48,5 @@
     var animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
     console.log(animals.slice(2));//['camel', 'duck', 'elephant'];
 }
+let str="苏A222%"
+console.log(str.slice(1,str.length-1));
