@@ -14,6 +14,7 @@ build   忽略所有名为build目录和文件
 
 9.查看所有被tracked的文件：git ls-tree -r 分支名 --name-only;  
 10.查看文件是否被tracked：git ls-files 文件名 ; 
-11.解除文件tracked：git rm -rf --cached 文件名; 解除后文件变成未跟踪；
-12.如果某些文件曾经被已经被track起来了,则修改.gitignore是无效的;
+11.查看哪些文件没被tracked: git ls-files --others;
+13.解除文件tracked：git rm -rf --cached 文件名; 解除后文件变成未跟踪；
+14.如果某些文件曾经被已经被track起来了,则修改.gitignore是无效的;
 
