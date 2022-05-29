@@ -1,5 +1,6 @@
 1.-S(--save):dependencies发布后还需要依赖的模块;-D(--save-dev)：devDependencies 开发时的依赖;
 2.npm config get registry 原版镜像 设置阿里 npm config set registry https://registry.npm.taobao.org;
+  https://registry.npmjs.org/
 3.npm info  模块 versions  // 查看服务器模块所有版本   
   npm ls   模块  --depth=0   //查看本项目所有安装包
   npm update jquery|| npm outdated 

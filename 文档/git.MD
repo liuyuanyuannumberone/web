@@ -28,7 +28,7 @@
   git status   
   git log --pretty=oneline  git log --oneline  简单查看日志
   
-
+  git add -A 它会将当前整个工作区中所有的文件改动提交至暂存区，包括新增、修改和被删除的文件，不受当前所在目录限制。
   git commit -m "xxx"
   撤销commit 
   // HEAD^ 表示回到上一个版本（在push之前你可能有多次commit），也可以写成DEAD~1
@@ -42,3 +42,8 @@
   
   
   git remote -v 查看远程仓库地址
+
+
+# 在push代码的时候远程分支有新的commit未同步到本地（git push无法推送);
+  1.git pull,git push
+  git pull 会发生分支合并  产生log记录(Merge branch 'main' of remoteUrl  into main)

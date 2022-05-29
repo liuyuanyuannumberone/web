@@ -22,7 +22,7 @@ ctrl+k ctrl+s 快捷键查询
 ctrl+shift+p 显示命令面板
 strl+',' 设置
 ctrl+shift+c 显示电脑终端
-code . 新建窗口打开一个项目  和新建窗口不一样
+code . 新建窗口打开一个项目，code 会新建一个窗口;
 
 在当前文件打开集成终端的方法：
 1.安装Code Runner插件;
@@ -43,3 +43,5 @@ ctrl+K R 显示文件资源管理器（英文状态下使用）
 ctrl+p 项目内查找文件名
 ctrl+shift+f 项目内  ctrl+F/H 本文件内   查找/替换关键词 
 ctrl+~ 显示隐藏终端
+
+vue 选中文本，ctrl+d 函数跳转
