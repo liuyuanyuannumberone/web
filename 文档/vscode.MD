@@ -1,3 +1,4 @@
+
 Settings Sync 插件 作用：多台设备之间，同步 VS Code 配置。通过登录 GitHub 账号来使用这个同步工具
 tooken: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
 Gist ID:b89be7758fb7b5d2a3363a1309d4787c
@@ -44,4 +45,9 @@ ctrl+p 项目内查找文件名
 ctrl+shift+f 项目内  ctrl+F/H 本文件内   查找/替换关键词 
 ctrl+~ 显示隐藏终端
 
-vue 选中文本，ctrl+d 函数跳转
+ctrl+win+i 文件头部注释
+ctrl+win+t 函数注释
+
+
+
+

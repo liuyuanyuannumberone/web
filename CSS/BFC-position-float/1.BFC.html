@@ -7,7 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
+   <style>
+       .dv{
+           margin: 20px;
+       }
+   </style>
 <body>
     <!--
 对一个元素设置CSS，首先需要知道这个元素是block还是inline类型。而BFC就是用来格式化块级盒子，同样管理inline类型的盒子还有IFC，以及其他的FC
@@ -17,7 +21,7 @@ BFC：块级格式化上下文，它是指一个独立的块级渲染区域，�
      1.根元素 
      2.float 为 left | right
      3.overflow 为 hidden | auto | scorll
-     4.display 为 table-cell | table-caption | inline-block | flex | inline-flex
+     4.display 为 table-cell | table-caption | inline-block | flex(环境中) | inline-flex
      5.position 为 absolute | fixed
 2.BFC的主要特征:
     1.每个元素的左外边距与包含块的左边界相接触（从左向右），即使浮动元素也是如此。
@@ -29,6 +33,11 @@ BFC：块级格式化上下文，它是指一个独立的块级渲染区域，�
     5.BFC的区域不会与float的元素区域重叠;（多栏布局）
 3.应用
     -->
+    <div style="display:flex;flex-wrap: wrap;">
+        <div class="dv" style="background-color: red;height: 100px;width: 1024px;">1</div>
+        <div class="dv" style="background-color: green;height: 100px;width: 1024px;">2</div>
+    </div>
+
     <!-- 3.1 防止margin重叠，只要将两个元素别放在一个BFC中即可 -->
     <div class="first" style=" margin:20px;background:lightgreen;width:100px; height:100px;"></div>
     <ul style="margin:10px;background:lightblue;display: inline-block;">

@@ -1,3 +1,9 @@
+<!--
+ * @Author: liuyuanyuan
+ * @Date: 2022-05-28 22:03:32
+ * @Description: 
+ * 
+-->
 # Git 
 1.配置全局账户 
   git config --global user.name '你的账户名称'  
@@ -24,10 +30,23 @@
   git checkout branchName  切换分支    
   git chechout -b newbranchName  创建新分支并且切换到新分支
   git merge otherBranch  当前分支与otherBranch合并   
-  git merge --abort      取消合并 
-  git status   
-  git log --pretty=oneline  git log --oneline  简单查看日志
+
+  git status  
+
+  git log 命令详解
+  git log  --author= 'liuyuanyuan2'  
+            --oneline (commitId 取前7位)
+            --pretty=oneline(完整commitId)
+            --after="2014-7-1" --before="2014-7-4"
+            --grep='' 筛选commit描述的
+            -2 看2条记录
+            --name-status	 显示新增、修改、删除的文件清单。
+  git show --stat  commitId  显示某次提交的全部详情，包括文件变动。
+  git blame README.md        查看文件的修改历史记录，包括时间、作者以及内容。
+  git shortlog  按人查看commit描述  
+   
   
+
   git add -A 它会将当前整个工作区中所有的文件改动提交至暂存区，包括新增、修改和被删除的文件，不受当前所在目录限制。
   git commit -m "xxx"
   撤销commit 
@@ -44,6 +63,28 @@
   git remote -v 查看远程仓库地址
 
 
-# 在push代码的时候远程分支有新的commit未同步到本地（git push无法推送);
-  1.git pull,git push
-  git pull 会发生分支合并  产生log记录(Merge branch 'main' of remoteUrl  into main)
+# 在push代码的时候远程分支有新的commit未同步到本地，并且本地已经commmit过，就会产生如图git.jpg的情况，
+  此时git push会失败, 然后 git pull 将本地分支和远程分支产生合并，继续git push,
+  产生log记录(Merge branch 'main' of remoteUrl  into main)
+  如果此时发生冲突，git merge --abort 取消合并就可以 
+  
+  $ git status
+    On branch main
+    Your branch and 'origin/main' have diverged,
+    and have 1 and 1 different commits each, respectively.
+    (use "git pull" to merge the remote branch into yours)
+    nothing to commit, working tree clean
+
+
+# git tag
+项目的版本管理中,每当一个release版本发布时,需要做一个记录,以便以后需要的时候能查找特定的版本;
+Git中的tag指向一次commit的id，通常用来给开发分支做一个标记，如标记一个版本号。
+
+git tag -a 标签名 -m 标签描述           打标签
+git tag -a 标签名 commitid -m 标签描述  补打标签 
+git tag -d 标签名                 删除标签,本地标签需要另外手动删除(远程仓库删除，本地仓库也要自己手动删除)
+git tag                        查看本地仓库的所有分支的标签列表：
+git show 标签名                 标签具体详情
+git push origin 标签名               推送标签到远程仓库
+git push origin :refs/tags/标签名    删除远程仓库的标签
+

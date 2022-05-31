@@ -33,8 +33,8 @@
   1. order   定义项目的排列顺序。数值越小，排列越靠前，默认为0，可以是负数。
 
   2. flex：flex-grow  flex-shrink  flex-basis
-      flex-grow 定义项目的宽=自身宽度 + 容器剩余空间宽度  flex-grow最大值是1，超过1按照1来扩展 【默认值0】
-      flex-shrink 仅在默认宽度之和大于容器的时候才会发生收缩，其收缩的大小是依据 flex-shrink 的值【默认值1】
+      flex-grow 定义项目的宽=自身宽度 + 容器剩余空间宽度  flex-grow最大值是1，超过1按照1来扩展 【默认值0】，不放大
+      flex-shrink 仅在默认宽度之和大于容器的时候才会发生收缩，其收缩的大小是依据 flex-shrink 的值【默认值1】,允许缩小
       flex-basis  指定项目在主轴上的初始宽度  0 | 100% | auto | <length>   【默认值auto】
                                           auto表示固定尺寸由内容决定
     推荐使用flex缩写语法:
