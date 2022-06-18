@@ -9,6 +9,9 @@
   git config --global --list  
 4.查看某个仓库下的配置情况
   git config --local --list
+5.解决github git push 速度慢的问题
+  git config --global http.proxy socks5://127.0.0.1:10808
+  git config --global https.proxy socks5://127.0.0.1:10808
 
 # HEAD 指向的版本就是当前版本，之所以可以回退版本这么快，因为实际上只是改变了 HEAD 指针的指向。
   HEAD指向的就是当前分支
