@@ -1,9 +1,3 @@
-<!--
- * @Author: liuyuanyuan
- * @Date: 2022-05-28 22:03:32
- * @Description: 
- * 
--->
 # Git 
 1.配置全局账户 
   git config --global user.name '你的账户名称'  
@@ -60,20 +54,41 @@
   git reflog这个命令的强大之处，是记录了所有行为,当我们不小心硬回滚的时侯都可以在这里找到行为之前的commit，然后回滚 
   
   
-  git remote -v 查看远程仓库地址
+# git remote -v 查看远程主机名,远程仓库地址
+  origin  https://github.com/liuyuanyuannumberone/test-git.git (fetch)
+  origin  https://github.com/liuyuanyuannumberone/test-git.git (push)
 
+  git remote add                 命令用于添加远程主机
+  git remote rm                  命令用于删除远程主机
+  git remote rename              命令用于远程主机的改名。
+  git remote show <远程主机名>    查看该主机的详细信息
 
-# 在push代码的时候远程分支有新的commit未同步到本地，并且本地已经commmit过，就会产生如图git.jpg的情况，
-  此时git push会失败, 然后 git pull 将本地分支和远程分支产生合并，继续git push,
-  产生log记录(Merge branch 'main' of remoteUrl  into main)
-  如果此时发生冲突，git merge --abort 取消合并就可以 
   
-  $ git status
-    On branch main
-    Your branch and 'origin/main' have diverged,
-    and have 1 and 1 different commits each, respectively.
-    (use "git pull" to merge the remote branch into yours)
-    nothing to commit, working tree clean
+  克隆版本库不指定时，默认为origin;如果想用其他的主机名，需要用git clone命令的-o选项指定:
+  git clone -o 远程主机名 https://github.com/jquery/jquery.git;
+  远程主机名可以有多个，只是你自己给远程主机起名字而已,然后这个就是本次克隆的仓库对应的远程主机名；
+  
+# git pull 
+  1.git pull <远程主机名> <远程分支名>:<本地分支名>  将远程指定分支 拉取到 本地指定分支上
+  2.git pull <远程主机名> <远程分支名>   将远程指定分支拉取到本地当前分支上；
+  3.git pull            将与本地当前分支同名的远程分支拉取到本地当前分支上(需先关联远程分支)
+# git push
+  1.git push <远程主机名>  <本地分支名>:<远程分支名> 将本地当前分支推送到远程指定分支上  
+  2.git push <远程主机名>  <本地分支名>  将本地当前分支推送到与本地当前分支同名的远程分支上
+  3.git push                将本地当前分支推送到与本地当前分支同名的远程分支上(需先关联远程分支)
+# 将本地分支与远程同名分支相关联  git push -u  <远程主机名>  <本地分支名>
+
+# 如果此时发生冲突，git merge --abort 取消合并就可以 
+# 你本地commit会使分支往前走，远程分支也会往前走，当你的分支落后于远程分支时，无法push;
+  换句话当远程有新的commit时候，本地如果也产生了新的commit,无法推送,如图git.jpg的情况
+ 
+  解决办法：
+  1.git pull+ git push: git pull 可能会造成分支合并，或者能会遇到冲突,无法完成;      
+    1.1 修改冲突部分为远程仓库的，然后再拉取;
+  2.  
+
+# git stash  https://www.bookstack.cn/read/git-tutorial/docs-commands-git-stash.md;
+
 
 
 # git tag
