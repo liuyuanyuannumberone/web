@@ -36,12 +36,13 @@ code . 新建窗口打开一个项目，code 会新建一个窗口;
 alt+shift+down 复制一行    ctrl+shift+k 删除当前行       ctrl+G 定位到某行 ctrl+enter 下方新增一行
 alt+光标 添加多处光标       alt+shfit+光标 列选择         ctrl+L 选中一行| 单机鼠标行号也可以选中一行
 alt+shift+f 格式化代码
+Ctrl+Shift+F 的組合鍵來切換繁/簡輸入。
 
 shift+ctrl+e切换文件列表和右侧焦点   fn+左右方向键 移动到行末/行首
 ctrl+K R 显示文件资源管理器（英文状态下使用）
 
 
-ctrl+p 项目内查找文件名
+ctrl+p 项目内查找文件
 ctrl+shift+f 项目内  ctrl+F/H 本文件内   查找/替换关键词 
 ctrl+~ 显示隐藏终端
 

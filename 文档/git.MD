@@ -9,24 +9,32 @@
   git config --global --list  
 4.查看某个仓库下的配置情况
   git config --local --list
-5.解决github git push 速度慢的问题
+5.解决github git push 速度慢的问题 设置代理
   git config --global http.proxy socks5://127.0.0.1:10808
   git config --global https.proxy socks5://127.0.0.1:10808
+查看代理：
+git config --global --get http.proxy
+git config --global --get https.proxy
+取消代理：
+git config --global --unset http.proxy
+git config --global --unset https.proxy
 
 # HEAD 指向的版本就是当前版本，之所以可以回退版本这么快，因为实际上只是改变了 HEAD 指针的指向。
   HEAD指向的就是当前分支
 
 # 工作区-暂存区-本地仓库-远程仓库
-  git branch newbranchName 创建新分支      
+  git branch newbranchName 创建新分支    git checkout branchName  切换分支       
+  git chechout -b newbranchName  创建新分支并且切换到新分支
   git branch -d  branchName   删除分支  -D 强制删除
   git branch       查看本地分支
   git branch -r    查看远程分支          
   git branch -v    查看各个分支最后一个提交对象的信息
   git branch -m <oldbranch-name><newbranch-name> 重命名分支
-
-  git checkout branchName  切换分支    
-  git chechout -b newbranchName  创建新分支并且切换到新分支
   git merge otherBranch  当前分支与otherBranch合并   
+  git push origin newbranchName:newbranchName 推送本地分支(冒号前面的)到远程origin分支(冒号后面的)(没有会自动创建)
+
+
+
 
   git status  
 
@@ -40,22 +48,24 @@
             --name-status	 显示新增、修改、删除的文件清单。
   git show --stat  commitId  显示某次提交的全部详情，包括文件变动。
   git blame README.md        查看文件的修改历史记录，包括时间、作者以及内容。
-  git shortlog  按人查看commit描述  
-   
+  git shortlog  按人查看commit描述                      
+  git reflog这个命令的强大之处，是记录了所有行为,当我们不小心硬回滚的时侯都可以在这里找到行为之前的commit，然后回滚  
   
 
   git add -A 它会将当前整个工作区中所有的文件改动提交至暂存区，包括新增、修改和被删除的文件，不受当前所在目录限制。
   git commit -m "xxx"
   撤销commit 
+# reset 版本回退
   // HEAD^ 表示回到上一个版本（在push之前你可能有多次commit），也可以写成DEAD~1
   // 如果你进行了2次的commit 都想撤回  可以使用HEAD~2
-  git reset --mixed 默认参数, 不删除工作空间改动代码，撤销commit，撤销git add                 
+  git reset --mixed 默认参数, 不删除工作空间改动代码，撤销commit，撤销git add                
   git reset --soft  不删除工作空间改动代码，撤销commit，不撤销git add .
                      如果commit注释写错了，只是想改一下注释，只需要：git commit --amend  
   git reset --hard  删除工作空间改动代码，撤销commit，撤销git add . 
                     在完成这个操作之后恢复到上一次commit的状态（即有改动的代码没了)
-  git reflog这个命令的强大之处，是记录了所有行为,当我们不小心硬回滚的时侯都可以在这里找到行为之前的commit，然后回滚 
-  
+
+#  revert版本回滚 在当前提交后面，新增一次提交，抵消掉上一次提交导致的所有变化，不会改变过去的历史
+
   
 # git remote -v 查看远程主机名,远程仓库地址
   origin  https://github.com/liuyuanyuannumberone/test-git.git (fetch)
@@ -80,15 +90,16 @@
   2.git push <远程主机名>  <本地分支名>  将本地当前分支推送到与本地当前分支同名的远程分支上
   3.git push                将本地当前分支推送到与本地当前分支同名的远程分支上(需先关联远程分支)
 # 将本地分支与远程同名分支相关联  git push -u  <远程主机名>  <本地分支名>
+# 创建新分支后，第一次推送使用 git push --set-upstream origin 新分支  建立和远程分支的联系
+
 
 # 如果此时发生冲突，git merge --abort 取消合并就可以 
 # 你本地commit会使分支往前走，远程分支也会往前走，当你的分支落后于远程分支时，无法push;
   换句话当远程有新的commit时候，本地如果也产生了新的commit,无法推送,如图git.jpg的情况
- 
-  解决办法：
-  1.git pull+ git push: git pull 可能会造成分支合并，或者能会遇到冲突,无法完成;      
-    1.1 修改冲突部分为远程仓库的，然后再拉取;
-  2.  
+# sourcetree 解决冲突
+  1. git push 冲突后，先将本地commit，然后拉取远程合并，解决冲突后提交到远程仓库
+
+
 
 # git stash  https://www.bookstack.cn/read/git-tutorial/docs-commands-git-stash.md;
 
@@ -106,3 +117,6 @@ git show 标签名                 标签具体详情
 git push origin 标签名               推送标签到远程仓库
 git push origin :refs/tags/标签名    删除远程仓库的标签
 
+
+# 推送和拉取的数字：远程仓库和本地版本库做对比
+# 更改区：本地工作区和本地版本库做对比 

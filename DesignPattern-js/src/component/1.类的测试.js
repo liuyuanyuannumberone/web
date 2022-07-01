@@ -3,7 +3,7 @@ class Person {
         this.name = name;
         this.age = age;
     }
-    queryAge() {
+    getAge() {
         return this.age;
     }
     getName() {
