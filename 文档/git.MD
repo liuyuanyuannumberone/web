@@ -29,7 +29,7 @@ git config --global --unset https.proxy
   git branch       查看本地分支
   git branch -r    查看远程分支          
   git branch -v    查看各个分支最后一个提交对象的信息
-  git branch -m <oldbranch-name><newbranch-name> 重命名分支
+  git branch -m <oldbranch-name><newbranch-name> 本地重命名分支
   git merge otherBranch  当前分支与otherBranch合并   
   git push origin newbranchName:newbranchName 推送本地分支(冒号前面的)到远程origin分支(冒号后面的)(没有会自动创建)
 
