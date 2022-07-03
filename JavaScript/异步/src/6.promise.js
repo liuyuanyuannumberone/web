@@ -24,7 +24,7 @@ result1
         return JSON.parse(data).name; //return的值会被当做参数传递给后面步骤的函数
     })
     .then(data => {
-        console.log(typeof data); //string
+        console.log(typeof data);
         return result2; //return一个promise
     })
     .then(data => {
