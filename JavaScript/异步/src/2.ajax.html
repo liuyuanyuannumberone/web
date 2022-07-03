@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>异步</title>
+</head>
+<style>
+  .dv {
+    width: 400px;
+    height: 200px;
+    border-radius: 20px;
+    background-color: #efefef;
+  }
+</style>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+
+<body>
+  <div class="dv">
+
+  </div>
+</body>
+<script>
+  /**
+  then函数的第一个参数是done,第二个参数是失败之后执行的函数fail
+  `v1.5`之前，返回的是一个`XHR`对象
+  `v1.5`开始，返回一个`deferred`对象
+   */ 
+  var ajax = $.ajax('../static/config/config.json')
+  ajax.done(function (res) {
+    console.log(res)
+  })
+    .fail(function () {
+      console.log('error')
+    })
+
+  var ajax = $.ajax('../static/config/data.json')
+  ajax.then(function (res) {
+    console.log(res);
+  }, function (err) {
+    throw (err);
+  })
+</script>
+</html>

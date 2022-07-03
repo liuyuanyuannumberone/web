@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>异步</title>
+</head>
+<style>
+  .dv {
+    width: 400px;
+    height: 200px;
+    border-radius: 20px;
+    background-color: #efefef;
+  }
+</style>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+
+<body>
+  <div class="dv">
+
+  </div>
+</body>
+
+<script>
+  function waitHandle() {
+    var dtd = $.Deferred()
+    var wait = function (dtd) {
+      var task = function () {
+        console.log('执行完成')
+        dtd.resolve()
+      }
+      setTimeout(task, 2000)
+      return dtd.promise()  // 注意，这里返回的是 primise 而不是直接返回 deferred 对象
+    }
+    return wait(dtd)
+  }
+
+  var w = waitHandle() // 经过上面的改动，w 接收的就是一个 promise 对象
+  $.when(w)
+    .then(function () {
+      console.log('ok 1')
+    })
+    .then(function () {
+      console.log('ok 2')
+    })
+</script>
+
+</html>

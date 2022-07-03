@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>异步</title>
+</head>
+<style>
+  .dv {
+    width: 400px;
+    height: 200px;
+    border-radius: 20px;
+    background-color: #efefef;
+  }
+</style>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+
+<body>
+  <div class="dv">
+  </div>
+</body>
+<script>
+  const wait = function () {
+    const promise = new Promise((resolve, reject) => {
+      const task = function () {
+        console.log('执行完成')
+        resolve()
+      }
+      setTimeout(task, 2000)
+    })
+    return promise
+  }
+  const w = wait()
+  w.then(() => {
+    console.log('ok 1')
+  })
+</script>
+
+</html>
