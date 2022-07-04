@@ -1,4 +1,4 @@
-# 异步学习
+# 异步学习 https://github.com/wangfupeng1988/js-async-tutorial.git
  JS是单线程的语言，开发中比较常用的异步操作有：
       网络请求，如`ajax` `http.get`
       IO 操作，如`readFile` `readdir`

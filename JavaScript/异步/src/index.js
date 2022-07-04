@@ -1,1 +1,1 @@
-const a = require('./1');
+const a = require('./basic');
