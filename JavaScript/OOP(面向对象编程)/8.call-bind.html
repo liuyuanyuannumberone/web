@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  //Function.prototype.call()
+  //call方法可以改变this的指向，指定this指向对象obj，然后在对象obj的作用域中运行函数f。
+  {
+    var obj = {};
+    var f = function () {
+      this.name = "lyy";
+      return this;
+    };
+    f() === window// true
+    f.call(obj) === obj  // true
+    // console.log(obj);  //{name:lyy}
+  }
+
+  // call方法的参数，应该是一个对象。如果参数为空、null和undefined，则默认传入全局对象
+  {
+    var n = 123;
+    var obj = { n: 456 };
+    function a() {
+      // console.log(this.n);
+    }
+    a.call() // 123
+    a.call(null) // 123
+    a.call(undefined) // 123
+  }
+  //call方法还可以接受多个参数
+  //call的第一个参数就是this所要指向的那个对象，后面的参数则是函数调用时所需的参数
+  {
+    function add(a, b) {
+      return a + b;
+    }
+
+    add.call(this, 1, 2) // 3
+  }
+  //call方法的一个应用是调用对象的原生方法
+  //这样无论obj上有没有同名方法，都不会影响结果。
+  {
+    var obj = {};
+    obj.hasOwnProperty('toString') // false
+    // 覆盖掉继承的 hasOwnProperty 方法
+    obj.hasOwnProperty = function () {
+      return true;
+    };
+    obj.hasOwnProperty('toString') // true
+    Object.prototype.hasOwnProperty.call(obj, 'toString') // false
+  }
+
+
+
+
+
+</script>
+
+</html>
