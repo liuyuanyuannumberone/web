@@ -12,41 +12,33 @@
 
 </body>
 <script>
-  //Function.prototype.bind()
-  // bind方法用于将函数体内的this绑定到某个对象，然后返回一个新函数
+  /**
+   Function.prototype.bind()
+   参数：bind方法用于将函数体内的this绑定到某个对象
+   作用：返回一个新函数
+   */
   {
     var d = new Date();
     d.getTime() // 1481869925657
     var print = d.getTime;
     //这是因为getTime方法内部的this，绑定Date对象的实例，赋给变量print以后，
-    // 内部的this已经不指向Date对象的实例了。
+    //部的this已经不指向Date对象的实例了。
     print() //Uncaught TypeError: this is not a Date object.
 
     //bind方法将getTime方法内部的this绑定到d对象，这时就可以安全地将这个方法赋值给其他变量了。
     var print1 = d.getTime.bind(d);
     print1() // 1481869925657
   }
-  //bind方法的参数就是所要绑定this的对象
-  {
-    var counter = {
-      count: 0,
-      inc: function () {
-        this.count++;
-      }
-    };
 
-    var func = counter.inc.bind(counter);
-    func();
-    counter.count // 1
-  }
+
+  var counter = {
+    count: 0,
+    inc: function () {
+      this.count++;
+    }
+  };
 
   {
-    var counter = {
-      count: 0,
-      inc: function () {
-        this.count++;
-      }
-    };
     var obj = {
       count: 100
     };
@@ -54,34 +46,26 @@
     func();
     obj.count // 101
   }
-  //bind方法有一些使用注意点 
-  //1.bind方法每运行一次，就返回一个新函数
+
+  //注意点： 1.bind方法每运行一次，就返回一个新函数
   {
     //click事件绑定bind方法生成的一个匿名函数。这样会导致无法取消绑定
+
     // element.addEventListener('click', o.m.bind(o));
     // element.removeEventListener('click', o.m.bind(o));
     var listener = o.m.bind(o);
     element.addEventListener('click', listener);
     element.removeEventListener('click', listener);
   }
-  {
-    //2.结合回调函数使用
-    //但是一个常见的错误是，将包含this的方法直接当作回调函数。
-    //解决方法就是使用bind方法，将counter.inc绑定counter
-    //如果直接把counter.inc传入，调用时counter.inc内部的this就会指向全局对象
-    var counter = {
-      count: 0,
-      inc: function () {
-        this.count++;
-      }
-    };
+     //2.结合回调函数使用
 
+  {
+    //一个常见的错误是，将包含this的方法直接当作回调函数。
+    //解决方法:将counter.inc绑定counter，如果直接把counter.inc传入，调用时counter.inc内部的this就会指向全局对象
     function callIt(callback) {
       callback();
     }
-   
     callIt(counter.inc.bind(counter));
-    counter.count //1
   }
 </script>
 

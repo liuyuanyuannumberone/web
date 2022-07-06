@@ -12,10 +12,12 @@
 
 </body>
 <script>
-  //Function.prototype.apply()
-  // apply方法的作用与call方法类似，也是改变this指向，然后再调用该函数;
-  // 唯一的区别就是，它接收一个数组作为函数执行时的参数，使用格式如下:func.apply(thisValue, [arg1, arg2, ...])
-  //原函数的参数，在call方法中必须一个个添加，但是在apply方法中，必须以数组形式添加。
+  /**
+    Function.prototype.apply()
+    参数：call的第一个参数是对象，如果这个参数为空、null和undefined，则默认传入全局对象
+         接收一个数组作为函数执行时的参数，使用格式如下:func.apply(thisValue, [arg1, arg2, ...])
+     作用：apply方法的作用与call方法类似，也是改变this指向，然后再调用该函数;   
+  */
   {
     function f(x, y) {
       console.log(x + y);
@@ -23,12 +25,12 @@
     f.call(null, 1, 1) // 2
     f.apply(null, [1, 1]) // 2
   }
-  //找出数组最大元素
+  //应用：1.找出数组最大元素
   {
     var a = [10, 2, 4, 15, 9];
     Math.max.apply(null, a) // 15
   }
-  //转换类似数组的对象
+  //2.转换类似数组的对象
   {
     Array.prototype.slice.apply({ 0: 1 }) // []
     Array.prototype.slice.apply({ length: 1 }) // [undefined]
