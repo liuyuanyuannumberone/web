@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>节流和防抖</title>
+</head>
+
+<body>
+  <div style="width: 500x;height:1000px;border:1px solid red;"></div>
+</body>
+<script>
+   function showTop() {
+    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+    console.log('滚动条位置：' + scrollTop);
+  }
+
+  /**
+   * 防抖(debounce)：函数执行后，再执行   在time后执行【中间如果触发，时间重置】
+   * 节流(throttle): 函数执行后，再执行   在time后执行【类似技能冷却】
+  */
+  function debounce(fn, delay) {
+    let timer = null;
+    return function () {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(fn, delay);
+    }
+  }
+  window.onscroll =debounce(showTop,1000);
+</script>
+
+</html>
