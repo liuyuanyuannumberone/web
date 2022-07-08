@@ -16,11 +16,11 @@
    
  2.this是什么？
    它代表函数运行时，自动生成的一个内部对象，只能在函数内部使用，实际上this的最终指向的是那个调用它的对象
+    【函数名前边的的对象】
    浏览器全局中的this是Window，而原生js中是global
  -->
 </body>
 <script>
-    // 1.最终调用它的对象是window
     function fn1() {
         var user = "追梦子";
         console.log(this.user); // 指向window  undefined
@@ -28,7 +28,6 @@
     }
     fn1();
 
-    //下面等同于上面
     function add() {
         let a = 1;
         let _this = this;
@@ -40,7 +39,7 @@
     }
     add()();
 
-    //2.最终调用它的对象是o和o.b
+
     var o = {
         user: "追梦子",
         fn: function () {
@@ -50,22 +49,27 @@
             user: "lyy",
             fn: function () {
                 console.log(this.user);
+            },
+            fn1: function () {
+                user: '车厘子'
+                console.log(this.user);
+                return function () {
+                    console.log(this.user);
+                }
             }
         }
-    }
+    };
     o.fn(); //追梦子 
     o.b.fn(); // lyy
-
-    // 3.最终调用它的对象是window
     var j = o.b.fn;
     j();//undefined
+    o.b.fn1()();  //lyy undefined
 
-    // 4.最终调用它的对象是b
     let b = {
         user: 'test'
     }
     b.fn = o.fn;
-    b.fn(); //test
+    b.fn(); //test 
 </script>
 
 </html>

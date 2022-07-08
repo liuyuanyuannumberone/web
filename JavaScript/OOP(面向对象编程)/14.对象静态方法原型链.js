@@ -12,14 +12,14 @@ var b = { x: 1 };
 Object.setPrototypeOf(a, b);
 Object.getPrototypeOf(a) === b;
 
-//3.判断某个属性定义在对象自身，还是定义在原型链上 Object.prototype.hasOwnProperty()
+//3.判断某个属性定义在对象自身 Object.prototype.hasOwnProperty()
 //4.用于检查一个对象是否具有某个属性(不管是自身的还是继承的) in运算符
 //5.获得对象的所有可遍历属性（不管是自身的还是继承的），可以使用for...in循环
 var o1 = { p1: 123 };
 var o2 = Object.create(o1, {
-  p2: { value: "abc", enumerable: true }
+    p2: { value: 'abc', enumerable: true },
 });
 
 for (let p in o2) {
-  console.info(p);
+    console.info(p);
 }

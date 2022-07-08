@@ -18,25 +18,27 @@ initialValue（作为第一次调用 callback 的第一个参数）
     let count = [1, 2, 3, 4].reduce(add, 10);
     // console.log(count);
 }
-//使用reduce方法可以完成多维度的数据叠加
+
 {
-    let totalObj = {
-        apple: function (state, item) {
-            return (state.apple += item.price * 9);
-        },
-        peach: function (state, item) {
-            return (state.peach += item.price * 8);
-        },
+    let reducer = function (sum, totalItem) {
+        sum.a += totalItem;
+        return sum;
     };
-    let manageReducers = function (totalObj) {
-        return function (total, current) {
-            return Object.keys(totalObj).reduce(function (nextState, key) {
-                totalObj[key](total, current);
-                return total;
-            }, {});
-        };
+    var total = [10, 120, 1000].reduce(reducer, { a: 0 });
+    console.log(total); // {sum:1130}
+}
+//手写实现一个reduce函数
+{
+    function myReduce(arr, callback, initialValue) {
+        for (let i = 0; i < arr.length; i++) {
+            initialValue = callback(initialValue, arr[i], i, arr);
+        }
+        return initialValue;
+    }
+    let arr = [1, 2, 4];
+    let fun = function (a, b, c, d) {
+        return a + b;
     };
-    let priceArr = [{ price: 1 }, { price: 2 }, { price: 3 }];
-    let totals = priceArr.reduce(manageReducers(totalObj), { apple: 0, peach: 0 });
-    console.log(totals);
+    let count = myReduce(arr, fun, 1);
+    console.log(count); //8
 }

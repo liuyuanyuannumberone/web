@@ -5,7 +5,7 @@
 
  let a;
 // Boolean 判断
-console.log(Boolean(null), Boolean(undefined), Boolean(NaN), Boolean('')); //false
+console.log(Boolean(null), Boolean(undefined), Boolean(NaN), Boolean(''),Boolean(0),Boolean(false)); //false
 console.log(Boolean('0'), Boolean([]), Boolean({}),Boolean(a === undefined)); //true
 
 //typeof 判断基本类型(去掉null)和Function
