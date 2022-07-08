@@ -4,11 +4,12 @@
  *
  */
 
-function test(x = 2, y = 1, z = 2, d = x + y + z) {
-    console.log(arguments[0]);
+{
+    function test(x = 2, y = 1, z = 2, d = x + y + z) {
+        console.log(arguments[0]);
+    }
+    test(100, 200, 400);
 }
-// test(100,200,400);
-
 
 {
     function sum(base, ...all_var) {
