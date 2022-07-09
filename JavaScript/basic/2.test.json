@@ -1,0 +1,13 @@
+{
+  "name": "liuyy",
+  "age": 10,
+  "flag": true,
+  "desc": null,
+  "type": [
+    "男",
+    "女"
+  ],
+  "stu": {
+    "name": "liu"
+  }
+}

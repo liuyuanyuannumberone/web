@@ -1,5 +1,7 @@
 /*
- JS 数据类型 基本类型 number string  boolean  undefined  null symbol  
+ JS 数据类型 基本类型 number string  boolean  null  undefined  symbol  
+            这不是基本类型  NaN  Infinity
+
             引用类型 Object(Array|Function|Regexp|Date)
  */
 

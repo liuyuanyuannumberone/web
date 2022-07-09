@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  /**
+ * 字符串必须使用双引号表示;最后一个成员的后面，不能加逗号;
+ 
+ * 原始类型的值只有四种：string、number（必须是十进制）、布尔值和null; 
+ * 复合类型的值只能是array|object   
+ * 
+ * 不能是undefined   NaN Infinity
+ * 不能是Function|Regexp|Date
+ 
+ * JSON.stringify()
+ * JSON.parse()
+ */
+  JSON.stringify('abc') // ""abc""
+  JSON.stringify('abc') === "\"abc\"" // true
+  JSON.stringify(1) // "1"
+  JSON.stringify(false) // "false"
+  JSON.stringify([]) // "[]"
+  JSON.stringify({}) // "{}"
+  JSON.stringify([1, "false", false])   // '[1,"false",false]'
+  JSON.stringify({ name: "张三" }) // '{"name":"张三"}'
+
+var obj = {
+  a: undefined, //该属性会被JSON.stringify过滤。
+  b: function () {},//该属性会被JSON.stringify过滤。
+  c:/^q/g, //正则对象会被转成空对象。
+  d:new Date(),
+  f:[undefined, function () {}]  //数组的成员是undefined和函数，它们都被转成了null
+};
+//{"c":{},"d":"2022-07-09T08:26:15.690Z","f":[null,null]}
+console.log(JSON.stringify(obj));
+
+</script>
+
+</html>

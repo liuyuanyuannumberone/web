@@ -14,7 +14,6 @@
 }
 {
     var a = ['a'];
-
     a.length = 3;
     a[1];  //undefined
 }
