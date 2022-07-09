@@ -17,3 +17,6 @@ console.log(
     Object.values(students), //[ 1, 'liu', 0 ]
     Object.entries(students) //[ [ 'id', 1 ], [ 'name', 'liu' ], [ 'sex', 0 ] ]
 );
+
+//检查一个对象是否可遍历
+console.log(typeof {}[Symbol.iterator]==='function'); //false
