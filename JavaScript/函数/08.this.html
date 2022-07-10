@@ -16,7 +16,7 @@
    
  2.this是什么？
    它代表函数运行时，自动生成的一个内部对象，只能在函数内部使用，实际上this的最终指向的是那个调用它的对象
-    【函数名前边的的对象】
+    【函数名前边的的对象】,定时器永远指向window【这个有待验证】
    浏览器全局中的this是Window，而原生js中是global
  -->
 </body>
@@ -70,6 +70,23 @@
     }
     b.fn = o.fn;
     b.fn(); //test 
+</script>
+
+<script>
+    setTimeout(function () {
+        console.log(this === window);  //true
+    }, 1000)
+
+    let i = 0;
+    const o = {
+        i: 1,
+        fn: function () {
+            console.log(this.i);
+        }
+    }
+
+    //setTimeout是运行在全局环境下的,指向window
+    setTimeout(o.fn, 1000); //0
 </script>
 
 </html>
