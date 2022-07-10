@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script src="../../node_modules/js-cookie/dist/js.cookie.mjs"></script>
+</head>
+
+<body>
+   <div id="dv"></div>
+   <div id="name"></div>
+   <div id="age"></div>
+</body>
+<script>
+   if (!localStorage.getItem('id')) {
+      let stu = {
+         name: "lyy",
+         age: 18
+      }
+      localStorage.setItem('id', 109222);
+      localStorage.setItem('stu', JSON.stringify(stu));
+   }
+   var id = localStorage.getItem('id');
+   var obj = JSON.parse(localStorage.getItem('stu'));
+   document.getElementById('dv').innerHTML = id;
+   document.getElementById('name').innerHTML = obj.name;
+   document.getElementById('age').innerHTML = obj.age;
+   //删除 LocalStorage
+   // localStorage.removeItem("id");//删除id的值
+   // localStorage.clear();//清除当前域名下的所有localstorage数据
+</script>
+<script type="module">
+   import Cookies from '../../node_modules/js-cookie/dist/js.cookie.mjs'
+   console.log(Cookies)
+   Cookies.set('foo', 'bar')
+   // console.log(Cookies.get('stu')); 
+ </script>
+
+</html>
