@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Worker</title>
+</head>
+
+<body>
+
+</body>
+<!-- 写一个浏览器不认识的 type，这段脚本就不会被解析执行 -->
+<script id="worker" type="app/worker">
+  console.log(self);
+  self.onmessage = function(event) {
+      console.log('子线程收到消息：', event.data);
+      self.postMessage('get✔');
+  }
+  self.onerror = function (err) {
+      console.log('子线程异常：', err);
+  }
+  throw new Error('test error');
+</script>
+
+
+<script>
+  let blob = new Blob([document.querySelector('#worker').textContent]);
+  let url = window.URL.createObjectURL(blob);
+  console.log(11,url);
+  let worker = new Worker(url);
+
+  worker.onmessage = function(event) {
+      console.log('主线程收到消息：', event.data);
+  }
+  worker.onerror = function (err) {
+      console.log('主线程收到子线程异常：', err);
+  }
+
+  worker.postMessage('Hello World');
+</script>
+
+</html>

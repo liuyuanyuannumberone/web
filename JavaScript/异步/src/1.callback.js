@@ -1,12 +1,14 @@
 let read = function (fun, delay) {
+    let a = 0;
     if (delay === 1000) {
-        fun(1, 2, 3, 4);
+        a = fun(1, 2, 3, 4);
     } else {
-        fun(5, 6, 7, 8);
+        a = fun(5, 6, 7, 8);
     }
 };
 
 let clg = function (a1, a2, a3, a4) {
     console.log(a1, a2, a3, a4);
+    return 3;
 };
 read(clg, 1000);
