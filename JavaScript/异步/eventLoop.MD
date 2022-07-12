@@ -35,35 +35,16 @@
        timer = setTimeout(fn, 2000);
       },0)
   ```
-## 2.为了利用多核CPU的计算能力，HTML5提出Web Worker标准，允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制，且不得操作DOM。
-   ### 同源限制：创建worker线程的时候需要分配一个JS文件，该文件必须是同源的，且不能是本地文件。
-                也可以是同一页面的代码
-   ### 环境隔离：worker线程所在的上下文环境与主线程不一样，无法读取网页的DOM对象,全局对象不再是window，可以通过 this或self 访问
-   ### 通信受限：主线程和worker线程不能直接通信，通过postMessage方法进行消息传递
-    1.在主线程中，调用worker构造函数，创建worker线程：let worker = new Worker('work.js') 
-    2.主线程通过调用postMessage方法，向worker线程传递数据，数据类型不限：
-      worker.postMessage('Hello World');
-      worker.postMessage({a:1, b:2});
-    3.主线程通过监听 onmessage 事件，接收子线程传递的信息：
-      worker.onmessage = function(event) {
-      console.log(event.data);
-      }  
-    4.woker 线程内同样通过监听onmessage事件，接收主线程传递的数据，通过postMessage传递数据：
-      self.addEventListener('message', function(event) {
-        console.log(event.data); // data 为传递的数据
-       self.postMessage('get✔');
-      })  
-    5.错误处理
-    // 主线程
-    worker.onerror(function (event) {
-      console.log([
-         'ERROR: Line ', e.lineno, ' in ', e.filename, ': ', e.message
-        ].join(''));
-     });
+## 为了利用多核CPU的计算能力，HTML5提出Web Worker,允许JavaScript脚本创建多个线程，但是子线程完全受主线程控制,Worker线程负担一些执行时间长、计算密集型的任务。
+   ### 同源限制:worker线程无法读取本地文件。Worker线程运行的脚本文件，必须与主线程的脚本文件同源,必须是js文件。
+      var myWorker = new Worker('worker.js', { name : 'myWorker' }); //主线程
+      self.name //myWorker    Worker线程 
 
-     // 子线程
-     self.onerror(function (event) {
-        console.log([
-    'ERROR: Line ', e.lineno, ' in ', e.filename, ': ', e.message
-        ].join(''));
-     }); 
+   ### 环境隔离:worker线程无法读取DOM对象,全局对象不是window,但是有navigator、location、XMLHttpRequest、定时器、;可以通过this或self访问;
+   ### 通信受限:主线程和worker线程不能直接通信,可以通过postMessage方法传递数据,监听onmessage事件接收信息;
+   ### 1.这种通信是拷贝关系，即是传值而不是传址，Worker对通信内容的修改，不会影响到主线程。
+           拷贝消息：这种方法下消息会被序列化、拷贝然后再发送出去，接收方接收后则进行反序列化取得消息。因此上例中的页面和 Worker 不会共享同一个消息实例，它们之间每发送一次消息就会多创建一个消息副本。大多数浏览器都采用这样的发送方法，并且会在发送和接收端自动进行 JSON 编码/解码。如你所预料的，这些数据处理会给消息传送带来不小的负担。传送的消息越大，时间开销就越大。
+           传递消息：意味着消息发送者一旦成功发送消息后，就再也无法使用发出的消息数据了。消息的传送几乎不耗费任何时间，只有ArrayBuffer支持以这种方式发送。
+
+   ### 2.有两种停止Worker的方法。主线程使用worker.terminate();worker线程使用self.close();
+   ### 3.Web Worker 的运行不会影响主线程，但与主线程交互时仍受到主线程单线程的瓶颈制约。如果Worker线程频繁与主线程进行交互，主线程由于需要处理交互，仍有可能使页面发生阻塞

@@ -11,34 +11,39 @@
 <body>
 
 </body>
-<!-- 写一个浏览器不认识的 type，这段脚本就不会被解析执行 -->
+<!--写一个浏览器不认识的 type，这段脚本就不会被解析执行-->
 <script id="worker" type="app/worker">
-  console.log(self);
+  console.log(this===self);  // true
   self.onmessage = function(event) {
       console.log('子线程收到消息：', event.data);
-      self.postMessage('get✔');
+      switch(event.data.type===1){
+        case 1:
+        self.postMessage('get✔');
+        default:
+        self.postMessage(x*2);
+      }
   }
   self.onerror = function (err) {
-      console.log('子线程异常：', err);
+    console.log('子线程异常：', '发生错误的 script 文件名:',err.filename );
+    console.log('子线程异常：', '发生错误的代码行号:',err.lineno);
+    console.log('子线程异常：', '错误信息:',err.message);
   }
-  throw new Error('test error');
 </script>
-
 
 <script>
   let blob = new Blob([document.querySelector('#worker').textContent]);
-  let url = window.URL.createObjectURL(blob);
-  console.log(11,url);
+  let url = window.URL.createObjectURL(blob); //'blob:http://localhost:5005/59e67b77-a988-4e2c-a05c-e43f0ac00d7e'
   let worker = new Worker(url);
 
   worker.onmessage = function(event) {
       console.log('主线程收到消息：', event.data);
   }
   worker.onerror = function (err) {
-      console.log('主线程收到子线程异常：', err);
+      console.log('主线程收到子线程异常：', '发生错误的 script 文件名:',err.filename );
+      console.log('主线程收到子线程异常：', '发生错误的代码行号:',err.lineno);
+      console.log('主线程收到子线程异常：', '错误信息:',err.message);
   }
-
-  worker.postMessage('Hello World');
+  worker.postMessage({type:1,value:2});
 </script>
 
 </html>
