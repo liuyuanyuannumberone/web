@@ -25,7 +25,7 @@ const { zipObject } = require('lodash');
         b: Symbol(111), // Symbol 过滤      null
         c: function () {}, //function过滤   null
         
-        h:Number('123a'), // NaN  null
+        h:Number('123a'), //NAN  null
         d: /^q/g, //Regexp {}
         e: new Date(), // Date 字符串
         f: [undefined, Symbol(111), function () {}, /^q/g, new Date(),Number('123a')], // null,null nul {} 字符串 null

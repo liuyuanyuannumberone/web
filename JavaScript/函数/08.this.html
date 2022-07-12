@@ -19,7 +19,10 @@
     【函数名前边的的对象】,定时器永远指向window【这个有待验证】
    浏览器全局中的this是Window，而原生js中是global
  -->
+    <div id="btn1" style="width: 100px;height:100px;border: 1px solid red;"></div>
+    <div id="btn2" style="width: 100px;height:100px;border: 1px solid red;"></div>
 </body>
+
 <script>
     function fn1() {
         var user = "追梦子";
@@ -40,7 +43,7 @@
     add()();
 
 
-    var o = {
+    let o = {
         user: "追梦子",
         fn: function () {
             console.log(this.user);
@@ -78,7 +81,7 @@
     }, 1000)
 
     let i = 0;
-    const o = {
+    const m = {
         i: 1,
         fn: function () {
             console.log(this.i);
@@ -86,7 +89,18 @@
     }
 
     //setTimeout是运行在全局环境下的,指向window
-    setTimeout(o.fn, 1000); //0
+    setTimeout(m.fn, 1000); //0
+</script>
+
+<script>
+    const btn1 = document.getElementById('btn1')
+    btn1.addEventListener('click', () => {
+        this.innerHTML = 'clicked';  //this 指向window
+    })
+    const btn2 = document.getElementById('btn2')
+    btn2.addEventListener('click', function () {
+        this.innerHTML = 'clicked';    // //this btn2
+    })
 </script>
 
 </html>

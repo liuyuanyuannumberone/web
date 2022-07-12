@@ -13,6 +13,8 @@ console.log(Boolean('0'), Boolean([]), Boolean({}),Boolean(a === undefined)); //
 //typeof 判断基本类型(去掉null)和Function
 console.log(typeof 1, typeof '1', typeof true, typeof undefined, typeof Symbol(), typeof new Function());
 
+//console.log( typeof null,typeof [],typeof {},typeof /\.1/g,typeof new Date());//object object object object object
+
 // toString
 console.log(
     Object.prototype.toString.call(null),
@@ -20,5 +22,7 @@ console.log(
     Object.prototype.toString.call(new RegExp()),
     Object.prototype.toString.call(new Date()),
     Array.isArray([])
-); // [object Null] [object Object] [object RegExp] [object Date]
+); // [object Null] [object Object] [object RegExp] [object Date] true
 
+let obj=null;
+console.log(obj===null);

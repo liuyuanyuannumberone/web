@@ -18,7 +18,7 @@ obj.__proto__ = Person.prototype; // obj的__proto__指向构造函数Person的p
 // 构造函数Person的this指向空对象，然后执行构造函数,
 var result = Person.call(obj);
 // 如果构造函数内部有return+对象,返回这个对象。否则默认返回this;
-p = typeof result === 'object' ? p : obj; //console.log('构造函数的返回值', result);
+p = typeof result === 'object' ? result : obj; //console.log('构造函数的返回值', result);
 
 //3.Object.create() 以这个现有的对象作为模板，生成新的实例对象
 //Object.create方法以A对象为原型，生成了B对象。B继承了A的所有属性和方法。

@@ -1,7 +1,7 @@
 let arr = [-7, 4, 4, 5, 9, 5, 6, 7];
 
 for (let i = 0; i < arr.length; i++) {}
-for (let key in arr) {}///key不是索引  主要为遍历对象设计
+for (let key in arr) {console.log(key);}///key不是索引  主要为遍历对象设计
 for (let item of arr) {} //主要为可遍历对象设计
 
 arr.forEach((item, index) => {});

@@ -2,6 +2,22 @@
  * 对象的所有键名都是字符串，如果键名是数值，会被自动转为字符串。
  *
  */
+ let x = 1, y = 2, z = 3;
+ let m = 'name';
+ let obj1 = {
+     x,
+     y,
+     z,
+     m: 'liu',
+     [m]: 'liu',
+     [x + y]: '123',
+     hello() {
+         console.log('hello');
+     },
+ };
+ console.log(obj1); // {'3': '123',x: 1, y: 2,z: 3,m: 'liu',name: 'liu',hello: [Function: hello]}
+
+
 let obj = {
     name: 'lyy',
     add: function () {},
