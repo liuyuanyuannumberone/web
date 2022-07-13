@@ -1,12 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+<style>
+  .color_list {
+    display: flex;
+    padding-left: 0
+  }
+
+  .color_list li {
+    width: 100px;
+    height: 100px;
+    list-style: none;
+    text-align: center;
+    line-height: 100px;
+  }
+
+  .box {
+    width: 600px;
+    height: 150px;
+    background-color: #cccccc;
+    line-height: 150px;
+    text-align: center;
+  }
+</style>
+
 <body>
-  
+  <ul class="color_list">
+    <li style="background:red">red</li>
+    <li style="background:orange">orange</li>
+    <li style="background:yellow">yellow</li>
+    <li style="background:green">green</li>
+    <li style="background:blue">blue</li>
+    <li style="background:purple">purple</li>
+  </ul>
+  <div class="box"></div>
+  <script>
+    //适用于元素比较少的情况
+    // var color_list = document.querySelector(".color_list");
+    // var colors = color_list.getElementsByTagName("li");
+    // var box = document.querySelector(".box");
+    // for (var n = 0; n < colors.length; n++) {
+    //   colors[n].addEventListener("click", function () {
+    //     box.innerHTML = `<span style="background:${this.innerHTML};color:#fff">颜色为${this.innerHTML}</span>`;
+    //   })
+    // }
+
+
+    /** 推荐使用 事件代理:事件代理就是利用事件冒泡或事件捕获的机制把一系列的内层元素事件绑定到外层元素
+        由于事件冒泡点击了li后会冒泡到ul,此时就会触发绑定在ul上的点击事件，再利用target找到事件实际发生的元素    
+    */
+    let color_list = document.querySelector(".color_list");
+    let box = document.querySelector(".box");
+    function colorChange(e) {
+      var e = e || window.event;
+      console.log(e.target,e.currentTarget)  //<li style="background:red">red</li>       
+      if (e.target.nodeName.toLowerCase() === "li") {
+        box.innerHTML = `<span style="background:${e.target.innerHTML};color:#fff">颜色为${e.target.innerHTML}</span>`;
+      }
+    }
+    color_list.addEventListener("click", colorChange, false)//默认值false，表示事件冒泡,设为true时,表示事件捕获
+  </script>
 </body>
+
 </html>
