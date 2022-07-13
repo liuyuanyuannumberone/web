@@ -20,3 +20,20 @@ async function test() {
     }
 }
 // test();
+
+
+function p(time) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(time)
+        }, time)
+    })
+}
+
+let arr1 = [p(2000), p(1000), p(3000)];
+
+async function test() {
+    for await (let  item of arr1) {
+        console.log(Date.now(),item)
+    }
+}

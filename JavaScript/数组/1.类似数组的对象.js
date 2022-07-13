@@ -25,7 +25,11 @@ for (let i = 0; i < arrayLike.length; i++) {
     console.log(test(1, 2, 3));
 }
 
-//真正转化为数组 Array.from()
+/**
+真正转化为数组 Array.from()的使用条件：
+  1.有Iterator接口的对象，比如：Set，Map，Array;
+  2.类数组对象，就是一个对象必须有length属性，没有length，转出来的就是空数组
+*/
 {
     const arr1 = Array.prototype.slice.call(arrayLike);
     const arr2 = Array.from(arrayLike);

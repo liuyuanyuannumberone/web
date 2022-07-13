@@ -20,7 +20,7 @@ let obj1 = {
 /**
       Object.getOwnPropertyDescriptor()：获取某个属性的描述对象,只能用于对象自身的属性，不能用于继承的属性
    
-      1.返回修改后的对象，定义或修改属性描述对象
+      1.返回修改后的对象。定义或修改属性描述对象
       2.writable、configurable、enumerable这三个属性的默认值都为false
       Object.defineProperty()   Object.defineProperties() 
 

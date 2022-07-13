@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  /***
+   * 性能API方法:毫秒为单位
+   * 最常见的用例是监控一段代码的执行时间
+ 
+   Performance.now()和Date.now()之间最大的区别是，
+   Date.now()返回一个与Unix时间有关的时间戳（从00:00:00 UTC，1970年1月1日开始的时间）。
+   这就是我们可能面临的一个问题。JavaScript如何知道从这个日期开始已经过了多少时间？它从系统时钟中获取。
+   但是，由于系统时钟存在于我们的机器中，它可以手动或通过程序进行调整，因此，时间精度无法保证。
+   在这种情况下，performance.now()就比较可靠，
+   它既不依赖于历史上的某个特定时间点，也不依赖于我们的系统，因为它返回的是自文档生命期开始以来所经过的毫秒数量。
+   * 
+   */ 
+  const startTime = performance.now();
+  console.time('测试');
+  setTimeout(function () {
+    const finishTime = performance.now();
+    console.log(finishTime - startTime)
+    console.timeEnd('测试');
+  }, 1000)
+
+</script>
+
+</html>

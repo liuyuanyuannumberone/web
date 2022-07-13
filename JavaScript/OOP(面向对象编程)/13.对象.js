@@ -26,7 +26,7 @@ let obj = {
 console.log(delete obj.name, delete obj.a); //true true
 
 
-//不管该数组的成员都是该对象自身的（而不是继承的）所有属性名。
+//该数组的成员都是该对象自身的（而不是继承的）所有属性名。
 let students = { id: 1, name: 'liu', sex: 0 };
 console.log(
     Object.keys(students), //[ 'id', 'name', 'sex' ]
