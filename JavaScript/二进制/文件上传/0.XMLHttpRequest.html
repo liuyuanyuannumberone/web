@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>XMLHttpRequest</title>
 </head>
 
 <body>
@@ -19,7 +19,6 @@
          2  send()方法已经调用，并且服务器返回的头信息和状态码已经收到
          3  正在接收服务器传来的数据体
          4  服务器返回的数据已经完全接收，或者本次接收已经失败
-     2. xhr.response 服务器返回的数据体,比如字符串、对象、二进制对象等等。具体数据类型由xhr.responseType决定。只读
      3. xhr.responseText 返回从服务器接收到的字符串。 只读
      4. xhr.responseXML  返回从服务器接收到的HTML或XML文档对象。只读
      5. xhr.responseURL  返回请求服务器的URL
@@ -36,15 +35,51 @@
      7. xhr.timeout  xhr.ontimeout
      8. xhr.withCredentials 属性是一个布尔值 
         表示跨域请求时，用户信息（比如 Cookie 和认证的HTTP 头信息）是否会包含在请求之中，默认为false
-     9.xhr.upload AJAX文件上传。
-       发送文件后，可以得到一个对象，
-       主要方法就是监听这个对象的各种事件：loadstart、loadend、load、abort、error、progress、timeout
-    10. xhr.setRequestHeader() 设置浏览器发送的 HTTP 请求的头信息,必须在open()之后，send()之前调用。
+     9.xhr.upload   文件上传 
+      如果我们要上传的东西很大，那么我们肯定会对跟踪上传进度感兴趣,它专门用于跟踪上传事件。
+        它会生成事件，类似于 xhr，但是 xhr.upload 仅在上传时触发它们：
+         loadstart —— 上传开始。
+         progress —— 上传期间定期触发。
+         abort —— 上传中止。
+         error —— 非 HTTP 错误。
+         load —— 上传成功完成。
+         timeout —— 上传超时（如果设置了 timeout 属性）
+         loadend —— 上传完成，无论成功还是 error
+            // 跟踪上传进度
+        1. xhr.upload.onprogress = function(event) {};
+        2. xhr.upload.onerror = function() {};
+        3. xhr.upload.onload = function() {};
+        4. xhr.onloadend = function() {}; //// 跟踪完成：无论成功与否
+
+       xhr.onloadstart 开始传送数据时被触发  
+       xhr.onprogress  在接收响应期间持续不断地触发，事件处理程序会接收到一个event对象
+                       event.loaded：已传输的数据量
+                       event.total：总共的数据量
+                       event.lengthComputable：进度信息是否可用
+       xhr.onerror  只有发生了网络层级别的异常才会触发此事件。仅在根本无法发出请求时触发
+                    对于应用层级别的异常，比如响应返回的statusCode是4xx时，不会触发onerror事件。
+
+       xhr.onload  当请求成功，接收到完整的响应数据时触发
+                   可以用onload事件可以用来替代readystatechange事件。
+                   只要浏览器接收到服务器的响应，不管其状态如何，都会触发load事件。
+                                         
+    10. xhr.response 服务器返回的数据体,比如字符串、对象、二进制对象等等。必须在open()之后，send()之前调用。
+        xhr.responseType 表示服务器返回数据的类型。
+
+        "text"||""  返回文本数据    "document"  返回XML格式数据
+        "json" 返回json对象   "blob"  服务器返回二进制对象    
+        "arrayBuffer" 服务器返回二进制数组
+    11. xhr.overrideMimeType() 和xhr.responseType作用一样
+
+        xhr.overrideMimeType('text/xml; charset = utf-8')  
+
+    12. xhr.setRequestHeader() 设置浏览器发送的 HTTP 请求的头信息,必须在open()之后，send()之前调用。
         Content-Type:用来告诉服务器，浏览器发送的参数是什么格式的字符串
           1、text/plain; charset=UTF-8（默认格式）
           2. application/x-www-form-urlencoded   表单数据格式的字符串
           3. application/json; charset=UTF-8
-          4. multipart/form-data  一般使用在文件上传
+          4. multipart/form-data  一般使用在文件上传   
+  
      */
 
     {
@@ -54,15 +89,32 @@
         xhr.ontimeout = function () {
             console.log("TimeOut!")
         }
+        xhr.onloadstart = function () {
+            // console.log('开始发出请求...')
+        }
         xhr.onreadystatechange = function () {
-            // console.log(xhr)
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    // console.log(xhr.responseText);
-                }
+            if (xhr.readyState === 4 && xhr.status === 200) {          
+                    console.log(xhr.response);
             }
         };
-        xhr.onerror = function (e) { };
+        xhr.onload = function onload() {
+            console.log('数据接收完毕')
+            if((xhr.status >= 200 && xhr.status <= 200) || xhr.status == 304){
+                // console.log(xhr.response)
+            }
+        }
+
+        xhr.onprogress = function (event) {
+            if (!event.lengthComputable) {
+                return console.log('无法计算进展')
+            }
+            const percentComplete = event.loaded / event.total * 100
+            // console.log(`进度百分比：${percentComplete}%`)
+        }
+
+        xhr.onerror = function (e) {
+            console.log('Network Error')
+        };
         let data = { name: "lyy", age: 12 }
         xhr.open('GET', `${url}/getData?username=lyy&pass=123456`, true); //表示请求是否为异步，默认为true
         xhr.send(data);  //所有XMLHttpRequest的监听事件，都必须在send()方法调用之前
@@ -87,12 +139,12 @@
                 data: 'username=lyy&passok=12345',
                 contentType: 'application/x-www-form-urlencoded',
             },
-            "2":{
-                data: JSON.stringify({username: 'lyy', passok: '123'}),
+            "2": {
+                data: JSON.stringify({ username: 'lyy', passok: '123' }),
                 contentType: 'application/json; charset=UTF-8',
             }
         }
-        let type=2;
+        let type = 2;
         xhr.open('POST', `${url}/addData`);
         xhr.setRequestHeader('content-type', obj[type].data.contentType);
         xhr.send(obj[type].data);

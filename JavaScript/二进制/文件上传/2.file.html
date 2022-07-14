@@ -9,12 +9,37 @@
 </head>
 
 <body>
-
+  <input type="file" onchange="upload(this.files[0])">
+  <input type="file" onchange="uploadFile(this.files[0])">
 </body>
 <script>
+  let url = "http://127.0.0.1:3000/test";
+
+  //普通上传
+  function upload(file) {
+    let xhr = new XMLHttpRequest();
+
+    // 跟踪上传进度
+    xhr.upload.onprogress = function (event) {
+      console.log(`Uploaded ${event.loaded} of ${event.total}`);
+    };
+
+    // 跟踪完成：无论成功与否
+    xhr.onloadend = function () {
+      if (xhr.status == 200) {
+        console.log("success");
+      } else {
+        console.log("error " + this.status);
+      }
+    };
+    xhr.open("POST", `${url}/addData`);
+    xhr.send(file);
+  }
+
+
   //分片上传
   function uploadFile(file) {
-    var chunkSize = 1024 * 1024; //每片1M大小
+    var chunkSize = 1; //每片1B大小
     var totalSize = file.size;
     var chunkQuantity = Math.ceil(totalSize / chunkSize); //分片总数(向上取整)
     var offset = 0; //偏移量
@@ -22,33 +47,29 @@
     var reader = new FileReader();
     reader.onload = function (e) {
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", url);
-      xhr.overrideMineType("application/octet-stream");
-
-      xhr.onreadstatechange = function () {
+      xhr.open("POST", `${url}/addData`);
+      xhr.overrideMimeType("application/octet-stream");
+      xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
           ++offset;
+          console.log("offset", offset);
           if (offset === chunkQuantity) {
-            alerrt("上传完成");
-          } else if (offset === chunckQuantity - 1) {
+            console.log("上传完成");
+          } else if (offset === chunkQuantity - 1) {
             blob = file.slice(offset * chunkSize, totalSize);
             reader.readAsBinaryString(blob);
           } else {
-            blob = file.slice(offset * chunkSize, (offset + 1) * chunckSize);
+            blob = file.slice(offset * chunkSize, (offset + 1) * chunkSize);
             reader.readAsBinaryString(blob);
           }
-        } else {
-          alert("上传出错");
         }
       }
-
       if (xhr.sendAsBinary) {
         xhr.sendAsBinary(e.target.result);
       } else {
         xhr.send(e.target.result);
       }
     }
-    
     var blob = file.slice(0, chunkSize);
     reader.readAsBinaryString(blob);
   }
