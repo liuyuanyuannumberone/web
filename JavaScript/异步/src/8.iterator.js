@@ -5,6 +5,10 @@ Iterator对象是一个指针对象，实现类似于单项链表的数据结构
 原生具有[Symbol.iterator]属性数据类型有一个特点，就是可以使用for...of来取值
 而具有[Symbol.iterator]属性的对象，都可以一键生成一个Iterator对象,有两种方式使用这个对象next和for...of
 */
+
+//检查一个对象是否可遍历
+console.log(typeof {}[Symbol.iterator]==='function'); //false
+
 var person = {};
 person.age = 100
 person[Symbol.iterator] = 200

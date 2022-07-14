@@ -33,7 +33,10 @@ for (let i = 0; i < arrayLike.length; i++) {
 {
     const arr1 = Array.prototype.slice.call(arrayLike);
     const arr2 = Array.from(arrayLike);
-    // 初始化一个长为10，值为1的数组
+}
+
+//初始化一个长为10，值为1的数组
+{
     const arr3 = Array.from({ length: 10 }, function () {
         return 1;
     });

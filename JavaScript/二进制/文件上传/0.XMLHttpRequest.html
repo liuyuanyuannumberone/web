@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    /*
+      XMLHttpRequest是一个 `浏览器接口` ,使得Javascript可以进行HTTP(S)通信
+      1. onreadystatechange事件--监听函数  =>xhr.readyState
+         0  表示实例已经生成，open()方法还没有被调用
+         1  open()方法已经调用，send()方法还没有调用
+         2  send()方法已经调用，并且服务器返回的头信息和状态码已经收到
+         3  正在接收服务器传来的数据体
+         4  服务器返回的数据已经完全接收，或者本次接收已经失败
+     2. xhr.response 服务器返回的数据体,比如字符串、对象、二进制对象等等。具体数据类型由xhr.responseType决定。只读
+     3. xhr.responseText 返回从服务器接收到的字符串。 只读
+     4. xhr.responseXML  返回从服务器接收到的HTML或XML文档对象。只读
+     5. xhr.responseURL  返回请求服务器的URL
+     6. xhr.status  xhr.statusText  返回服务器回应的 HTTP 状态码   
+        200, OK，访问正常
+        301, Moved Permanently，永久移动
+        302, Moved temporarily，暂时移动
+        304, Not Modified，未修改
+        307, Temporary Redirect，暂时重定向
+        401, Unauthorized，未授权
+        403, Forbidden，禁止访问
+        404, Not Found，未发现指定网址
+        500, Internal Server Error，服务器发生错误
+     7. xhr.timeout  xhr.ontimeout
+     8. xhr.withCredentials 属性是一个布尔值 
+        表示跨域请求时，用户信息（比如 Cookie 和认证的HTTP 头信息）是否会包含在请求之中，默认为false
+     9.xhr.upload AJAX文件上传。
+       发送文件后，可以得到一个对象，
+       主要方法就是监听这个对象的各种事件：loadstart、loadend、load、abort、error、progress、timeout
+    10. xhr.setRequestHeader() 设置浏览器发送的 HTTP 请求的头信息,必须在open()之后，send()之前调用。
+        Content-Type:用来告诉服务器，浏览器发送的参数是什么格式的字符串
+          1、text/plain; charset=UTF-8（默认格式）
+          2. application/x-www-form-urlencoded   表单数据格式的字符串
+          3. application/json; charset=UTF-8
+          4. multipart/form-data  一般使用在文件上传
+     */
+
+    {
+        let xhr = new XMLHttpRequest();
+        let url = "http://127.0.0.1:3000/test";
+        xhr.timeout = 10000;
+        xhr.ontimeout = function () {
+            console.log("TimeOut!")
+        }
+        xhr.onreadystatechange = function () {
+            // console.log(xhr)
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    // console.log(xhr.responseText);
+                }
+            }
+        };
+        xhr.onerror = function (e) { };
+        let data = { name: "lyy", age: 12 }
+        xhr.open('GET', `${url}/getData?username=lyy&pass=123456`, true); //表示请求是否为异步，默认为true
+        xhr.send(data);  //所有XMLHttpRequest的监听事件，都必须在send()方法调用之前
+    }
+</script>
+
+<script>
+    {
+        let xhr = new XMLHttpRequest();
+        let url = "http://127.0.0.1:3000/test";
+        xhr.onreadystatechange = function () {
+            // console.log(xhr)
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    console.log(xhr.responseText);
+                }
+            }
+        };
+
+        let obj = {
+            "1": {
+                data: 'username=lyy&passok=12345',
+                contentType: 'application/x-www-form-urlencoded',
+            },
+            "2":{
+                data: JSON.stringify({username: 'lyy', passok: '123'}),
+                contentType: 'application/json; charset=UTF-8',
+            }
+        }
+        let type=2;
+        xhr.open('POST', `${url}/addData`);
+        xhr.setRequestHeader('content-type', obj[type].data.contentType);
+        xhr.send(obj[type].data);
+    }
+</script>
+
+</html>

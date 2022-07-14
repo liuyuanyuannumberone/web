@@ -11,6 +11,9 @@ let arr = [1, 2, 3, 4, 5, 5, 6, 7, 8, 9];
 let setArr = new Set(arr);
 console.log(Array.from(setArr));
 console.log([...setArr]);
+//不能用 slice
+console.log(Array.prototype.slice.call(setArr));  //[]
+
 
 //数组的并集、交集、差集
 {

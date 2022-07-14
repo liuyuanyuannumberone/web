@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  /**
+   Blob 代表二进制类型的大对象,表示不可变的类似文件对象的原始数据。
+   size代表Blob对象字节数
+
+  */
+{
+  /*
+   普通对象创建Blob对象时，相当于普通对象的toString()方法得到字符串,后再创建Blob对象。
+   所以blob5保存的数据是"[object Object]"，
+  */
+  let data1 = "a";
+  let data2 = { "name": "abc" };
+  let blob1 = new Blob([data1]);  //Blob {size: 1, type: ""}
+  let blob2 = new Blob([JSON.stringify(data2)]); //Blob {size: 14, type: ""}   "{"name":"abc"}"
+  let blob3 = new Blob([data2]); //Blob {size: 15, type: ""}
+}
+
+</script>
+
+</html>
