@@ -8,9 +8,12 @@
   <title>Document</title>
 </head>
 
-<body>
-  <input type="file" onchange="upload(this.files[0])">
-  <input type="file" onchange="uploadFile(this.files[0])">
+<input type="file" style="display:none;" id="fileInput" onchange="readFile(event)">
+<input onclick="uploadServer()" id="triggerInput">
+
+
+<input type="file" onchange="upload(this.files[0])">
+<input type="file" onchange="uploadFile(this.files[0])">
 </body>
 <script>
   let url = "http://127.0.0.1:3000/test";
@@ -73,6 +76,23 @@
     var blob = file.slice(0, chunkSize);
     reader.readAsBinaryString(blob);
   }
+</script>
+<script>
+  function readFile(event) {
+    let filesArr = event.target.files;
+    if (filesArr.length > 0) {
+      let file = filesArr[0];
+      document.getElementById("triggerInput").value = file.name;
+      console.log(file);
+    } else {
+      alert("请上传文件")
+    }
+  }
+  function uploadServer() {
+    let fileInput = document.getElementById("fileInput");
+    fileInput.click();
+  }
+
 </script>
 
 </html>

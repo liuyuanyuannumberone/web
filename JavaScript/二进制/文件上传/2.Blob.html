@@ -13,11 +13,14 @@
 </body>
 <script>
   /**
-   Blob 代表二进制类型的大对象,表示不可变的类似文件对象的原始数据。
-   size代表Blob对象字节数
+    Blob 代表二进制类型的大对象,表示不可变的类似文件对象的原始数据  
+     var blob = new Blob(array, options) 参数：类似数组
+      size代表Blob对象字节数 
 
-  */
-{
+    1. slice方法 返回一个新的Blob对象 
+    
+   */
+
   /*
    普通对象创建Blob对象时，相当于普通对象的toString()方法得到字符串,后再创建Blob对象。
    所以blob5保存的数据是"[object Object]"，
@@ -27,7 +30,6 @@
   let blob1 = new Blob([data1]);  //Blob {size: 1, type: ""}
   let blob2 = new Blob([JSON.stringify(data2)]); //Blob {size: 14, type: ""}   "{"name":"abc"}"
   let blob3 = new Blob([data2]); //Blob {size: 15, type: ""}
-}
 
 </script>
 

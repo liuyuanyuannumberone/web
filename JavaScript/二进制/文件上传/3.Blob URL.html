@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <a>另存为</a>
+  <br>
+  <input type="file" accept="image/*" onchange="handleFile(this)" />
+  <br>
+  <img style="width:200px;height:200px;">
+</body>
+<script>
+  /**
+  1.File 接口基于Blob,继承了blob的功能并支持文件    
+  2.Blob URL 通过URL.createObjectURL(blob)创建,URL.revokeObjectURL释放  
+
+  */
+
+  function createDownloadFile() {
+    var content = "Blob Data";
+    const blob = new Blob([content], {
+      type: 'text/plain' // 文件类型，默认为text/plain，即txt文件
+    })
+    var link = document.getElementsByTagName('a')[0];
+    link.download = "file.txt";
+    link.href = URL.createObjectURL(blob);
+  }
+  window.onload = createDownloadFile;
+
+  function handleFile(e) {
+    var file = e.files[0];
+    var blob = URL.createObjectURL(file);
+    var img = document.getElementsByTagName("img")[0];
+    img.src = blob;
+    img.onload = function (e) {
+      URL.revokeObjectURL(this.src); //释放createObjectURL创建的对象
+    }
+  }
+
+</script>
+
+</html>

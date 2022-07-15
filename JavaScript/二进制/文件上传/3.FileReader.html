@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="file" onchange="uploadFile(this.files[0])" />
+</body>
+
+<script>
+
+  //  function uploadFile(file) {
+  //     console.log("file", file);
+  //     var reader = new FileReader();
+  //     reader.onload = function (e) {
+  //       console.log(e.target.result)
+  //     }
+  //     reader.readAsBinaryString(file);
+  //   }
+
+  function readBlob(blob, type) {
+    return new Promise((resolve) => {
+      let reader = new FileReader()
+      reader.onload = function (event) {
+        resolve(event.target.result)
+      }
+      switch (type) {
+        case 'ArrayBuffer':
+          // ArrayBuffer
+          reader.readAsArrayBuffer(blob);
+          break;
+        case 'Binary':
+          // 原始二进制数据。
+          reader.readAsBinaryString(blob);
+          break;
+        case 'DataURL':
+          // base64
+          reader.readAsDataURL(blob);
+          break;
+        case 'Text':
+          //文本
+          reader.readAsText(blob, 'utf-8');
+          break;
+        default:
+          break;
+      }
+    })
+  };
+  async function uploadFile(file) {
+    await readBlob(file, 'ArrayBuffer').then(rs => {
+      console.log('ArrayBuffer', rs)
+    });
+    await readBlob(file, 'Binary').then(rs => {
+      console.log('Binary', rs)
+    });
+    await readBlob(file, 'DataURL').then(rs => {
+      console.log('DataURL', rs)
+    })
+    await readBlob(file, 'Text').then(rs => {
+      console.log('Text', rs)
+    })
+  }
+</script>
+
+</html>

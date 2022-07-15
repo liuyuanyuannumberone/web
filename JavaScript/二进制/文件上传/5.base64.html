@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  /**
+   浏览器的方法
+   atob  解码一个Base64           base64转成8bit字节            Buffer.frome(b64Encoded, 'base64').toString();
+   btoa  字符串或二进制数据编码成Base64    8bit字节转成base64    Buffer.from(str).toString('base64');
+
+ */
+  let rs = btoa('test')
+  let s = atob(rs);
+</script>
+
+</html>
