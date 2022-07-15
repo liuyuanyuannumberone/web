@@ -19,8 +19,13 @@
 }
 
 {
-    /abc/.test('abcdef'); //true
+    var regex = /b/g;
+    var str = 'abba';
+    regex.test(str); // true
+    regex.test(str); // true
+    regex.test(str); // false
 
+    
     let r = /abc/g;
     let s = 'abchdshdabclkdlsabcl;';
     let res;
