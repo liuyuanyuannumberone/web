@@ -24,8 +24,8 @@
   // 为了能够按照一定的间隔周期性的触发定时器，我们可以使用setTimeout来代替setInterval执行
   let timer = null;
   setTimeout(function fn() {
-     //执行程序
-     console.log(format.formatDate(new Date()));
+     //执行同步程序
+    //  console.log(format.formatDate(new Date()));
     if (timer) {
       clearTimeout(timer);
       timer = null;
