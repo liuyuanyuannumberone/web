@@ -29,7 +29,6 @@
         handler.resolve(200);
     }, 2000);
 
-    
     //测试
     thenFun(
         function (data) {
@@ -37,4 +36,17 @@
         },
         function (err) {}
     );
+}
+
+{
+    let read = function (executor) {
+        let resolve = data => {
+            console.log('resolve', data); //2
+        };
+        let reject = () => {};
+        executor(resolve, reject);
+    };
+    read((resolve, reject) => {
+        resolve(2);
+    });
 }

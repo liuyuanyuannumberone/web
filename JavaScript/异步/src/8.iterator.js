@@ -4,8 +4,9 @@ Iterator对象是一个指针对象，实现类似于单项链表的数据结构
 原生具有[Symbol.iterator]属性数据类型有一个特点，就是可以使用for...of来取值
 而具有[Symbol.iterator]属性的对象，都可以一键生成一个Iterator对象(arr[Symbol.iterator]() )
          有两种方式遍历这个对象
-         1.Iterator对象           使用next()
-         2.具有Iterator属性的对象  for...of (done为true的不会返回)    
+         1.Iterator对象           使用next() 执行到{value: undefined, done: true }
+
+         2.具有Iterator属性的对象  for...of (return的done=true丢弃停止|| yeild的return丢弃停止)    
            检查一个对象具有Iterator属性
            console.log(typeof obj[Symbol.iterator] === 'function'); //false 
 
@@ -14,11 +15,12 @@ Iterator对象是一个指针对象，实现类似于单项链表的数据结构
 {
     const arr = [100, 200, 300];
     const iterator = arr[Symbol.iterator](); //生成iterator对象
+
     //方式1
-    //console.log(iterator.next())  // { value: 100, done: false }
-    //console.log(iterator.next())  // { value: 200, done: false }
-    //console.log(iterator.next())  // { value: 300, done: false }
-    //console.log(iterator.next())  // { value: undefined, done: true }
+    // console.log(iterator.next())  // { value: 100, done: false }
+    // console.log(iterator.next())  // { value: 200, done: false }
+    // console.log(iterator.next())  // { value: 300, done: false }
+    // console.log(iterator.next())  // { value: undefined, done: true }
 
     //方式2
     for (item of arr) {
@@ -53,7 +55,6 @@ Iterator对象是一个指针对象，实现类似于单项链表的数据结构
             };
         },
     };
-
     // console.log(typeof authors[Symbol.iterator] === 'function'); //true
     // let iterator=authors[Symbol.iterator]();
     //console.log(iterator.next());//{ done: false, value: [ 'a', 'b', 'c' ] }
@@ -64,3 +65,20 @@ Iterator对象是一个指针对象，实现类似于单项链表的数据结构
         // console.log(v);
     }
 }
+
+// {
+//     let arr = [1, 2, 3];
+//     let index = 0;
+//     let obj = {
+//         index: 0,
+//         next() {
+//             return index < arr.length
+//                 ? { done: false, value: arr[index++] }
+//                 : { done: true, value: undefined };
+//         },
+//     };
+//     console.log(obj.next());
+//     console.log(obj.next());
+//     console.log(obj.next());
+//     console.log(obj.next());
+// }

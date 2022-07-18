@@ -1,5 +1,5 @@
 const fs = require('fs');
-fs.readFile('../static/config/config.json', (err, data) => {
+fs.readFile('../static/config/data1.json', (err, data) => {
     console.log(data.toString());
 });
 
