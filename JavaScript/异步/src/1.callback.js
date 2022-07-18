@@ -5,6 +5,7 @@ let read = function (fun, delay) {
     } else {
         a = fun(5, 6, 7, 8);
     }
+    console.log(a);
 };
 
 let clg = function (a1, a2, a3, a4) {

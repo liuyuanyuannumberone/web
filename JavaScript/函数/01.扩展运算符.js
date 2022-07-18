@@ -7,20 +7,6 @@ let obj = {
     value: 10,
 };
 
-//函数传参
-{
-    function sum(base, ...all_var) {
-        console.log(all_var); //数组
-    }
-    sum(1, 2, 3, 4, 5, 6, 7, 8);
-
-    function add(x = 1, y = 2, z = 3) {
-        console.log(x, y, z);
-    }
-    add(...arr);
-    Math.max(...arr);
-}
-
 {
     let arr1 = [...str]; //字符串转数组 [ 'h', 'e', 'l', 'l', 'o' ]
     let arr2 = [...arr]; // 复制数组

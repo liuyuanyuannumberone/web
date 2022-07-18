@@ -22,6 +22,11 @@
   </div>
 </body>
 <script>
+  /*
+   promise/A+ 规范:
+      1.promise只会3种状态中的一种：等待(pending)、执行(fulfilled)、拒绝(rejected),不能相互转换
+      2.promise.then(onFulfilled,onRejected),then()返回promise对象。,以实现链式写法。
+  */
   const wait = function () {
     const promise = new Promise((resolve, reject) => {
       const task = function () {

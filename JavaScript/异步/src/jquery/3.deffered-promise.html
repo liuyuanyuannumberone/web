@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+
+<body></body>
+<script>
+  /*
+  Promise/Deferred 模式：
+   deferred:Deferred主要是用于内部，来维护异步模型的状态。
+       1.deferred对象通过resolve方法，改变自身状态为执行态，并触发Promise的then()方法的onfulfilled回调函数;
+       2.deferred对象通过reject方法，改变自身状态为拒绝态，并触发Promise的then()方法的onrejected回调函数;
+   promise:Promise只用于外部,通过then(onFulfilled,onRejected)方法,暴露给外部调用，以添加业务逻辑。
+  
+  */
+
+
+  function Promise() {
+    this.handler = {};
+  }
+  Promise.prototype.then = function (onFulfilled, onRejected) {
+    var handler = {}
+    if (typeof onFulfilled === 'function') {
+      handler.resolve = onFulfilled
+    }
+    if (typeof onRejected === 'function') {
+      handler.reject = onRejected
+    }
+    this.handler = handler
+    console.log(1111);
+    return this
+  }
+
+  // new Promise();
+
+  // function Deferred() {
+  //   this.state = 'pending';
+  //   this.promise = new Promise();
+  // }
+
+  // Deferred.prototype.resolve = function (obj) {
+  //   this.state = 'fulfilled'
+  //   var handler = this.promise.handler
+  //   if (handler && handler.resolve) {
+  //     handler.resolve(obj)
+  //   }
+  // }
+
+  // Deferred.prototype.reject = function (obj) {
+  //   this.state = 'rejected'
+  //   var handler = this.promise.handler
+  //   if (handler && handler.reject) {
+  //     handler.reject(obj)
+  //   }
+  // }
+
+  // function doSomeing(flag, message) {
+  //   var deferred = new Deferred();
+  //   setTimeout(function () {
+  //     if (flag) {
+  //       deferred.resolve(message)
+  //     } else {
+  //       deferred.reject({ code: 400, message: '拒绝' })
+  //     }
+  //   }, 3000)
+  //   return deferred.promise
+  // }
+
+  // //测试
+  // doSomeing(true, '测试执行成功').then(function (message) {
+  //   console.log(message)
+  // }, function (err) {
+  //   console.log(err)
+  // })
+
+
+
+
+
+
+</script>
+
+</html>

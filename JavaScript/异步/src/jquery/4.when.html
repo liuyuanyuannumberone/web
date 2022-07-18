@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>异步</title>
+</head>
+<style>
+  .dv {
+    width: 400px;
+    height: 200px;
+    border-radius: 20px;
+    background-color: #efefef;
+  }
+</style>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+
+<body>
+  <div class="dv">
+
+  </div>
+</body>
+
+<script>
+  // Promise.resolve  deferred对象可以转换成Promise对象
+  const promiseObj = Promise.resolve($.ajax('../static/config/data.json'))
+  promiseObj.then(data => { })
+
+  function writeAjax(time) {
+    let dfd = $.Deferred()
+    let task = function () {
+      dfd.resolve(time)
+    }
+    setTimeout(task, time)
+    return dfd;
+    // return dfd.promise();
+    // return Promise.resolve(dfd);
+  }
+  /*
+  $.when()方法为多个deferred对象(或者promise对象)，返回一个单一的promise对象
+  当它们全部运行成功后，才调用resolved状态的回调函数，但只要其中有一个失败，就调用rejected状态的回调函数
+  */
+  $.when(
+    writeAjax(1000),
+    writeAjax(2000),
+    writeAjax(3000)
+  ).then(function (data1, data2, data3) {
+    console.log(data1, data2, data3);
+  }, function () { });
+
+
+</script>
+
+</html>
