@@ -1,5 +1,6 @@
-//不改变原字符 [)
+//不改变原字符 [)    "java"=> 0 1 2 3  -4 -3 -2 -1  
 console.log('JavaScript'.slice(1, 4)); // ava
+console.log(1,'JavaScript'.slice(-4, -1)); // rip   
 //不改变原字符 [ 截取字符串长度
 console.log('JavaScript'.substr(1, 4)); // avaS
 

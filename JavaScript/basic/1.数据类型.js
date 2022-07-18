@@ -4,25 +4,19 @@
 
             引用类型 Object(Array|Function|Regexp|Date)
  */
-
  let a;
-// Boolean 判断
-console.log(Boolean(null), Boolean(undefined), Boolean(NaN), Boolean(''),Boolean(0),Boolean(false)); //false
-console.log(Boolean('0'), Boolean([]), Boolean({}),Boolean(a === undefined)); //true
+ let obj=null;
+ //if判断
+ console.log(Boolean(null), Boolean(undefined), Boolean(NaN), Boolean(''),Boolean(0),Boolean(false)); //false
+ 
 
-//typeof 判断基本类型(去掉null)和Function
-console.log(typeof 1, typeof '1', typeof true, typeof undefined, typeof Symbol(), typeof new Function());
+ //typeof判断基本类型(去掉null)和Function
+ console.log(a === undefined);  //true
+ console.log(Boolean(obj === null),Boolean(Array.isArray([]))); //true
 
-//console.log( typeof null,typeof [],typeof {},typeof /\.1/g,typeof new Date());//object object object object object
-
-// toString
+// Object
 console.log(
-    Object.prototype.toString.call(null),
     Object.prototype.toString.call({}),
     Object.prototype.toString.call(new RegExp()),
     Object.prototype.toString.call(new Date()),
-    Array.isArray([])
-); // [object Null] [object Object] [object RegExp] [object Date] true
-
-let obj=null;
-console.log(obj===null);
+); // [object Null] [object Object] [object RegExp] [object Date]

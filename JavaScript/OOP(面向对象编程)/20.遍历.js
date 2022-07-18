@@ -5,7 +5,7 @@ for (let i = 0; i < arr.length; i++) {// console.log("T1",i,arr[i]);
 }
 
   
-for (let index in arr) {   // console.log("T2",index,arr[index]);  //字符串, 数组值
+for (let index in arr) {   // console.log("T2",index,arr[index]);
 }
 for (let key in obj) {// console.log("T3",key,obj[key]);  //key  value
 }
