@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="dvId" class="dvclass"  bagcolor="red" data-foo="test" data-test="td" data-hello-world="add"></div>
+</body>
+<script>
+  let dv = document.getElementById("dvId");
+  console.log(dv.attributes[1], dv.attributes.bagcolor);  //返回一个属性节点对象
+  console.log(dv.attributes.bagcolor.name, dv.attributes.bagcolor.value);  //属性键bagcolor 属性值red
+
+  /*
+  属性操作的方法:
+    getAttribute():
+    setAttribute():
+    hasAttribute():
+    removeAttribute():
+  */
+  console.log(dv.getAttribute("id"));  //dv
+  dv.setAttribute("data", "true");
+  dv.removeAttribute("id");
+  console.log(dv.hasAttribute("bagcolor"));
+
+
+  /*
+    dataset属性: 使用元素节点对象的dataset属性，它指向一个对象，操作元素标签的data-*属性。
+    data-后面的属性名有限制，只能包含`小写字母`、数字、连词线（-）、点（.）、冒号（:）和下划线（_)
+      定义 data-hellow-world 
+      使用: dataset.helloWorld
+  */
+
+  console.log(dv.dataset.foo);  // test
+  console.log(dv.dataset.helloWorld);  //add
+  dv.dataset.foo = "module"; //写入
+  delete dv.dataset.test;  //删除
+
+
+  //HTML元素的标准属性，会自动成为元素节点对象的属性。
+  console.log(dv.className);
+
+</script>
+
+</html>

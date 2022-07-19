@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="dv" class="dvclass" style="width: 100px;height: 200px;border: 1rem solid red;"></div>
+</body>
+<script>
+/*
+     getComputedStyle获取全部样式:返回的CSS值都是绝对单位。
+*/
+    let dv = document.getElementById("dv");
+    console.log(getComputedStyle(dv, '::before').content);
+    console.dir(getComputedStyle(dv).width)  //100px
+    console.dir(getComputedStyle(dv).border)  // 16px solid rgb(255, 0, 0) 
+
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .dvclass::before {
+    content: 'Before pseudo element';
+  }
+</style>
+
+<body>
+  <!-- 
+   CSSStyleDeclaration接口: 三个地方部署了这个接口 getPropertyValue removeProperty setProperty
+     元素节点的style属性（Element.style）
+     CSSStyle实例的style属性
+     window.getComputedStyle()的返回值 
+   -->
+  <!-- <div id="dv" class="dvclass"></div> -->
+  <div id="test"></div>
+</body>
+<script>
+  // let dv = document.getElementById("dv");
+  // let divStyle = dv.style;
+
+  let dvTest = document.getElementById("test");
+  let dvTestStyle = dvTest.style;
+
+  //行内样式的相关操作
+  // divStyle.width = '100px';
+  // divStyle.height = '100px';
+  // divStyle.backgroundColor = 'red';
+  // divStyle.cssFloat = "left";  //如果CSS属性名是 JavaScript 保留字，则规则名之前需要加上字符串css。
+
+  //推荐下面的写法
+  dvTestStyle.cssText = `width:100px;height:100px;background:green;float:left;margin-left:10px;font-size:2rem`;
+
+  console.log(dvTestStyle.cssText); //一模一样返回;返回的只是行内样式。父元素继承的样式，无法通过这个属性得到。
+  console.log(dvTestStyle.getPropertyValue("width"), '1' + dvTestStyle.getPropertyValue("display") + '1');//100px '';
+  dvTestStyle.removeProperty('margin');
+  dvTestStyle.setProperty('margin-left', '100px');  //important可选
+</script>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // CSS模块的侦测:需要知道当前浏览器是否支持某个属性，存在返回字符串，不存在undefined;
+  console.log(typeof document.body.style.maxWidth === 'string'); //true
+  console.log(typeof document.body.style["max-width"] === 'string'); //true
+  console.log(typeof document.body.style["maxWidth"] === 'string'); //true
+
+  function isPropertySupported(property) {
+    if (property in document.body.style) return true;
+    let prefixes = ['Moz', 'Webkit', 'O', 'ms', 'Khtml'];
+    let prefProperty = property.charAt(0).toUpperCase() + property.substr(1); //首字母大写
+
+    for (let i = 0; i < prefixes.length; i++) {
+      if ((prefixes[i] + prefProperty) in document.body.style) return true; //MozTransparent
+    }
+    return false;
+  }
+  isPropertySupported('background-clip')
+</script>
+
+</html>

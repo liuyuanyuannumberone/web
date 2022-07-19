@@ -53,7 +53,7 @@ console.log(q); //1
     // f2 = function () {};
 }
 
-// 块级作用域使用let和const声明，let申明变量，const申明常量
+// 块级作用域使用let和const声明，let声明变量，const声明常量
 // 作用域链
 
 

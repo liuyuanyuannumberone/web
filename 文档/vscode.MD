@@ -1,4 +1,3 @@
-
 Settings Sync 插件 作用：多台设备之间，同步 VS Code 配置。通过登录 GitHub 账号来使用这个同步工具
 tooken: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
 Gist ID:b89be7758fb7b5d2a3363a1309d4787c
@@ -19,12 +18,6 @@ Alt + Shift + U 完成配置上传，使用组合键 Alt + Shift + D即可下载
 （3）在弹出的界面中，选择「Download Public Gist」，然后输入别人分享给你的 gist。注意，这一步不需要登录 GitHub 账号
 
 
-ctrl+k ctrl+s 快捷键查询
-ctrl+shift+p 显示命令面板
-strl+',' 设置
-ctrl+shift+c 显示电脑终端
-code . 新建窗口打开一个项目，code 会新建一个窗口;
-
 在当前文件打开集成终端的方法：
 1.安装Code Runner插件;
 2.配置 Code Runner settings.json 添加以下两行配置:
@@ -33,22 +26,24 @@ code . 新建窗口打开一个项目，code 会新建一个窗口;
 3.配置快捷键 ctrl+k ctrl+s 搜索openinterminal  设置快捷键 ctrl+~ 新建终端；
 
 
-alt+shift+down 复制一行    ctrl+shift+k 删除当前行       ctrl+G 定位到某行 ctrl+enter 下方新增一行
-alt+光标 添加多处光标       alt+shfit+光标 列选择         ctrl+L 选中一行| 单机鼠标行号也可以选中一行
+ctrl+k ctrl+s 快捷键查询
+ctrl+shift+p 显示命令面板
+strl+',' 设置
+ctrl+shift+c 显示电脑终端
+code . 新建窗口打开一个项目，code 会新建一个窗口;
 alt+shift+f 格式化代码
 Ctrl+Shift+F 的組合鍵來切換繁/簡輸入。
 
-shift+ctrl+e切换文件列表和右侧焦点   fn+左右方向键 移动到行末/行首
+shift+ctrl+e切换文件列表和右侧焦点  
 ctrl+K R 显示文件资源管理器（英文状态下使用）
-
-
 ctrl+p 项目内查找文件
 ctrl+shift+f 项目内  ctrl+F/H 本文件内   查找/替换关键词 
 ctrl+~ 显示隐藏终端
 
-ctrl+win+i 文件头部注释
-ctrl+win+t 函数注释
+ctrl + Home/End  文件首末     ctrl+shift+\ 代码块光标，在代码块之间跳转  
+fn+左右方向键 移动到行末/行首                              ctrl+L 选中一行| 单机鼠标行号也可以选中一行
+ctrl+左右方向键  移动到单词末/单词首,连续按以单词移动光标    +shift 选中单词
 
-
-
-
+alt+shift+down 复制一行    ctrl+shift+k 删除当前行       ctrl+G 定位到某行 ctrl+enter 下方新增一行
+alt+光标 添加多处光标       alt+shfit+光标 列选择  
+命令面板中输入tran根据提示转换大小写
