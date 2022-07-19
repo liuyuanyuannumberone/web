@@ -2,7 +2,7 @@
  JS 数据类型 基本类型 number string  boolean  null  undefined  symbol  
             这不是基本类型  NaN  Infinity
 
-            引用类型 Object(Array|Function|Regexp|Date)
+            引用类型 object(Array|Function|Regexp|Date)
  */
  let a;
  let obj=null;
