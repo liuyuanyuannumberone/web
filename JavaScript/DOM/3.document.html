@@ -8,9 +8,34 @@
   <title>Document</title>
 </head>
 
-<body></body>
+<body>
+  <div class="test" id="dv" style="width: 100px;height: 100px;"></div>
+  <div class="test"></div>
+</body>
 <script>
-  document.write('<script type="text/javascript" src="./test.js"><\/script>');
+  /*
+    在浏览器渲染页面之前,会根据HTML标签解析DOM树,如果解析器遇到了<script>标签,则会停止DOM的解析,优先执行脚本。
+  */
+  document.write('<script type="text/javascript" src="./test.js" async ><\/script>');
+</script>
+
+<script>
+  /*
+   document.querySelector(CSS选择器)
+        如果有多个节点满足匹配条件，则返回第一个匹配的节点。如果没有发现匹配的节点，则返回null。 
+   document.querySelectorAll(CSS选择器)
+
+  */
+
+  let dv = document.querySelector("body #dv");
+  console.log(dv);
+  console.log(dv.style.cssText); //width: 100px; height: 100px;
+
+  let nodeList = document.querySelectorAll(".test");
+  console.log(nodeList);
+
+
+
 </script>
 
 </html>

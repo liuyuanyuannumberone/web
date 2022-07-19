@@ -4,7 +4,7 @@
 <head》 lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="../../../lib/privateLib/location.js"></script>
+    <script src="location.js"></script>
     </head>
     <style>
         * {
@@ -22,11 +22,11 @@
             // 鼠标在盒子中的位置(x,y)
             var x = getPage(e).pageX - box.offsetLeft;
             var y = getPage(e).pageY - box.offsetTop;
-            document.onmousemove = function (e) {
+            document.onmousemove = function (e) {   //鼠标移动过程中一直触发
                 e = e || window.event;
                 var boxX = getPage(e).pageX - x;
                 var boxY = getPage(e).pageY - y;
-                console.log('x=' + x, 'y=' + y);
+                console.log('boxX=' + boxX, 'boxY=' + boxY);
                 box.style.left = boxX + 'px';
                 box.style.top = boxY + 'px';
             }
