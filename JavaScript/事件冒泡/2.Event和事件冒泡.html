@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>事件冒泡</title>
+</head>
+<!--
+ Event事件对象 
+    在触发DOM上的某个事件时，会产生一个事件对象Event;这个对象中包含着所有与事件有关的信息。
+    兼容写法:var oEvent=event||window.event;
+         oEvent.type: 获取绑定的事件类型，比如click，mouseover等
+         oEvent.target: 触发事件的元素【真实点击的元素】  (在ie低版本中用event.srcElement)
+         oEvent.currentTarget:绑定事件的元素【真正执行的元素】 表示当前所绑定事件的元素
+         oEvent.stopPropagation():用于阻止事件冒泡。(在ie中用oEvent.cancelBubble=false)
+                 oEvent.stopPropagation?oEvent.stopPropagation():oEvent.cancelBubble= true;
+         oEvent.preventDefault():阻止事件的默认行为;比如阻止a的href链接(在ie低版本中用oEvent.returnValue=true)
+                 oEvent.preventDefault ? oEvent.preventDefault():oEvent.returnValue = true;
+                 return false 阻止默认事件
+ 
+
+-->
+
+
+<!-- 
+    我们将这种事件流分为三个阶段：捕获阶段，目标阶段，冒泡阶段 
+ -->
+
+<body>
+  <a href="www.baidu.com" id="testA">百度一下，你就知道</a>
+  <a href="www.baidu.com" onClick="return false">百度一下，你就知道</a>
+
+  <div id="outer" style="width: 200px;height: 500px;background-color:  red;">
+    <div id="middle" style="width: 100px;height: 300px;background-color:yellow">
+      <div id="inner" style="width: 50px;height: 150px;background-color:green">
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  document.querySelector('#testA').addEventListener('click', function (event) {
+    var oEvent = event || window.event;
+    oEvent.preventDefault ? oEvent.preventDefault() : oEvent.returnValue = true;
+  })
+
+  //事件冒泡
+  let outer = document.querySelector('#outer');
+  let middle = document.querySelector('#middle');
+  let inner = document.querySelector('#inner');
+
+  //最外层
+  outer.onclick = function (event) {
+    var oEvent = event || window.event;
+    console.log("触发事件的元素【真实点击的元素】", oEvent.target);
+    console.log("绑定事件的元素【真正执行的元素】", oEvent.currentTarget);
+  }
+  //中间层
+  middle.onclick = function (event) {
+    var oEvent = event || window.event;
+    console.log(2, oEvent.target, oEvent.currentTarget); //  middle middle
+  }
+  //里层   阻止事件冒泡
+  inner.onclick = function (event) {
+    var oEvent = event || window.event;
+    console.log(oEvent.clientX, oEvent.clientY);
+    console.log(1, oEvent.target, oEvent.currentTarget);// inner inner
+    oEvent.stopPropagation ? oEvent.stopPropagation() : oEvent.cancelBubble = true;
+  }
+</script>
+
+</html>

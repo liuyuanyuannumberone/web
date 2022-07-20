@@ -59,7 +59,8 @@
     let box = document.querySelector(".box");
     function colorChange(e) {
       var e = e || window.event;
-      console.log(e.target,e.currentTarget)  //<li style="background:red">red</li>       
+    //<li style="background:red">red</li> <ul class="color_list">…</ul>      
+      console.log(e.target,e.currentTarget)
       if (e.target.nodeName.toLowerCase() === "li") {
         box.innerHTML = `<span style="background:${e.target.innerHTML};color:#fff">颜色为${e.target.innerHTML}</span>`;
       }
