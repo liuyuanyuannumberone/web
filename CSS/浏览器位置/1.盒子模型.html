@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        background-color: aqua;
+    }
+</style>
+<!--
+标准盒子模型W3C  box-sizing:content-box width/height指的是content宽度;如果有滚动条content=width-scroll;
+低版本IE盒子模型 box-sizing:border-box  width/height指的是盒子大小。滚动条对于它而言不感知,相当于浮动;
+-->
+<style>
+    div {
+        border: 5px solid red;
+        margin: 10px 10px 10px 10px;
+        padding: 20px 20px 20px 20px;
+        width: 200px;
+        height: 100px;
+    }
+</style>
+
+<body>
+    <div style="box-sizing:content-box;margin-bottom: 100px;">
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaffffff
+        bbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffff
+        cccccccccccccccccccccccccccccffffff
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaffffff
+        bbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffff
+        cccccccccccccccccccccccccccccffffff
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaffffff
+    </div>
+    <div style="box-sizing:content-box;overflow: auto;">
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaffffff
+        bbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffff
+        cccccccccccccccccccccccccccccffffff
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaffffff
+        bbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffff
+        cccccccccccccccccccccccccccccffffff
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaffffff
+    </div>
+
+    <div style="box-sizing:border-box;margin-bottom: 100px;">
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaffffff
+        bbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffff
+        cccccccccccccccccccccccccccccffffff
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaffffff
+        bbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffff
+        cccccccccccccccccccccccccccccffffff
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaffffff
+    </div>
+    <div style="box-sizing:border-box;overflow: auto;">
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaffffff
+        bbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffff
+        cccccccccccccccccccccccccccccffffff
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaffffff
+        bbbbbbbbbbbbbbbbbbbbbbbbbbbbbffffff
+        cccccccccccccccccccccccccccccffffff
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaffffff
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const getScrollBarWidth = () => {
+        const outer = document.createElement('div');
+        outer.style.cssText = "box-sizing:content-box;width:200px;height:200px;overflow:scroll;"
+        document.body.appendChild(outer);
+        scrollBarWidth = 200 - outer.clientWidth;
+        scrollBarHeight = 200 - outer.clientHeight;
+        document.body.removeChild(outer);
+
+        alert(`${scrollBarWidth}和${scrollBarHeight}`);
+
+        return { scrollBarWidth, scrollBarHeight };
+    }
+    getScrollBarWidth();
+
+</script>
+
+</html>

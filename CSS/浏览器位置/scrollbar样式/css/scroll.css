@@ -1,0 +1,47 @@
+.box {
+  float: left;
+  width: 200px;
+  height: 200px;
+  margin-right: 40px;
+  border: 1px solid red;
+  overflow: auto;
+}
+
+/*滚动区域*/
+.box2::-webkit-scrollbar {
+  width: 20px;
+  height:20px;
+  background-color: purple;/*滚动轨迹上下顶部底部的颜色*/
+}  
+
+/*滚动轨迹*/
+.box2::-webkit-scrollbar-track {
+ background-color: #eee;
+ border-radius: 10px;
+}
+
+/* 滚动条 */
+.box2::-webkit-scrollbar-thumb {
+  border-radius:5px;
+  background: #3DB6A4;
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%,  transparent 25%,  transparent 50%,  rgba(255, 255, 255, .2) 50%,  rgba(255, 255, 255, .2) 75%,  transparent 75%,  transparent);
+}
+/*滚动条的hover样式*/
+.box2::-webkit-scrollbar-thumb:hover { 
+  
+  height: 20px;
+  background-color: #9f9f9f;
+  border-radius: 5x;
+}
+
+.box2::-webkit-scrollbar-button:start {
+  background: url(../imgs/up.png) no-repeat;
+  background-size: 15px 15px;
+  background-position: 40% 10%;
+}
+
+.box2::-webkit-scrollbar-button:end {
+  background: url(../imgs/down.png) no-repeat;
+  background-size: 15px 15px;
+  background-position: 40% 10%;
+}
