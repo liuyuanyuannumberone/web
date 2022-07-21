@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .dropzone,
+  .dv {
+    width: 200px;
+    height: 100px;
+    background-color: bisque;
+    margin: 20px;
+  }
+
+  .draggable {
+    width: 50px;
+    height: 50px;
+    border: 1px solid red;
+    background-color: #efefef;
+  }
+</style>
+
+<body>
+  <img src="./Evenet信息.jpg" alt="" width="100" height="100">
+  <a href="www.baidu.com" onclick="return false"> 百度一下,你就知道</a>
+
+
+  <div class="dropzone dropzone1">
+    <div id="draggable" draggable="true" class="draggable">
+      该节点可拖拉
+    </div>
+  </div>
+  <div class="dropzone dropzone2" id="dropzone2"></div>
+
+
+</body>
+<script>
+  let draggableElment = document.getElementById('draggable');
+  let targetElement = document.getElementById('dropzone2');
+
+  //兼容IE8-浏览器
+  draggableElment.addEventListener('mousedown', function () {
+    if (this.dragDrop) {
+      this.dragDrop();
+    }
+  }, false);
+
+  //拖放源
+  draggableElment.addEventListener('dragstart', function () {
+    this.style.opacity = '0.5';
+  }, false);
+
+  draggableElment.addEventListener('drag', function () {
+    this.style.borderColor = "green";
+  }, false);
+
+
+  draggableElment.addEventListener('dragend', function () {
+    this.style.opacity = '';
+    this.style.borderColor = "";
+  }, false);
+
+
+  // 拖放目标
+  targetElement.addEventListener('dragenter', function (event) {
+    let oEvent = event || window.event;
+    oEvent.preventDefault ? oEvent.preventDefault() : oEvent.returnValue = false;
+    this.innerHTML = 'dragenter';
+    console.log("dragenter");
+  }, false)
+
+  targetElement.addEventListener('dragover', function (event) {
+    let oEvent = event || window.event;
+    oEvent.preventDefault ? oEvent.preventDefault() : oEvent.returnValue = false;
+    this.innerHTML = 'dragover';
+    console.log("dragover");
+  }, false)
+
+  targetElement.addEventListener('dragleave', function (event) {
+    this.innerHTML = '元素已离开目标区域';
+    console.log("dragleave");
+  }, false)
+
+  targetElement.addEventListener('drop', function (event) {
+    this.innerHTML = '元素已落在目标区域';
+    this.style.backgroundColor = 'orange';
+    console.log("drop");
+  }, false)
+</script>
+
+</html>

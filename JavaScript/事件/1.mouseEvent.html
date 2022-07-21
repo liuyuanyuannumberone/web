@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .parent {
+    margin: 20px;
+    width: 200px;
+    height: 200px;
+    background: green;
+    display: inline-block;
+  }
+
+  .children {
+    width: 100px;
+    height: 100px;
+    background-color: #efefef;
+    float: left;
+  }
+
+  .child {
+    width: 60px;
+    height: 60px;
+    background-color: yellow;
+    float: left;
+  }
+</style>
+
+<body>
+  <div id="parent" class="parent">
+    <div id="children" class="children">
+      <div id="child" class="child"></div>
+    </div>
+  </div>
+
+  <div id="parent1" class="parent">
+    <div id="children1" class="children">
+      <div id="child1" class="child"></div>
+    </div>
+  </div>
+
+  <div id="parent2" class="parent">
+    <div id="children2" class="children">
+      <div id="child2" class="child"></div>
+    </div>
+  </div>
+
+  <div id="parent3" class="parent">
+
+  </div>
+</body>
+<script>
+  {
+    window.onload = function () {
+      let parentElement = document.getElementById("parent");
+      parentElement.onmouseenter = function () {
+        console.log("mouseenter");
+      }
+      parentElement.onmouseleave = function () {
+        console.log("mouseleave");
+      }
+
+
+      let parentElement1 = document.getElementById("parent1");
+      parentElement1.onmouseover = function () {
+        console.log("mouseover");
+      }
+      parentElement1.onmouseout = function () {
+        console.log("mouseout");
+      }
+
+      let parentElement2 = document.getElementById("parent2");
+      parentElement2.onmousemove = function () {
+        console.log("mousemove");
+      }
+    }
+  }
+
+
+  /*
+   是否按下对应的键
+  */
+  {
+    let parentElement3 = document.getElementById("parent3");
+    parentElement3.onclick = function (event) {
+      let oEvent = event || window.event;
+      console.log('ALT:' + oEvent.altKey);
+      console.log('CTRL:' + oEvent.ctrlKey);
+      console.log('SHIFT:' + oEvent.shiftKey);
+      console.log('META:' + oEvent.metaKey);
+    }
+  }
+
+</script>
+
+</html>

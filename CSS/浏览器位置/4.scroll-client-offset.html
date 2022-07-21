@@ -21,14 +21,14 @@
     margin-top: 10px;
     margin-right: 10px;
     border: 6px solid red;
-    /* padding: 10px; */
+    padding: 10px;
     overflow: auto;
     float: left;
   }
 </style>
 
 <body>
-  <div class="box" id="dv" style="box-sizing: border-box;">
+  <div class="box" id="dv" style="box-sizing: content-box;">
     <!-- <div></div> -->
     <div
       style="box-sizing: border-box;width:500px;height:700px;background:#efefef;padding: 10px;border:3px solid greenyellow;">
@@ -51,23 +51,21 @@
   /*
     前提:不可见部分在父元素的下方和右方
 
-    scrollHeight/scrollWidth:不包含滚动条宽度、边框以及边框以外;(包括滚动的不可见部分)             (只读)
-    clientHeight/clientWidth:不包含滚动条宽度、边框以及边框以外;(可视区域)（不包括滚动的不可见部分）(所有client只读)
-                              如果给元素设置了display:none，则客户区client属性都为0 
-    offsetHeight/offsetWidth:包含边框;(当滚动条不存在);
-
-    clientLeft/clientTop:返回左边框和上边框的宽度.
-    offsetTop/offsetLeft:元素到定位父级offsetParent(当前元素最近的经过定位(position不为static)的父级元素)顶部的距离
-                         若祖宗都不符合条件，offsetParent为body 
-        元素的外边框至offsetParent元素的内边框之间的距离               
-        当元素定位fixed,此时元素相对于视口进行定位. [firefox浏览器有兼容性问题]        
-                     
-    scrollTop/scrollLeft:滚动条的移动距离;元素未滚动时,scrollTop为0;
-                         元素滚动时,表示元素上方和左方不可见内容的像素高度    (可写)
-             scrollHeight=clientHeight+scrollTop;(元素滚动到底部时成立的等式)
-
-    scrollTo(x,y) 元素表示滚到指定的位置
-    onscroll 当元素的滚动条(滚动条是属于这元素的)滚动时触发的事件
+scrollHeight/scrollWidth:不包含滚动条宽度、边框以及边框以外;(包括滚动的不可见部分)             (只读)
+clientHeight/clientWidth:不包含滚动条宽度、边框以及边框以外;(可视区域)（不包括滚动的不可见部分）(所有client只读)
+                          如果给元素设置了display:none，则客户区client属性都为0 
+offsetHeight/offsetWidth:包含边框;(当滚动条不存在)
+clientLeft/clientTop:返回左边框和上边框的宽度.
+offsetTop/offsetLeft:元素到定位父级offsetParent(当前元素最近的经过定位(position不为static)的父级元素)顶部的距离
+                     若祖宗都不符合条件，offsetParent为body 
+    元素的外边框至offsetParent元素的内边框之间的距离               
+    当元素定位fixed,此时元素相对于视口进行定位. [firefox浏览器有兼容性问题]        
+                 
+scrollTop/scrollLeft:滚动条的移动距离;元素未滚动时,scrollTop为0;
+                     元素滚动时,表示元素上方和左方不可见内容的像素高度    (可写)
+         scrollHeight=clientHeight+scrollTop;(元素滚动到底部时成立的等式
+scrollTo(x,y) 元素表示滚到指定的位置
+onscroll 当元素的滚动条(滚动条是属于这元素的)滚动时触发的事件
    
   */
 
@@ -76,7 +74,8 @@
   let dv2 = document.getElementById("dv2");
 
   dv.onclick = function (e) {
-    // console.log("scroll-dv", dv.scrollWidth, dv.scrollHeight);
+    console.log("scroll-dv", dv.scrollWidth, dv.scrollHeight);
+    // console.log(getComputedStyle(dv).width);
     // console.log("client-dv", dv.clientWidth, dv.clientHeight);
     // console.log("offset", dv.offsetWidth, dv.offsetHeight);
     // console.log(dv.offsetLeft, dv.offsetTop);

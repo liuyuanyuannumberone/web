@@ -21,21 +21,24 @@
     使用dispatchEvent()触发自定义事件
   */
 
-  let newEvent = document.createEvent('Event');
-  /* 
-    * 实例化创建好的事件对象
-    * 第一个参数：事件类型（就好像是click还是submit）
-    * 第二个参数：是否冒泡
-    * 第三个参数：是否阻止浏览器默认行为（例如阻止submit事件提交表单）
-  */
-  newEvent.initEvent('myEvent', true, true);
-  newEvent.name = "This is Name";
+  {
+    let newEvent = document.createEvent('Event');
+    /* 
+      * 实例化创建好的事件对象
+      * 第一个参数：事件类型（就好像是click还是submit）
+      * 第二个参数：是否冒泡
+      * 第三个参数：是否阻止浏览器默认行为（例如阻止submit事件提交表单）
+    */
+    newEvent.initEvent('myEvent', true, true);
+    newEvent.name = "This is Name";
 
-  document.addEventListener('myEvent', function (e) {
-    console.log(e.name);
-  }, false);// 默认事件冒泡
+    document.addEventListener('myEvent', function (e) {
+      console.log(e.name);
+    }, false);// 默认事件冒泡
 
-  document.dispatchEvent(newEvent);
+    document.dispatchEvent(newEvent);
+  }
+
 </script>
 
 
