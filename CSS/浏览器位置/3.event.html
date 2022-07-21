@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  #dv {
+    width: 100px;
+    height: 2000px;
+    border: 1px solid red;
+    margin: 20px;
+    overflow: auto;
+  }
+</style>
+
+<body>
+  <div id="dv">
+    <div id="dv1" style="width:50px;height:100px;background-color: #efefef;margin: 10px;border: 10px solid #000;">
+
+    </div>
+  </div>
+</body>
+<script>
+  /*
+  鼠标的坐标:
+  oEvent.clientX/Y 获取到的是触发点相对浏览器可视区域左上角距离，不随页面滚动而改变。所有浏览器均支持   
+  oEvent.pageX/Y   获取到的是触发点相对文档区域左上角距离，会随着页面滚动而改变。除IE6/7/8不支持外                                                                                                                     
+  oEvent.screenX/Y  获取到的是触发点相对显示器屏幕左上角的距离，不随页面滚动而改变。所有浏览器均支持
+
+  oEvent.offsetX/Y 获取到是触发点相对被触发dom(oEvent.target)的左上角距离。 Firefox不支持  
+              在IE中以内容区左上角为基准点不包括边框，如果触发点在边框上会返回负值。
+              在chrome中以padding左上角为基准点不包括边框，如果触发点在边框上会返回负值。
+
+      */
+  let dv = document.getElementById("dv");
+  let dv1 = document.getElementById("dv1");
+  dv.onclick = function (event) {
+    let oEvent = event || window.event;
+    console.log("client1", oEvent.clientX, oEvent.clientY);
+    console.log("page1", oEvent.pageX, oEvent.pageY);
+    console.log("向上滚动的距离1", oEvent.pageY - oEvent.clientY)
+    console.log("向上滚动的距离scroll1", document.body.scrollTop||document.documentElement.scrollTop);
+    console.log("offset1", oEvent.offsetX, oEvent.offsetY);
+    console.log("screen1", oEvent.screenX, oEvent.screenY);
+  }
+  dv1.onclick = function (event) {
+    let oEvent = event || window.event;
+    oEvent.stopPropagation ? oEvent.stopPropagation() : oEvent.cancelBubble = true;
+    console.log("client2", oEvent.clientX, oEvent.clientY);
+    console.log("page2", oEvent.pageX, oEvent.pageY);
+    console.log("向上滚动的距离2", oEvent.pageY - oEvent.clientY)
+    console.log("向上滚动的距离scroll2", document.body.scrollTop||document.documentElement.scrollTop);
+    console.log("offset2", oEvent.offsetX, oEvent.offsetY);
+    console.log("screen2", oEvent.screenX, oEvent.screenY);
+  }
+</script>
+
+</html>

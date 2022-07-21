@@ -14,9 +14,16 @@
          oEvent.currentTarget:绑定事件的元素【真正执行的元素】 表示当前所绑定事件的元素
          oEvent.stopPropagation():用于阻止事件冒泡。(在ie中用oEvent.cancelBubble=false)
                  oEvent.stopPropagation?oEvent.stopPropagation():oEvent.cancelBubble= true;
-         oEvent.preventDefault():阻止事件的默认行为;比如阻止a的href链接(在ie低版本中用oEvent.returnValue=true)
+         oEvent.preventDefault():阻止事件的默认行为;
                  oEvent.preventDefault ? oEvent.preventDefault():oEvent.returnValue = true;
                  return false 阻止默认事件
+
+
+               比如阻止a的href链接  去除单击右键菜单(contextmenu)
+               阻止图像默认拖拽(mousedown) 阻止文字的拖拽和选择(mousedown)
+               阻止表单提交及重设(var bn=document.querySelector("[type=submit]");
+                                 var form=document.querySelector("form");
+               
  
 
 -->
@@ -63,7 +70,7 @@
   //里层   阻止事件冒泡
   inner.onclick = function (event) {
     var oEvent = event || window.event;
-    console.log(oEvent.clientX, oEvent.clientY);
+    console.log(oEvent);
     console.log(1, oEvent.target, oEvent.currentTarget);// inner inner
     oEvent.stopPropagation ? oEvent.stopPropagation() : oEvent.cancelBubble = true;
   }
