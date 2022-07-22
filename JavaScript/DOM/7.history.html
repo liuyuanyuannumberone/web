@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  history
+</body>
+
+<script>
+/*
+1.history.length  history.state
+
+2.history.back()    移动到上一个网址，等同于点击浏览器的后退键
+      history.forward() 移动到下一个网址，等同于点击浏览器的前进键
+      history.go()       go(1)相当于forward()，go(-1)相当于back() history.go(-2) 
+                         history.go() 一直刷新网页
+  
+3.history.pushState(state=null, title='', url)  用于在历史中添加一条记录
+          state  状态对象 主要用于popstate事件,如果不需要这个对象，可以null
+          title  新页面的标题  
+          url    新的网址，必须与当前页面处在同一个域
+  
+      pushState()方法不会触发页面刷新，只是导致History对象发生变化，地址栏会有反应
+  
+      history.replaceState()方法用来修改History对象的当前记录
+      
+5. popstate事件：只有用户点击倒退按钮和前进按钮或者调用back()、forward()、go()方法时才会触发。
+          页面第一次加载的时候，浏览器不会触发popstate事件。 
+  */
+
+  history.pushState(null, 'page1', 'http://localhost:5006/page1');
+  history.pushState(null, 'page1', 'http://localhost:5006/page2');
+
+
+  window.onpopstate = function (event) {
+    console.log('location: ' + document.location);
+    console.log('state: ' + JSON.stringify(event.state));
+  };
+</script>
+
+</html>

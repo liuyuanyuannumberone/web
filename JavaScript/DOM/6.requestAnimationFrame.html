@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  
+  <div id="box" style="height: 200px;width: 50px;background-color: antiquewhite;"></div>
 </body>
 <script>
   /*
-    requestAnimationFrame
-    
+  动画是由浏览器按照一定的频率一帧一帧的绘制的，由css实现的动画的优势就是浏览器知道动画的开始及每一帧的循环间隔，
+  能够在恰当的时间刷新UI，给用户一种流畅的体验。
+    requestAnimationFrame:让浏览器流畅的执行动画效果
   */
+ 
+  let box = document.getElementById('box');
+  function animationWidth() {
+    // box.style.width = parseInt(box.style.width) + 1 + 'px';
+    requestAnimationFrame(animationWidth);
+  }
+  requestAnimationFrame(animationWidth); //调用一次只会重绘一次动画，
 </script>
+
 </html>
