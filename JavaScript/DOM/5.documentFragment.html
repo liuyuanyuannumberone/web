@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="transfer"></div>
+  <template id="template">
+    <p>template标签内部的内容跳过了渲染,所以在页面无法展示出来</p>
+  </template>
+
+  <div id="container"></div>
+</body>
+<script>
+  /*
+   文档片断节点
+    DocumentFragment 表示一个没有父级文件的最小文档对象。DocumentFragment节点不属于DOM树，
+    它的变化不会引起DOM树的重新渲染的操作，且不会导致性能等问题。
+
+
+   fragment的一个标签是template(默认是跳过渲染的，浏览器查看元素可以看到，这就是#document-fragment);
+   fragment可以理解理解成一个子级document节点,document拥有的一切, fragment同样拥有且可以使用;
+   fragment内部的节点除了跳过渲染,且无法被fragment以外的document获取到,只能被fragment自身的document获取。
+
+   
+  */
+
+  {
+    //实例化
+    const fragment = new DocumentFragment();
+    const fragment1 = document.createDocumentFragment();
+
+    //获取元素
+    const templateElement = document.getElementById("template");
+    console.log(templateElement.content.querySelector('p'));
+
+    // template->真实的DOM中   转移 or  复制
+    const transfer = document.querySelector("#transfer");
+    const template = document.querySelector("#template");
+    // transfer.appendChild(template.content);  //转移
+    // transfer.appendChild(document.importNode(template.content, true)) //复制
+  }
+
+
+  /*
+    当我们用JS的DOM创建很多节点时，节点数较多时就会影响浏览器的渲染效率;
+    将创建的节点都放在DocumentFragment节点加入至DOM，只需要完成一次渲染就可以
+
+  */
+  {
+    const container = document.querySelector("#container");
+    const fragment = new DocumentFragment();
+    for (let index = 0; index < 101; index++) {
+      const p = document.createElement('p')
+      p.innerText = `第${index}个标签`
+      fragment.appendChild(p);
+    }
+    container.appendChild(fragment)
+  }
+</script>
+
+</html>
