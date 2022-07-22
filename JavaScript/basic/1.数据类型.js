@@ -19,4 +19,4 @@ console.log(
     Object.prototype.toString.call({}),
     Object.prototype.toString.call(new RegExp()),
     Object.prototype.toString.call(new Date()),
-); // [object Null] [object Object] [object RegExp] [object Date]
+); // [object Object] [object RegExp] [object Date]

@@ -11,14 +11,10 @@
 }
 //函数传参
 {
-    function add(base = 0, ...values) {
-        let sum = base;
-        for (var val of values) {
-            sum += val;
-        }
-        return sum;
+    function add(base = 0, x, y, z) {
+        console.log(base, x, y, z); //0 2 5 3
     }
-    add(undefined, 2, 5, 3); //10
+    add(undefined, ...[2, 5, 3]); 
 }
 
 {
