@@ -1,6 +1,4 @@
-/**
-  match 返回一个数组
- */
+//非分组
 {
     let s = '_x_x';
     let r1 = /x/;
@@ -9,39 +7,31 @@
     let b = s.match(r1);
     console.log(a); // [ 'x', index: 1, input: '_x_x', groups: undefined ]
     console.log(b); //[ 'x', index: 1, input: '_x_x', groups: undefined ]
-}
-{
-    //可以返回全部
+
     let r3 = /x/g;
     console.log(s.match(r3)); //会一次性返回所有匹配成功的结果 [ 'x', 'x' ]
 }
 
-//match中的分组，不用g,只做了匹配第一个的分组。用了g,match方法不会捕获分组的内容，可以使用exec做匹配。
-//捕获性分组
+//分组   不用g只做了匹配第一个的分组; 用g不会捕获分组的内容
 {
-    console.log('abcabc'.match(/.b./)); //[ 'abc', index: 0, input: 'abcabc', groups: undefined ]
     console.log('abcabc'.match(/(.)b(.)/)); //[ 'abc', 'a', 'c', index: 0, input: 'abcabc', groups: undefined ]
-
-    //用g
+    // g
     console.log('abcabc'.match(/(.)b(.)/g)); //[ 'abc', 'abc' ]
+    //解决办法：
+    // let reg = /(.)b(.)/g;
+    // let res;
+    // while ((res = reg.exec('abcabc'))) {
+    //     console.log(res);
+    //     //[ 'abc', 'a', 'c', index: 0, input: 'abcabc', groups: undefined ]
+    //     //[ 'abc', 'a', 'c', index: 3, input: 'abcabc', groups: undefined ]
+    // }
 
-    let reg = /(.)b(.)/g;
-    let res;
-    while ((res = reg.exec('abcabc'))) {
-        console.log(res);
-        //[ 'abc', 'a', 'c', index: 0, input: 'abcabc', groups: undefined ]
-        //[ 'abc', 'a', 'c', index: 3, input: 'abcabc', groups: undefined ]
+    //新的解决办法: matchAll 返回Iterator对象
+    let [str1, regex1] = ['abcabc', /(.)b(.)/g];
+    let it = str1.matchAll(Array.from(regex1));
+
+    // console.log(...it，Array.from(it));
+    for (const match of it) {
+        // console.log(match);
     }
-}
-
-//分组命名 groups就会有值
-{
-    let date = 'lastDate:2029-09-02';
-    const t = date.match(/(\d{4})[-](\d{2})-(\d{2})/);
-    const m = date.match(/(?<year>\d{4})-(?<month>\d{2})[-](?<day>\d{2})/);
-    const { year, month, day } = m.groups;
-    console.log(t); //[...,groups: undefined]
-    console.log(m);
-    // ['2029-09-02','2029','09','02',index: 9,input: 'lastDate:2029-09-02,
-    // groups: [Object: null prototype] { year: '2029', month: '09', day: '02' }]
 }

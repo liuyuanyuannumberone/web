@@ -18,10 +18,10 @@ let str = '𠮷';
 let str1 = 'a𠮷c';
 // console.log(m.charAt(1), m[1]); //e e
 // console.log(str.codePointAt(0), String.fromCodePoint(0x20bb7)); // 134071 𠮷
-// console.log('d'.codePointAt(0).toString(16)); //64 
+// console.log('d'.codePointAt(0).toString(16)); //64
 // console.log("\u{64}");   //d
 
-// 遍历  for...of ||forEach 会识别4个字节的字符 
+// 遍历  for...of ||forEach 会识别4个字节的字符
 {
     for (let item of str1) {
         // console.log(item.codePointAt(0));
@@ -29,7 +29,7 @@ let str1 = 'a𠮷c';
     // [...str1].forEach(ch => console.log(ch.codePointAt(0)));
 }
 
-//计算字符串长度
+//计算字符串长度：length
 String.prototype.computeStrLength = function () {
     let strLength = 0;
     for (let item of this) {
@@ -42,4 +42,10 @@ String.prototype.computeStrLength = function () {
     return strLength;
 };
 
-// console.log(str1.computeStrLength());
+//几个字符(u修饰符把>0xffff的当一个字符看)
+function computeStrLength(text) {
+    var result = text.match(/[\s\S]/gu);
+    return result ? result.length : 0;
+}
+console.log(str1.computeStrLength()); //4
+console.log(computeStrLength(str1)); //3

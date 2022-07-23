@@ -10,6 +10,8 @@ Iterator对象是一个指针对象，实现类似于单项链表的数据结构
            检查一个对象具有Iterator属性
            console.log(typeof obj[Symbol.iterator] === 'function'); //false 
 
+ iterator转化为数组 [...arr] 、Array.from(arr);          
+ 
 */
 
 {
@@ -65,20 +67,3 @@ Iterator对象是一个指针对象，实现类似于单项链表的数据结构
         // console.log(v);
     }
 }
-
-// {
-//     let arr = [1, 2, 3];
-//     let index = 0;
-//     let obj = {
-//         index: 0,
-//         next() {
-//             return index < arr.length
-//                 ? { done: false, value: arr[index++] }
-//                 : { done: true, value: undefined };
-//         },
-//     };
-//     console.log(obj.next());
-//     console.log(obj.next());
-//     console.log(obj.next());
-//     console.log(obj.next());
-// }
