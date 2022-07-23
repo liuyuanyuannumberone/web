@@ -1,5 +1,6 @@
 /**
- * replace str.replace(正则表达式, replacement)
+ str.replace(正则表达式, replacement)
+
   replacement 1.可以为替换内容
               2.可以使用美元符号$，用来指代所替换的内容
                    $&：匹配的子字符串。
@@ -23,9 +24,9 @@
 
 {
     let str1 = 'hello world  good world'.replace(/(\w+)\s(\w+)/g, '$2-$1');
-    let str2 = 'abc'.replace(/b/g, "[$`-$&-$']");
+    let str2 = 'abc'.replace(/b/g, "[$`-$&-$$-$']");
     // console.log(str1);   //world-hello  world-good
-    // console.log(str2);// a[a-b-c]c
+    console.log(str2);//a[a-b-$-c]c
 }
 
 {
@@ -42,8 +43,7 @@
             return a + b + c + prices[b] + d;
         }
     );
-    //<span id="p1">$1.99</span><span id="p2">$9.99</span><span id="p3">$5.00</span>
-    // console.log(template1);
+    
 }
 
 {

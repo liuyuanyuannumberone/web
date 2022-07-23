@@ -1,3 +1,8 @@
+/**
+   正则表达式中:g 表示的是全局模式匹配
+   正则表达式中:i 表示的是忽略大小写
+ */
+
 // su修饰符 使得.匹配任意字符
 console.log(/foo.bar/.test('foo\nbar')); //false
 console.log(/foo.bar/su.test('foo\nbar')); //true

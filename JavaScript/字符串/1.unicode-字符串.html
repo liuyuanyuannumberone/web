@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+<div>&#x20BB7;</div>
+</body>
+<script>
+  let str = 'abc';
+  //\uxxxx表示一个字符,加上{}表示码点大于0xFFFF的字符或者简写;
+  let str1 = '\u0041'; // A   长度1
+  let str2 = '\uD842\uDFB7'; //𠮷  长度2
+  let str3 = '\u{20BB7}'; //𠮷 长度2    0x20bb7=>0xd842 0xdfb7(55362 57271)
+  console.log("\u007A", '\u{7A}', "\z", '\x7A', '\172');// 都表示z 172为八进制
+
+  console.log(str1);
+  console.log(str2);
+  console.log(str3);
+</script>
+
+</html>
