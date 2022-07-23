@@ -23,17 +23,18 @@
     let f6 = (x, y, z) => ({ x, y, z });
 
     /**
-     * 缺点：
-     *  1.没有arguments,如果要用,可以用 rest 参数代替。
-     *  2.无法通过 apply、call、bind 改变this指向;
-      
-      注意：箭头函数不会创建自己的this，箭头函数在定义时已经绑定
-           this指向父级程序的this指向(父级程序是函数),
-           如果父级程序是数组,对象等,this指向的是window.
-        1.原型方法、构造函数,对象方法中，不适用箭头函数
-        2.动态上下文中的回调函数
-
-     */
+             
+        1.箭头函数内部arguments;可以用rest参数代替。
+        2.箭头函数不会创建自己的this;总是指向函数定义生效时所在的函数，如果这个不是函数(比如数组,对象等),则指向window;
+                 不可以当作构造函数，箭头函数使用new命令会抛出一个错误
+                 不可以使用call()、apply()、bind()这些方法去改变this的指向
+                 不可以使用yield命令，因此箭头函数不能用作Generator函数
+         3.不适用场合
+              1.对象定义方法  
+              2.在原型方法上
+              2.动态上下文中的回调函数    
+            
+    */
     {
         function fn1() {
             console.log('arguments', arguments);
@@ -43,21 +44,11 @@
         };
     }
 
-    {
-        function Person() {
-            this.age = 0;
-            setInterval(() => {
-                // console.log(this);
-                this.age++; // this指向 p 实例
-            }, 1000);
-        }
-        var p = new Person();
-    }
 
-    //注意1：
     {
         const obj = {
             name: '张三',
+
             getName() {
                 return this.name;
             },
@@ -65,6 +56,18 @@
                 // console.log(this===window);//true
                 return this.name;
             },
+            init: function (index) {
+                let self = this;
+                console.log(this);  //对象obj
+                let add = index => {
+                    {
+                        let a = 0;
+                        a = index + 1;
+                        console.log(this === self);  //true 
+                    }
+                }
+                add();
+            }
         };
         obj.__proto__.getName2 = function () {
             return this.name;
@@ -76,8 +79,9 @@
         // console.log('普通函数', obj.getName2()); //张三
         // console.log('箭头函数', obj.getName1()); // undefined
         // console.log('箭头函数', obj.getName3()); //undefined
+        // obj.init(1);
     }
-    //注意2：
+
     {
         const btn1 = document.getElementById('btn1');
         btn1.addEventListener('click', () => {
@@ -85,7 +89,68 @@
         });
     }
 
+    // bind失效
+    {
+        let add=function () {
+            console.log(20,this);
+            return (() => this.x).bind({ x: 'inner' })()
+        }
+        console.log(add.call({ x: 'outer' }));  //outer
+    }
 
+
+    //this 指向
+    {
+        function Person() {
+            let self = this;
+            // console.log(12,this);  //对象
+            setTimeout(function () { console.log(12, this === window) }, 1000);  //true
+        }
+        function Person1() {
+            let self = this;
+            // console.log(13,this);  //对象
+            setTimeout(() => {
+                console.log(13, this === self);  //true
+            }, 1000);
+        }
+
+        // new Person();
+        // new Person1();
+
+
+        function foo1() {
+            console.log(1, this);  //window
+            setTimeout(function () {
+                console.log(1, this === window);  // true
+            }, 100);
+        }
+        function foo2() {
+            console.log(2, this); //window
+            let a = 100;
+            setTimeout(() => {
+                console.log(2, this === window);  //  true
+            }, 100);
+        }
+
+        // foo1()
+        // foo2();
+
+        function foo3() {
+            console.log(3, this);  //对象
+            setTimeout(function () {
+                console.log(3, this === window);  // true
+            }, 100);
+        }
+        function foo4() {
+            console.log(4, this); //对象
+            setTimeout(() => {
+                console.log(4, this === window, this.id);  // false
+            }, 100);
+        }
+        // foo3.call({ id: 42 });
+        // foo4.call({ id: 42 });
+
+    }
 </script>
 
 </html>

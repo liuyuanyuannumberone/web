@@ -4,19 +4,29 @@
 
             引用类型 object(Array|Function|Regexp|Date)
  */
- let a;
- let obj=null;
- //if判断
- console.log(Boolean(null), Boolean(undefined), Boolean(NaN), Boolean(''),Boolean(0),Boolean(false)); //false
- 
+{
+    console.log(Number.isNaN(NaN)); //用来检查一个值是否为NaN
+    console.log(isFinite());
+}
+let a;
+let obj = null;
+//if判断
+console.log(
+    Boolean(null),
+    Boolean(undefined),
+    Boolean(NaN),
+    Boolean(''),
+    Boolean(0),
+    Boolean(false)
+); //false
 
- //typeof判断基本类型(去掉null)和Function
- console.log(a === undefined);  //true
- console.log(Boolean(obj === null),Boolean(Array.isArray([]))); //true
+//typeof判断基本类型(去掉null)和Function
+console.log(a === undefined); //true
+console.log(Boolean(obj === null), Boolean(Array.isArray([]))); //true
 
 // Object
 console.log(
     Object.prototype.toString.call({}),
     Object.prototype.toString.call(new RegExp()),
-    Object.prototype.toString.call(new Date()),
+    Object.prototype.toString.call(new Date())
 ); // [object Object] [object RegExp] [object Date]

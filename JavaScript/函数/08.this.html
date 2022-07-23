@@ -16,7 +16,7 @@
    
  2.this是什么？
    它代表函数运行时，自动生成的一个内部对象，只能在函数内部使用，实际上this的最终指向的是那个调用它的对象
-    【函数名前边的的对象】,定时器永远指向window【这个有待验证】
+    【函数名前边的的对象】,定时器永远指向window(不管是否使用call)（箭头函数除外）
    浏览器全局中的this是Window，而原生js中是global
  -->
     <div id="btn1" style="width: 100px;height:100px;border: 1px solid red;"></div>
