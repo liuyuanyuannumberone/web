@@ -7,6 +7,7 @@ Iterator对象是一个指针对象，实现类似于单项链表的数据结构
          1.Iterator对象           使用next() 执行到{value: undefined, done: true }
 
          2.具有Iterator属性的对象  for...of (return的done=true丢弃停止|| yeild的return丢弃停止)    
+
            检查一个对象具有Iterator属性
            console.log(typeof obj[Symbol.iterator] === 'function'); //false 
 
@@ -67,3 +68,4 @@ Iterator对象是一个指针对象，实现类似于单项链表的数据结构
         // console.log(v);
     }
 }
+

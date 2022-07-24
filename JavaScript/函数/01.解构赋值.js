@@ -1,4 +1,4 @@
-//只要具有Iterator接口的数据结构,就可以使用数组解构赋值
+//任何定义了Iterator接口的对象,都可以用扩展运算符转为真正的数组。
 {
     let [a, b, c] = [1, 2, 3];
     let [m, [[n], f]] = [1, [[2], 3]];
@@ -13,16 +13,6 @@
     let [v = 1] = [null]; //null
     let [flag = true] = []; //true
     let [t = 1] = [undefined]; //1
-
-    function* fibs() {
-        let a = 1;
-        let b = 1;
-        while (true) {
-            yield a;
-            [a, b] = [b, a + b];
-        }
-    }
-    let [first, second, third, fourth, fifth, sixth] = fibs();
 }
 
 //对象解构赋值,由于数组本质是特殊的对象，因此可以对数组进行对象属性的解构

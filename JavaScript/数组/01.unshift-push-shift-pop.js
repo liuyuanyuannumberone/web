@@ -10,8 +10,8 @@ console.log(unshifted);//7
 
 
 let arr2 = [1, 2, 3, 4];
-const pushed = arr2.push(0, 0, 0, 0); //返回的是数组新的长度
-console.log(arr2);//[1,2,3,4,,5,6,7,8];
+const pushed = arr2.push(1, 1, 1, 1); 
+console.log(arr2);//[1,2,3,4,,1, 1, 1, 1];
 console.log(pushed);//8
 
 

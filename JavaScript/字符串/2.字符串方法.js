@@ -29,15 +29,16 @@ let str1 = 'a𠮷c';
     // [...str1].forEach(ch => console.log(ch.codePointAt(0)));
 }
 
-//计算字符串长度：length
+//计算字符串长度
 String.prototype.computeStrLength = function () {
     let strLength = 0;
     for (let item of this) {
-        if (item.codePointAt(0) > 0xffff) {
-            strLength += 2;
-        } else {
-            strLength += 1;
-        }
+        strLength += 1;
+        // if (item.codePointAt(0) > 0xffff) {
+        //     strLength += 2;
+        // } else {
+        //     strLength += 1;
+        // }
     }
     return strLength;
 };
@@ -47,5 +48,11 @@ function computeStrLength(text) {
     var result = text.match(/[\s\S]/gu);
     return result ? result.length : 0;
 }
+//几个字符(u修饰符把>0xffff的当一个字符看)
+function countSymbols(string) {
+    return Array.from(string).length;
+}
+
 console.log(str1.computeStrLength()); //4
 console.log(computeStrLength(str1)); //3
+console.log(countSymbols(str1)); //3

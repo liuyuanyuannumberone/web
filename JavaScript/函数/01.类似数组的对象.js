@@ -26,15 +26,25 @@ for (let i = 0; i < arrayLike.length; i++) {
 }
 
 
-//真正转化为数组Array.from()的使用条件：有Iterator接口的对象，比如：Set，Map，Array,类数组对象;
+/*
+ Array.from()的使用条件:有Iterator接口的对象,比如:Set，Map，Array,NodeList对象;类数组对象(即必须有length属性);
+       
+       1. 还可以接受一个函数作为第二个参数，作用类似于数组的map()方法，
+        用来对每个元素进行处理，将处理后的值放入返回的数组。
+      
+       2. 将字符串转为数组，然后返回字符串的长度。因为它能正确处理各种 Unicode 字符，
+        可以避免JavaScript将大于\uFFFF的Unicode字符，算作两个字符的 bug。
 
+ Array.prototype.slice() :类数组对象
+*/
 {
     const arr1 = Array.prototype.slice.call(arrayLike);
     const arr2 = Array.from(arrayLike);
 }
 
-//初始化一个长为10，值为1的数组
+
 {
+    //初始化一个长为10，值为1的数组(第二个参数))
     const arr3 = Array.from({ length: 10 }, function () {
         return 1;
     });

@@ -51,15 +51,37 @@
 {
     //斐波那契数列 1 2 3 5 8 13
     function* fibonacci() {
-        let [prev, curr] = [0, 1];
-        for (;;) {
-            [prev, curr] = [curr, prev + curr];
-            yield curr; // // 将中间值通过yield返回
+        let [a, b] = [1, 1];
+        while (true) {
+            yield a;
+            [a, b] = [b, a + b];
         }
     }
+
+    let [first, second, third, fourth, fifth, sixth] = fibonacci();
+    // console.log(first, second, third, fourth, fifth, sixth);
+
     let fib = fibonacci();
     for (let n of fib) {
-        if (n > 100) break;
-        console.log(n);
+        if (n > 8) break;
+        // console.log(222, n);
     }
+}
+
+{
+    const go = function* () {
+        yield 1;
+        yield 2;
+        yield 3;
+    };
+    // console.log([...go()]); // [1, 2, 3]
+
+    Number.prototype[Symbol.iterator] = function* () {
+        let i = 0;
+        let num = this.valueOf();
+        while (i < num) {
+            yield i++;
+        }
+    };
+    // console.log([...5]); // [0, 1, 2, 3, 4]
 }
