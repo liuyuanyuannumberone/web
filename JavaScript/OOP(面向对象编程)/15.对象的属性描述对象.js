@@ -1,13 +1,14 @@
 //属性描述对象
 const obj = {
-    value: 123, // writable和configurable有一个为true，就允许改动
+    value: 1, // writable和configurable有一个为true，就允许改动
     writable: true, //value是否可改变
-    enumerable: true, //属性是否可遍历。如果设为false,for...in、Object.keys() JSON.stringify跳过该属性。
-    configurable: false, //false value、writable、enumerable都不能修改了。比如无法删除该属性。
+    enumerable: true,//可遍历。设为false,for...in、Object.keys() JSON.stringify、Object.assign()跳过
+    configurable: true, //false value、writable、enumerable都不能修改了。比如无法删除该属性。
 
     get: undefined,
     set: undefined,
 };
+
 //Object.getOwnPropertyDescriptor():获取某个属性的描述对象【对象自身的属性】
 {
     let o1 = { name: 'lyy' };

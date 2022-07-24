@@ -7,6 +7,7 @@
     let m = 'name';
     var obj = {
         x,
+        y,
         [m]: 'liu',
         [x + y]: '123',
         m: 'liu',
@@ -14,8 +15,10 @@
         hello() {
             console.log('hello');
         },
+        //原来函数这么写的
+        add: function () {},
     };
-    // console.log(obj); //{ '4': '123', x: 1, name: 'liu', m: 'liu', hello: [Function: hello] }
+    // console.log(obj); //{ '4': '123', x: 1, y:3,name: 'liu', m: 'liu', hello: [Function: hello] }
 }
 
 //遍历

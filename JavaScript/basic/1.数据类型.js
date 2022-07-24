@@ -5,9 +5,9 @@
             引用类型 object(Array|Function|Regexp|Date)
  */
 {
-    console.log(Number.isNaN(NaN)); //用来检查一个值是否为NaN
-    console.log(isFinite());
+    console.log(Object.is(NaN,NaN)); //用来检查一个值是否为NaN
 }
+
 let a;
 let obj = null;
 //if判断
