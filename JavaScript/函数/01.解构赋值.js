@@ -13,6 +13,7 @@
     let [v = 1] = [null]; //null
     let [flag = true] = []; //true
     let [t = 1] = [undefined]; //1
+    let [v1, v2] = [,{}]  //undefined {}
 }
 
 //对象解构赋值,由于数组本质是特殊的对象，因此可以对数组进行对象属性的解构

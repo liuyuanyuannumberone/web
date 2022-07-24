@@ -9,6 +9,7 @@ Child.prototype.constructor = Child;
 Child.prototype.method = '...';
 
 {
+    //基于对象产生新的构造函数
     function UserError(message) {
         this.message = message || '默认信息';
         this.name = 'UserError';

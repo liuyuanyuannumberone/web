@@ -3,7 +3,7 @@ let Person = function () {};
 let p = new Person();
 console.log(p instanceof Person); //true
 
-//原理  instanceof 主要的实现原理就是只要右边的原型对象在左边变量的原型链上
+//原理  instanceof 主要的实现原理就是左边变量的原型链上在右边的原型对象
 function new_instance_of(leftVaule, rightVaule) { 
   let rightProto = rightVaule.prototype; 
   leftVaule = leftVaule.__proto__;
