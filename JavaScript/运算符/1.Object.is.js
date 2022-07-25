@@ -8,7 +8,7 @@
 // console.log(+0 === -0); //true
 // console.log(Object.is(NaN,NaN));  //true
 // console.log(Object.is(+0, -0)); //false
-
+console.log(Object.is("abc","abc"));  //true
 //ES5改造为Object.is();
 {
     Object.defineProperty(Object, 'is', {

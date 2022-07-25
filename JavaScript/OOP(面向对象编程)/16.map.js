@@ -1,3 +1,4 @@
+let obj = { name: 'lyy', age: 20 };
 let map = new Map([
     ['name', 'lyy'],
     ['age', 20],
@@ -14,18 +15,26 @@ let map = new Map([
     // console.log(map.clear());  //清空
     console.log(map.keys()); //[Map Iterator] { 'name', 'age' }
     console.log(map.values()); //[Map Iterator] { 'lyy', 20 }
-    console.log(map.entries()); //[Map Entries] { [ 'name', 'lyy' ], [ 'age', 20 ] }
 
-    console.log([...map]); //[ [ 'name', 'lyy' ], [ 'age', 20 ]]
-    console.log(Array.from(map));  //[ [ 'name', 'lyy' ], [ 'age', 20 ] ]
+    {
+        //map->entries
+        console.log(map.entries()); //[Map Entries] { [ 'name', 'lyy' ], [ 'age', 20 ] }
+        console.log([...map]); //[ [ 'name', 'lyy' ], [ 'age', 20 ]]
+        console.log(Array.from(map)); //[ [ 'name', 'lyy' ], [ 'age', 20 ]]
+        //map->对象
+        console.log(Object.fromEntries(map));  //{ name: 'lyy', age: 20 }
+    }
 }
 
 //遍历
 {
-    map.forEach((value, key) => {console.log(111,value,key)});
+    map.forEach((value, key) => {
+        console.log(111, value, key);
+    });
 
-    for (let [key, value] of map) {console.log(222,value,key)};
-
+    for (let [key, value] of map) {
+        console.log(222, value, key);
+    }
 }
 
 {

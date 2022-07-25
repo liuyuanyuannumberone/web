@@ -14,7 +14,7 @@
     function add(base = 0, x, y, z) {
         console.log(base, x, y, z); //0 2 5 3
     }
-    add(undefined, ...[2, 5, 3]); 
+    add(undefined, ...[2, 5, 3]);
 }
 
 {
@@ -23,7 +23,11 @@
     }
     minus(...[1, 2, 3]);
 }
-let arr = [0, 1, 2];
-Math.max(...[1, 2, 3]);
-arr.push(...[4,5,6]);
 
+let arr = [0, 1, 2];
+Math.max(...arr);
+arr.push(...arr);
+
+let [obj, source1, source2] = [{ a: 1 }, { b: 1 }, { c: 3 }];
+Object.assign(obj, ...[source1, source2]);
+console.log(obj); //{ a: 1, b: 1, c: 3 }
